@@ -15,7 +15,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE user_accounts;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -33,7 +33,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE user_profiles;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -50,7 +50,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE doctors;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -67,7 +67,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE pharmacies;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -89,7 +89,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE medications;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -104,6 +104,6 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE notifications;
-        """
-    ]
+        """,
+    ],
 ]

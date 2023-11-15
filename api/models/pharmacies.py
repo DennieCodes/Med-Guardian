@@ -6,7 +6,6 @@ class PharmacyIn(BaseModel):
     phone: str
     address: str
     website: str
-    user_id: int
 
 
 class PharmacyOut(BaseModel):
