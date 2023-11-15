@@ -25,6 +25,18 @@ def create_pharmacy(
     return return_response
 
 
+# UPDATE PHARMACY
+@router.put("/api/pharmacies/{pharmacies_id}",
+            response_model=Union[PharmacyOut, Error])
+def update_pharmacy(
+    pharmacy_id: int,
+    pharmacy: PharmacyIn,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: PharmacyRepository = Depends(),
+) -> Union[PharmacyOut, Error]:
+    return repo.update(pharmacy_id, pharmacy, user_id=account_data["id"])
+
+
 # GET PHARMACY
 @router.get("/api/pharmacies", response_model=Union[List[PharmacyOut], Error])
 def get_all(repo: PharmacyRepository = Depends()):
@@ -54,14 +66,3 @@ def delete_pharmacy(
     repo: PharmacyRepository = Depends(),
 ) -> bool:
     return repo.delete(pharmacy_id)
-
-
-# UPDATE PHARMACY
-@router.put("/api/pharmacies/{pharmacies_id}",
-            response_model=Union[PharmacyOut, Error])
-def update_pharmacy(
-    pharmacy_id: int,
-    pharmacy: PharmacyIn,
-    repo: PharmacyRepository = Depends(),
-) -> Union[PharmacyOut, Error]:
-    return repo.update(pharmacy_id, pharmacy)

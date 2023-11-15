@@ -4,7 +4,7 @@ Today I worked on:
 
 - Creating the models, queries and routers for the pharmacies api
 
-- I learned to utilize the authenticator in my routes.
+- I learned to utilize the authenticator in my routes because creating a pharmacy entry required a user to be logged in so that the pharmacy entry can be associated with them.
 
 ## 11/14/23
 

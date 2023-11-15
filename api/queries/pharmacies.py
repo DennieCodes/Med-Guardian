@@ -36,7 +36,7 @@ class PharmacyRepository(BaseModel):
                 "Could not enter a new pharmacy entry into the system"}
 
     # UPDATE
-    def update(self, pharmacy_id: int, pharmacy: PharmacyIn):
+    def update(self, pharmacy_id: int, pharmacy: PharmacyIn, user_id: int):
         try:
             with pool.connection as conn:
                 with conn.cursor() as db:
@@ -58,7 +58,11 @@ class PharmacyRepository(BaseModel):
                         ]
                     )
                     # This will require authenticator to pass in user_id
-                    return self.pharmacy_in_to_out(pharmacy_id, pharmacy, None)
+                    return self.pharmacy_in_to_out(
+                        pharmacy_id,
+                        pharmacy,
+                        user_id
+                        )
 
         except Exception as e:
             print(e)
