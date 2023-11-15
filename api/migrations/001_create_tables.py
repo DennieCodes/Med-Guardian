@@ -8,8 +8,8 @@ steps = [
             last_name VARCHAR(200) NOT NULL,
             username VARCHAR(50) NOT NULL UNIQUE,
             email VARCHAR(200) NOT NULL UNIQUE,
-            hashed_password VARCHAR(255) NOT NULL,
-            phone VARCHAR(20) NULL
+            phone VARCHAR(20) NULL,
+            hashed_password VARCHAR(255) NOT NULL
         );
         """,
         # "Down" SQL statement
