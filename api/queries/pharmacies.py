@@ -27,8 +27,7 @@ class PharmacyRepository(BaseModel):
                         ]
                     )
                     id = result.fetchone()[0]
-                    print("RESULT: ", result)
-                    return self.pharmacy_in_to_out(id, pharmacy)
+                    return self.pharmacy_in_to_out(id, pharmacy, account_id)
 
         except Exception as e:
             print(e)
@@ -58,7 +57,8 @@ class PharmacyRepository(BaseModel):
                             pharmacy.id
                         ]
                     )
-                    return self.pharmacy_in_to_out(pharmacy_id, pharmacy)
+                    # This will require authenticator to pass in user_id
+                    return self.pharmacy_in_to_out(pharmacy_id, pharmacy, None)
 
         except Exception as e:
             print(e)
@@ -130,9 +130,9 @@ class PharmacyRepository(BaseModel):
             print(e)
             return {"message": "Could not get list of all pharmacies"}
 
-    def pharmacy_in_to_out(self, id: int, pharmacy: PharmacyIn):
+    def pharmacy_in_to_out(self, id: int, pharmacy: PharmacyIn, user_id: int):
         old_data = pharmacy.dict()
-        return PharmacyOut(id=id, **old_data)
+        return PharmacyOut(id=id, **old_data, user_id=user_id)
 
     def record_to_pharmacy_out(self, record):
         print("RECORD: ", record)
