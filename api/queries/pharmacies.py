@@ -1,14 +1,68 @@
 from pydantic import BaseModel
 from typing import Union, List, Optional
-from models.pharmacies import PharmacyIn, PharmacyOut
+from models.pharmacies import PharmacyIn, PharmacyOut, Error
 from queries.pool import pool
 
 
-class Error(BaseModel):
-    message: str
-
-
 class PharmacyRepository(BaseModel):
+    # CREATE
+    def create(self, pharmacy: PharmacyIn, account_id: int):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        INSERT into pharmacies
+                            (name, phone, address, website, user_id)
+                        VALUES
+                            (%s, %s, %s, %s, %s)
+                        RETURNING id;
+                        """,
+                        [
+                            pharmacy.name,
+                            pharmacy.phone,
+                            pharmacy.address,
+                            pharmacy.website,
+                            account_id
+                        ]
+                    )
+                    id = result.fetchone()[0]
+                    print("RESULT: ", result)
+                    return self.pharmacy_in_to_out(id, pharmacy)
+
+        except Exception as e:
+            print(e)
+            return {
+                "message":
+                "Could not enter a new pharmacy entry into the system"}
+
+    # UPDATE
+    def update(self, pharmacy_id: int, pharmacy: PharmacyIn):
+        try:
+            with pool.connection as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        UPDATE pharmacies
+                        SET name = %s
+                          , phone = %s
+                          , address = %s
+                          , website = %s
+                        WHERE id = %s
+                        """,
+                        [
+                            pharmacy.name,
+                            pharmacy.phone,
+                            pharmacy.address,
+                            pharmacy.website,
+                            pharmacy.id
+                        ]
+                    )
+                    return self.pharmacy_in_to_out(pharmacy_id, pharmacy)
+
+        except Exception as e:
+            print(e)
+            return {"message": "Could not update that pharmacy record"}
 
     # DELETE
     def delete(self, pharmacy_id: int):
@@ -76,46 +130,17 @@ class PharmacyRepository(BaseModel):
             print(e)
             return {"message": "Could not get list of all pharmacies"}
 
-    # CREATE
-    def create(self, pharmacy: PharmacyIn):
-        try:
-            with pool.connection() as conn:
-                with conn.cursor() as db:
-                    result = db.execute(
-                        """
-                        INSERT into pharmacies
-                            (name, phone, address, website, user_id)
-                        VALUES
-                            (%s, %s, %s, %s, %s)
-                        RETURNING id;
-                        """,
-                        [
-                            pharmacy.name,
-                            pharmacy.phone,
-                            pharmacy.address,
-                            pharmacy.website,
-                            pharmacy.user_id
-                        ]
-                    )
-                    id = result.fetchone()[0]
-                    return self.pharmacy_in_to_out(id, pharmacy)
-
-        except Exception as e:
-            print(e)
-            return {
-                "message":
-                "Could not enter a new pharmacy entry into the system"}
-
     def pharmacy_in_to_out(self, id: int, pharmacy: PharmacyIn):
         old_data = pharmacy.dict()
         return PharmacyOut(id=id, **old_data)
 
     def record_to_pharmacy_out(self, record):
+        print("RECORD: ", record)
         return PharmacyOut(
-            id=record.id[0],
-            name=record.id[1],
-            phone=record.id[2],
-            address=record.id[3],
-            website=record.id[4],
-            user_id=record.id[5]
+            id=record[0],
+            name=record[1],
+            phone=record[2],
+            address=record[3],
+            website=record[4],
+            user_id=record[5]
         )

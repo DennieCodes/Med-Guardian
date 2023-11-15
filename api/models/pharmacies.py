@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 
 
+class Error(BaseModel):
+    message: str
+
+
 class PharmacyIn(BaseModel):
     name: str
     phone: str

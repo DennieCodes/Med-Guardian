@@ -1,8 +1,10 @@
 from fastapi import APIRouter, Depends, Response
 from typing import Union, List
 
-from models.pharmacies import PharmacyIn, PharmacyOut
-from queries.pharmacies import PharmacyRepository, Error
+from models.pharmacies import PharmacyIn, PharmacyOut, Error
+from queries.pharmacies import PharmacyRepository
+
+from authenticator import authenticator
 
 router = APIRouter()
 
@@ -12,9 +14,10 @@ router = APIRouter()
 def create_pharmacy(
     pharmacy: PharmacyIn,
     response: Response,
+    account_data: dict = Depends(authenticator.get_current_account_data),
     repo: PharmacyRepository = Depends(),
 ):
-    return_response = repo.create(pharmacy)
+    return_response = repo.create(pharmacy, account_id=account_data["id"])
 
     if type(return_response) is not PharmacyOut:
         response.status_code = 400

@@ -40,6 +40,8 @@ Here are diagrams of the API endpoints serving our project:
 1. Fork the project located at [Module3 Project Gamma](https://gitlab.com/Onkurlal/module3-project-gamma)
 2. Once the project is forked, close via git clone https link.
 3. Once cloned, cd into app directory and run the following commands:
-4. docker volume create example_db
-5. docker-compose build
-6. docker-compose up
+4. - Make sure you have Docker running
+5. docker volume create postgres-data
+6. docker volume create pg-admin
+7. docker-compose build
+8. docker-compose up
