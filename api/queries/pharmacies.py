@@ -38,7 +38,7 @@ class PharmacyRepository(BaseModel):
     # UPDATE
     def update(self, pharmacy_id: int, pharmacy: PharmacyIn, user_id: int):
         try:
-            with pool.connection as conn:
+            with pool.connection() as conn:
                 with conn.cursor() as db:
                     db.execute(
                         """
@@ -47,17 +47,18 @@ class PharmacyRepository(BaseModel):
                           , phone = %s
                           , address = %s
                           , website = %s
-                        WHERE id = %s
+                        WHERE id = %s AND user_id = %s
                         """,
                         [
                             pharmacy.name,
                             pharmacy.phone,
                             pharmacy.address,
                             pharmacy.website,
-                            pharmacy.id
+                            pharmacy_id,
+                            user_id
                         ]
                     )
-                    # This will require authenticator to pass in user_id
+
                     return self.pharmacy_in_to_out(
                         pharmacy_id,
                         pharmacy,
@@ -71,7 +72,7 @@ class PharmacyRepository(BaseModel):
     # DELETE
     def delete(self, pharmacy_id: int):
         try:
-            with pool.connection as conn:
+            with pool.connection() as conn:
                 with conn.cursor() as db:
                     db.execute(
                         """
