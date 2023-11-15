@@ -18,7 +18,12 @@ class AccountsQueries:
                 result = db.execute(
                     """
                     INSERT INTO user_accounts
-                    (first_name, last_name, username, email, phone, hashed_password)
+                    (first_name,
+                    last_name,
+                    username,
+                    email,
+                    phone,
+                    hashed_password)
                     VALUES (%s, %s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
@@ -42,7 +47,13 @@ class AccountsQueries:
             with conn.cursor() as db:
                 result = db.execute(
                     """
-                        SELECT id, first_name, last_name, username, email, phone, hashed_password
+                        SELECT id,
+                        first_name,
+                        last_name,
+                        username,
+                        email,
+                        phone,
+                        hashed_password
                         FROM user_accounts
                         WHERE username = %s
                         """,
@@ -66,7 +77,13 @@ class AccountsQueries:
             with conn.cursor() as db:
                 result = db.execute(
                     """
-                        SELECT id, first_name, last_name, username, email, phone, hashed_password
+                        SELECT id,
+                        first_name,
+                        last_name,
+                        username,
+                        email,
+                        phone,
+                        hashed_password
                         FROM user_accounts
                         WHERE email = %s
                         """,
