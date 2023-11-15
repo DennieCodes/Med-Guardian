@@ -70,16 +70,16 @@ class PharmacyRepository(BaseModel):
             return {"message": "Could not update that pharmacy record"}
 
     # DELETE
-    def delete(self, pharmacy_id: int):
+    def delete(self, pharmacy_id: int, user_id: int):
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
                     db.execute(
                         """
                         DELETE FROM pharmacies
-                        WHERE id = %s
+                        WHERE id = %s AND user_id = %s
                         """,
-                        [pharmacy_id]
+                        [pharmacy_id, user_id]
                     )
                     return True
 

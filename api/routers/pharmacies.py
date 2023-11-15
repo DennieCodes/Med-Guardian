@@ -63,6 +63,7 @@ def get_pharmacy(
 @router.delete("/api/pharmacies/{pharmacies_id}", response_model=bool)
 def delete_pharmacy(
     pharmacy_id: int,
+    account_data: dict = Depends(authenticator.get_current_account_data),
     repo: PharmacyRepository = Depends(),
 ) -> bool:
-    return repo.delete(pharmacy_id)
+    return repo.delete(pharmacy_id, user_id=account_data["id"])
