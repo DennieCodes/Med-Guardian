@@ -1,3 +1,13 @@
+## 11/15/23
+
+Today I worked on:
+
+- Finishing up the Backend Auth and creating the api endpoints for the user profile.
+
+I was able to complete the backend authentication with everything working properly. I also was able to complete all the routes for the user profile which include creating the profile, retrieving the profile, and updating the profile.
+
+I had my aha moment while completing the authentication, I realized I was not returning all the required values for the response model.
+
 ## 11/14/23
 
 Today I worked on:
