@@ -85,16 +85,11 @@ class PharmacyRepository(BaseModel):
     # GET_ONE
     def get_one(self, pharmacy_id: int) -> Optional[PharmacyOut]:
         try:
-            with pool.connection as conn:
+            with pool.connection() as conn:
                 with conn.cursor() as db:
                     result = db.execute(
                         """
-                        SELECT id
-                             , name
-                             , phone
-                             , address
-                             , website
-                             , user_id
+                        SELECT id, name, phone, address, website, user_id
                         FROM pharmacies
                         WHERE id = %s
                         """,
@@ -107,7 +102,7 @@ class PharmacyRepository(BaseModel):
                     return self.record_to_pharmacy_out(record)
 
         except Exception as e:
-            print(e)
+            print("There was an error: ", e)
             return {"message": "Could not get that pharmacy's information"}
 
     # GET_ALL
@@ -135,7 +130,6 @@ class PharmacyRepository(BaseModel):
         return PharmacyOut(id=id, **old_data, user_id=user_id)
 
     def record_to_pharmacy_out(self, record):
-        print("RECORD: ", record)
         return PharmacyOut(
             id=record[0],
             name=record[1],
