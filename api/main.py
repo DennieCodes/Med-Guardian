@@ -19,6 +19,8 @@ app.add_middleware(
 
 app.include_router(accounts.router, tags=["Auth"])
 app.include_router(authenticator.router, tags=["Auth"])
+
+
 @app.get("/api/launch-details")
 def launch_details():
     return {
@@ -31,4 +33,5 @@ def launch_details():
         }
     }
 
-app.include_router(pharmacies.router)
+
+app.include_router(pharmacies.router, tags=["Pharmacies"])

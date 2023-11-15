@@ -6,7 +6,8 @@ from fastapi import (
     HTTPException,
     status,
 )
-from models.accounts import AccountToken, HttpError, AccountIn, AccountForm, DuplicateAccountError, AccountOut
+from models.accounts import (AccountToken, HttpError, AccountIn, AccountForm
+                            , DuplicateAccountError, AccountOut)
 from queries.accounts import AccountsQueries
 from authenticator import authenticator
 

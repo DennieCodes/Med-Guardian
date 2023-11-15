@@ -1,10 +1,18 @@
 from pydantic import BaseModel
 
-class Error(BaseModel):
-  message: str
 
 class PharmacyIn(BaseModel):
-  pass
+    name: str
+    phone: str
+    address: str
+    website: str
+    user_id: int
+
 
 class PharmacyOut(BaseModel):
-  pass
+    id: int
+    name: str
+    phone: str
+    address: str
+    website: str
+    user_id: int

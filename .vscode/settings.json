@@ -1,6 +1,6 @@
 {
-  "editor.formatOnPaste": true,
-  "python.formatting.provider": "black",
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+	"editor.formatOnPaste": true,
+	"python.formatting.provider": "flake8",
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
 }
