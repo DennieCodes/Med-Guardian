@@ -8,6 +8,7 @@ services:
     environment:
       CORS_HOST: http://localhost:3000
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres/example_db
+      SIGNING_KEY: dfasf32432423sdfdsfsd234
 
     build:
       context: api
