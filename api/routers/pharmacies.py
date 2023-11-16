@@ -39,8 +39,11 @@ def update_pharmacy(
 
 # GET PHARMACY
 @router.get("/api/pharmacies", response_model=Union[List[PharmacyOut], Error])
-def get_all(repo: PharmacyRepository = Depends()):
-    return repo.get_all()
+def get_all(
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: PharmacyRepository = Depends()
+):
+    return repo.get_all(user_id=account_data["id"])
 
 
 # GET A PHARMACY
@@ -50,9 +53,10 @@ def get_all(repo: PharmacyRepository = Depends()):
 def get_pharmacy(
     pharmacy_id: int,
     response: Response,
+    account_data: dict = Depends(authenticator.get_current_account_data),
     repo: PharmacyRepository = Depends(),
 ) -> Union[PharmacyOut, Error]:
-    result = repo.get_one(pharmacy_id)
+    result = repo.get_one(pharmacy_id, user_id=account_data["id"])
 
     if result is None:
         response.status_code = 400

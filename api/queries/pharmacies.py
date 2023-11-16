@@ -27,6 +27,12 @@ class PharmacyRepository(BaseModel):
                         ]
                     )
                     id = result.fetchone()[0]
+
+                    if id is None:
+                        return {
+                            "message":
+                            "There was a problem creating the pharmacy"
+                        }
                     return self.pharmacy_in_to_out(id, pharmacy, account_id)
 
         except Exception as e:
@@ -88,7 +94,10 @@ class PharmacyRepository(BaseModel):
             return False
 
     # GET_ONE
-    def get_one(self, pharmacy_id: int) -> Union[PharmacyOut, Error]:
+    def get_one(self, pharmacy_id: int, user_id: int) -> Union[
+            PharmacyOut,
+            Error
+    ]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -96,9 +105,12 @@ class PharmacyRepository(BaseModel):
                         """
                         SELECT id, name, phone, address, website, user_id
                         FROM pharmacies
-                        WHERE id = %s
+                        WHERE id = %s AND user_id = %s
                         """,
-                        [pharmacy_id]
+                        [
+                            pharmacy_id,
+                            user_id
+                        ]
                     )
                     record = result.fetchone()
 
@@ -111,7 +123,7 @@ class PharmacyRepository(BaseModel):
             return {"message": "Could not get that pharmacy's information"}
 
     # GET_ALL
-    def get_all(self) -> Union[Error, List[PharmacyOut]]:
+    def get_all(self, user_id: int) -> Union[Error, List[PharmacyOut]]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -119,7 +131,9 @@ class PharmacyRepository(BaseModel):
                         """
                         SELECT id, name, phone, address, website, user_id
                         FROM pharmacies
-                        """
+                        WHERE user_id = %s
+                        """,
+                        [user_id]
                     )
 
                     return [
