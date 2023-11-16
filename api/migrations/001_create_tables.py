@@ -15,25 +15,25 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE user_accounts;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
         """
         CREATE TABLE user_profiles (
             id SERIAL PRIMARY KEY NOT NULL,
-            height VARCHAR(20) NULL,
+            height DECIMAL NULL,
             weight DECIMAL NULL,
             cholesterol INTEGER NULL,
             blood_pressure VARCHAR(10) NULL,
-            A1C_sugar_level INTEGER NULL,
+            A1C_sugar_level DECIMAL NULL,
             username VARCHAR(50) references user_accounts(username)
         );
         """,
         # "Down" SQL statement
         """
         DROP TABLE user_profiles;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -50,7 +50,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE doctors;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -67,7 +67,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE pharmacies;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -89,7 +89,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE medications;
-        """
+        """,
     ],
     [
         # "Up" SQL statement
@@ -104,6 +104,6 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE notifications;
-        """
-    ]
+        """,
+    ],
 ]
