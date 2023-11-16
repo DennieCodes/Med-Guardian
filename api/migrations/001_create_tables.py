@@ -22,11 +22,11 @@ steps = [
         """
         CREATE TABLE user_profiles (
             id SERIAL PRIMARY KEY NOT NULL,
-            height VARCHAR(20) NULL,
+            height DECIMAL NULL,
             weight DECIMAL NULL,
             cholesterol INTEGER NULL,
             blood_pressure VARCHAR(10) NULL,
-            A1C_sugar_level INTEGER NULL,
+            A1C_sugar_level DECIMAL NULL,
             username VARCHAR(50) references user_accounts(username)
         );
         """,

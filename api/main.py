@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from authenticator import authenticator
-from routers import accounts, pharmacies
+from routers import accounts, user_profiles, pharmacies
 
 app = FastAPI()
 
@@ -17,6 +17,7 @@ app.add_middleware(
 
 app.include_router(accounts.router, tags=["Auth"])
 app.include_router(authenticator.router, tags=["Auth"])
+app.include_router(user_profiles.router, tags=["UserProfiles"])
 
 
 @app.get("/api/launch-details")
