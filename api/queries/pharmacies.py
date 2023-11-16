@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Union, List, Optional
+from typing import Union, List
 from models.pharmacies import PharmacyIn, PharmacyOut, Error
 from queries.pool import pool
 
@@ -88,7 +88,7 @@ class PharmacyRepository(BaseModel):
             return False
 
     # GET_ONE
-    def get_one(self, pharmacy_id: int) -> Optional[PharmacyOut]:
+    def get_one(self, pharmacy_id: int) -> Union[PharmacyOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -103,7 +103,7 @@ class PharmacyRepository(BaseModel):
                     record = result.fetchone()
 
                     if record is None:
-                        return None
+                        return {"message": "You cannot access that pharmacy"}
                     return self.record_to_pharmacy_out(record)
 
         except Exception as e:

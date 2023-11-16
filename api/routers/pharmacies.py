@@ -51,7 +51,7 @@ def get_pharmacy(
     pharmacy_id: int,
     response: Response,
     repo: PharmacyRepository = Depends(),
-) -> PharmacyOut:
+) -> Union[PharmacyOut, Error]:
     result = repo.get_one(pharmacy_id)
 
     if result is None:

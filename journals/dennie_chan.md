@@ -6,6 +6,10 @@ Today I worked on:
 
 - I learned to utilize the authenticator in my routes because creating a pharmacy entry required a user to be logged in so that the pharmacy entry can be associated with them.
 
+- We installed both globally and in VS Code black linter in order to pass CI lint tests and also to establish code style across our development
+
+We established the use to zoom and screenshare and the FASTAPI docs utility to demonstrate correct functionality on our code as a means of code review.
+
 ## 11/14/23
 
 Today I worked on:
