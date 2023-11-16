@@ -92,7 +92,11 @@ class DoctorRepository:
         except Exception:
             return {"message": "There was an return record"}
 
-    def update(self, doctor: DoctorUpdate, doctor_id: int) -> Union[DoctorShow, Error]:
+    def update(
+            self,
+            doctor: DoctorUpdate,
+            doctor_id: int
+    ) -> Union[DoctorShow, Error]:
         try:
             # connect the database
             with pool.connection() as conn:
@@ -102,7 +106,10 @@ class DoctorRepository:
                     db.execute(
                         """
                         UPDATE doctors
-                        SET full_name = %s, specialty = %s, phone = %s, address = %s
+                        SET full_name = %s
+                            , specialty = %s
+                            , phone = %s
+                            , address = %s
                         WHERE id = %s
                         """,
                         [
@@ -137,5 +144,5 @@ class DoctorRepository:
                     )
                     return True
                     # return self.vacation_in_to_out(vacation_id, vacation)
-        except Exception as e:
+        except Exception:
             return False

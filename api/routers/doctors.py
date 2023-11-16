@@ -1,10 +1,7 @@
 from fastapi import (
     APIRouter,
-    Request,
     Response,
-    Depends,
-    HTTPException,
-    status,
+    Depends
 )
 from typing import Union, List
 from models.doctors import DoctorIn, DoctorShow, DoctorUpdate, Error
@@ -34,7 +31,10 @@ def list_doctors(
     return repo.list_doctors(user['id'])
 
 
-@router.get('/api/doctors/{doctor_id}', response_model=Union[DoctorShow, Error])
+@router.get(
+    '/api/doctors/{doctor_id}',
+    response_model=Union[DoctorShow, Error]
+)
 def show_doctor(
     doctor_id: int,
     user: dict = Depends(authenticator.get_current_account_data),
@@ -43,7 +43,10 @@ def show_doctor(
     return repo.show_doctor(doctor_id)
 
 
-@router.put('/api/doctors/{doctor_id}', response_model=Union[DoctorShow, Error])
+@router.put(
+    '/api/doctors/{doctor_id}',
+    response_model=Union[DoctorShow, Error]
+)
 def update(
     doctor_id: int,
     doctor: DoctorUpdate,
