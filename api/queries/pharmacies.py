@@ -30,14 +30,16 @@ class PharmacyRepository(BaseModel):
 
                     if id is None:
                         return {
-                            "message": "There was a problem creating the pharmacy"
+                            "message":
+                            "There was a problem creating the pharmacy"
                         }
                     return self.pharmacy_in_to_out(id, pharmacy, account_id)
 
         except Exception as e:
             print(e)
             return {
-                "message": "Could not enter a new pharmacy entry into the system"
+                "message":
+                "Could not enter a new pharmacy entry into the system"
             }
 
     # UPDATE
