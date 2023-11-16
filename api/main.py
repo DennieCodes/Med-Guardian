@@ -2,11 +2,14 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from authenticator import authenticator
-from routers import (accounts,
-                     user_profiles,
-                     third_party_calls,
-                     pharmacies,
-                     doctors)
+from routers import (
+    accounts,
+    user_profiles,
+    third_party_calls,
+    pharmacies,
+    doctors,
+    medications,
+)
 
 app = FastAPI()
 
@@ -23,6 +26,7 @@ app.include_router(accounts.router, tags=["Auth"])
 app.include_router(doctors.router, tags=["Doctors"])
 app.include_router(user_profiles.router, tags=["UserProfiles"])
 app.include_router(pharmacies.router, tags=["Pharmacies"])
+app.include_router(medications.router, tags=["Medications"])
 app.include_router(third_party_calls.router, tags=["3rd Party Calls"])
 
 

@@ -1,12 +1,9 @@
-from fastapi import (
-    APIRouter,
-    Response,
-    Depends
-)
+from fastapi import APIRouter, Response, Depends
 from typing import Union, List
 from models.doctors import DoctorIn, DoctorShow, DoctorUpdate, Error
 from queries.doctors import DoctorRepository
 from authenticator import authenticator
+
 router = APIRouter()
 
 
@@ -15,25 +12,23 @@ def create(
     doctor: DoctorIn,
     response: Response,
     repo: DoctorRepository = Depends(),
-    user: dict = Depends(authenticator.get_current_account_data)
-
+    user: dict = Depends(authenticator.get_current_account_data),
 ) -> DoctorShow:
     print("user", user)
-    return repo.create(doctor, user['id'])
+    return repo.create(doctor, user["id"])
 
 
-@router.get('/api/doctors', response_model=Union[List[DoctorShow], Error])
+@router.get("/api/doctors", response_model=Union[List[DoctorShow], Error])
 def list_doctors(
     response: Response,
     user: dict = Depends(authenticator.get_current_account_data),
     repo: DoctorRepository = Depends(),
- ) -> List[DoctorShow]:
-    return repo.list_doctors(user['id'])
+) -> List[DoctorShow]:
+    return repo.list_doctors(user["id"])
 
 
 @router.get(
-    '/api/doctors/{doctor_id}',
-    response_model=Union[DoctorShow, Error]
+    "/api/doctors/{doctor_id}", response_model=Union[DoctorShow, Error]
 )
 def show_doctor(
     doctor_id: int,
@@ -44,15 +39,14 @@ def show_doctor(
 
 
 @router.put(
-    '/api/doctors/{doctor_id}',
-    response_model=Union[DoctorShow, Error]
+    "/api/doctors/{doctor_id}", response_model=Union[DoctorShow, Error]
 )
 def update(
     doctor_id: int,
     doctor: DoctorUpdate,
     response: Response,
     user: dict = Depends(authenticator.get_current_account_data),
-    repo: DoctorRepository = Depends()
+    repo: DoctorRepository = Depends(),
 ) -> DoctorShow:
     return repo.update(doctor, doctor_id)
 
@@ -61,6 +55,6 @@ def update(
 def delete(
     doctor_id: int,
     user: dict = Depends(authenticator.get_current_account_data),
-    repo: DoctorRepository = Depends()
+    repo: DoctorRepository = Depends(),
 ) -> bool:
     return repo.delete(doctor_id)
