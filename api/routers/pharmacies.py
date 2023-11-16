@@ -26,8 +26,9 @@ def create_pharmacy(
 
 
 # UPDATE PHARMACY
-@router.put("/api/pharmacies/{pharmacies_id}",
-            response_model=Union[PharmacyOut, Error])
+@router.put(
+    "/api/pharmacies/{pharmacies_id}", response_model=Union[PharmacyOut, Error]
+)
 def update_pharmacy(
     pharmacy_id: int,
     pharmacy: PharmacyIn,
@@ -41,7 +42,7 @@ def update_pharmacy(
 @router.get("/api/pharmacies", response_model=Union[List[PharmacyOut], Error])
 def get_all(
     account_data: dict = Depends(authenticator.get_current_account_data),
-    repo: PharmacyRepository = Depends()
+    repo: PharmacyRepository = Depends(),
 ):
     return repo.get_all(user_id=account_data["id"])
 

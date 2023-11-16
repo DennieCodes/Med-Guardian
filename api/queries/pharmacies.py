@@ -23,23 +23,22 @@ class PharmacyRepository(BaseModel):
                             pharmacy.phone,
                             pharmacy.address,
                             pharmacy.website,
-                            account_id
-                        ]
+                            account_id,
+                        ],
                     )
                     id = result.fetchone()[0]
 
                     if id is None:
                         return {
-                            "message":
-                            "There was a problem creating the pharmacy"
+                            "message": "There was a problem creating the pharmacy"
                         }
                     return self.pharmacy_in_to_out(id, pharmacy, account_id)
 
         except Exception as e:
             print(e)
             return {
-                "message":
-                "Could not enter a new pharmacy entry into the system"}
+                "message": "Could not enter a new pharmacy entry into the system"
+            }
 
     # UPDATE
     def update(self, pharmacy_id: int, pharmacy: PharmacyIn, user_id: int):
@@ -61,15 +60,13 @@ class PharmacyRepository(BaseModel):
                             pharmacy.address,
                             pharmacy.website,
                             pharmacy_id,
-                            user_id
-                        ]
+                            user_id,
+                        ],
                     )
 
                     return self.pharmacy_in_to_out(
-                        pharmacy_id,
-                        pharmacy,
-                        user_id
-                        )
+                        pharmacy_id, pharmacy, user_id
+                    )
 
         except Exception as e:
             print(e)
@@ -85,7 +82,7 @@ class PharmacyRepository(BaseModel):
                         DELETE FROM pharmacies
                         WHERE id = %s AND user_id = %s
                         """,
-                        [pharmacy_id, user_id]
+                        [pharmacy_id, user_id],
                     )
                     return True
 
@@ -94,10 +91,9 @@ class PharmacyRepository(BaseModel):
             return False
 
     # GET_ONE
-    def get_one(self, pharmacy_id: int, user_id: int) -> Union[
-            PharmacyOut,
-            Error
-    ]:
+    def get_one(
+        self, pharmacy_id: int, user_id: int
+    ) -> Union[PharmacyOut, Error]:
         try:
             with pool.connection() as conn:
                 with conn.cursor() as db:
@@ -107,10 +103,7 @@ class PharmacyRepository(BaseModel):
                         FROM pharmacies
                         WHERE id = %s AND user_id = %s
                         """,
-                        [
-                            pharmacy_id,
-                            user_id
-                        ]
+                        [pharmacy_id, user_id],
                     )
                     record = result.fetchone()
 
@@ -133,7 +126,7 @@ class PharmacyRepository(BaseModel):
                         FROM pharmacies
                         WHERE user_id = %s
                         """,
-                        [user_id]
+                        [user_id],
                     )
 
                     return [
@@ -155,5 +148,5 @@ class PharmacyRepository(BaseModel):
             phone=record[2],
             address=record[3],
             website=record[4],
-            user_id=record[5]
+            user_id=record[5],
         )

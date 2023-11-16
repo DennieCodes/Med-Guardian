@@ -1,3 +1,15 @@
+## 11/16/23
+
+Today I worked on:
+
+- Finished my pharmacies backend API route
+
+- Submitted development to QA review by my teammate, Onkur
+
+- Merged into main
+
+Today, we will work on doing flows for the medication api route which should be the most complicated. We need to diagram some of the computations and interactions that we want for it.
+
 ## 11/15/23
 
 Today I worked on:
