@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from authenticator import authenticator
-from routers import accounts, user_profiles
+from routers import accounts, user_profiles, pharmacies
 
 app = FastAPI()
 
@@ -31,3 +31,6 @@ def launch_details():
             "min": "00",
         }
     }
+
+
+app.include_router(pharmacies.router, tags=["Pharmacies"])
