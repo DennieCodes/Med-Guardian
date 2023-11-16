@@ -6,5 +6,5 @@ Each team member is required to keep a development journal, which should be a si
 
 Recommended naming convention is `first_last.md`.
 
-
 Michael Zinzun
+Dennie Chan
