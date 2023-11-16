@@ -18,13 +18,13 @@ class DoctorShow(BaseModel):
     phone: str
     address: Optional[str]
 
-
+# Model for updating doctor
 class DoctorUpdate(BaseModel):
     full_name: str
     specialty: str
     phone: str
     address: Optional[str]
 
-
+# Model for viewing error message
 class Error(BaseModel):
     message: str

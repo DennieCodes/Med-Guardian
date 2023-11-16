@@ -10,7 +10,6 @@ from .pool import pool
 
 class DoctorRepository:
     def create(self, doctor: DoctorIn, user_id) -> DoctorShow:
-        print('create function started')
         # connect the database
         with pool.connection() as conn:
             # get a cursor(something to run SQL with)
@@ -33,7 +32,6 @@ class DoctorRepository:
                     ]
                 )
                 id = result.fetchone()[0]
-                # Return new data
                 data = doctor.dict()
                 return DoctorShow(id=id, **data)
 
@@ -83,7 +81,6 @@ class DoctorRepository:
                         [doctor_id]
                     )
                     data = result.fetchone()
-                    print('data is: ', data)
                     record = DoctorShow(
                         id=data[0],
                         full_name=data[1],
@@ -96,15 +93,13 @@ class DoctorRepository:
             return {"message": "There was an return record"}
 
     def update(self, doctor: DoctorUpdate, doctor_id: int) -> Union[DoctorShow, Error]:
-        print('doctor_id: ', doctor_id)
-        print('doctor: ', doctor)
         try:
             # connect the database
             with pool.connection() as conn:
                 # get a cursor (to run sql)
                 with conn.cursor() as db:
                     # run UPDATE statement and store in result
-                    result = db.execute(
+                    db.execute(
                         """
                         UPDATE doctors
                         SET full_name = %s, specialty = %s, phone = %s, address = %s
@@ -120,7 +115,6 @@ class DoctorRepository:
                     )
                     doctor_dict = doctor.dict()
                     doctor_dict['id'] = doctor_id
-                    print(DoctorShow( **doctor_dict))
                     return DoctorShow(**doctor_dict)
                     # return False
 
@@ -144,5 +138,4 @@ class DoctorRepository:
                     return True
                     # return self.vacation_in_to_out(vacation_id, vacation)
         except Exception as e:
-            print('error is: ', e)
             return False

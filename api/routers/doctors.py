@@ -21,8 +21,6 @@ def create(
     user: dict = Depends(authenticator.get_current_account_data)
 
 ) -> DoctorShow:
-    # must set status_code based on success or failure of response
-    # response.status_code = 200
     print("user", user)
     return repo.create(doctor, user['id'])
 
@@ -33,9 +31,6 @@ def list_doctors(
     user: dict = Depends(authenticator.get_current_account_data),
     repo: DoctorRepository = Depends(),
  ) -> List[DoctorShow]:
-    # must set status_code based on success or failure of response
-    # response.status_code = 200
-    print("user", user)
     return repo.list_doctors(user['id'])
 
 
@@ -45,9 +40,6 @@ def show_doctor(
     user: dict = Depends(authenticator.get_current_account_data),
     repo: DoctorRepository = Depends(),
 ) -> DoctorShow:
-    # must set status_code based on success or failure of response
-    # response.status_code = 200
-    print("user", user)
     return repo.show_doctor(doctor_id)
 
 
