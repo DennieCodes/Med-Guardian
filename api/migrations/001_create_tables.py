@@ -75,12 +75,11 @@ steps = [
         CREATE TABLE medications (
             id SERIAL PRIMARY KEY NOT NULL,
             name VARCHAR(200) NOT NULL,
-            start_date TIMESTAMP NOT NULL,
-            start_time TIMESTAMP NOT NULL,
-            refill INTEGER NULL,
-            dosage VARCHAR(20) NOT NULL,
+            strength VARCHAR(20) NOT NULL,
+            dosage INTEGER NOT NULL,
             frequency INTEGER NOT NULL,
             quantity INTEGER NOT NULL,
+            refills INTEGER NULL,
             doctor_id INTEGER references doctors(id),
             pharmacy_id INTEGER references pharmacies(id),
             user_id INTEGER references user_accounts(id)
@@ -89,21 +88,6 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE medications;
-        """,
-    ],
-    [
-        # "Up" SQL statement
-        """
-        CREATE TABLE notifications (
-            id SERIAL PRIMARY KEY NOT NULL,
-            type VARCHAR(200) NOT NULL,
-            medication_id INTEGER references medications(id),
-            user_id INTEGER references user_accounts(id)
-        );
-        """,
-        # "Down" SQL statement
-        """
-        DROP TABLE notifications;
         """,
     ],
 ]

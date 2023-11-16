@@ -2,7 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from authenticator import authenticator
-from routers import accounts, user_profiles, pharmacies, doctors
+from routers import (accounts,
+                     user_profiles,
+                     third_party_calls,
+                     pharmacies,
+                     doctors)
 
 app = FastAPI()
 
@@ -18,6 +22,8 @@ app.include_router(authenticator.router, tags=["Auth"])
 app.include_router(accounts.router, tags=["Auth"])
 app.include_router(doctors.router, tags=["Doctors"])
 app.include_router(user_profiles.router, tags=["UserProfiles"])
+app.include_router(pharmacies.router, tags=["Pharmacies"])
+app.include_router(third_party_calls.router, tags=["3rd Party Calls"])
 
 
 @app.get("/api/launch-details")
@@ -31,6 +37,3 @@ def launch_details():
             "min": "00",
         }
     }
-
-
-app.include_router(pharmacies.router, tags=["Pharmacies"])
