@@ -24,3 +24,5 @@ export const { increment, decrement, incrementByAmount } =
 	medicationQuantitySlice.actions;
 
 export default medicationQuantitySlice.reducer;
+
+// http://localhost:8000/api/drug_list
