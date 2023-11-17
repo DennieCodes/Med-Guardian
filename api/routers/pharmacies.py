@@ -59,7 +59,7 @@ def get_pharmacy(
 ) -> Union[PharmacyOut, Error]:
     result = repo.get_one(pharmacy_id, user_id=account_data["id"])
 
-    if result is None:
+    if type(result) is not PharmacyOut:
         response.status_code = 400
     return result
 

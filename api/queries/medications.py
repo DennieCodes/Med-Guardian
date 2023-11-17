@@ -7,7 +7,6 @@ from models.medications import (
     Error
 )
 
-from models.medications import MedicationsIn, MedicationsOut, Error
 from queries.pool import pool
 
 
@@ -220,18 +219,8 @@ class MedicationRepository(BaseModel):
 
         return {"message": "test"}
 
-
-
-
-
-
-
-
-
-
     def update_refill(self,):
         pass
-
 
     def medication_in_to_out(self,
                              id: int,
