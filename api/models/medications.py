@@ -19,7 +19,6 @@ class MedicationsIn(BaseModel):
 class MedicationsOut(BaseModel):
     id: int
     name: str
-    name: str
     strength: str
     dosage: int
     frequency: int
