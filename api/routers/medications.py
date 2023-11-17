@@ -1,5 +1,10 @@
 from fastapi import APIRouter, Depends, Response
-from models.medications import MedicationsIn, MedicationsOut, Error
+from models.medications import (
+    MedicationsIn,
+    MedicationsOut,
+    MedicationUpdateRefills,
+    Error
+)
 from authenticator import authenticator
 from typing import Union, List
 from queries.medications import MedicationRepository
@@ -18,7 +23,8 @@ def create_medication(
     new_med = repo.create(medication, account_data["id"])
     if type(new_med) is not MedicationsOut:
         response.status_code = 400
-    return response
+    return new_med
+
 
 
 # GET ALL MEDICATION
@@ -61,6 +67,15 @@ def update_medication_quantity():
 
 
 # UPDATE MEDICATION QUANTITY
-@router.put("/api/medications/{medications_id}/refill")
-def update_refill_quantity():
-    pass
+@router.put(
+    "/api/medications/{medications_id}/refill",
+    response_model=MedicationsOut
+)
+def update_refill_quantity(
+    medications_id: int,
+    medication:  MedicationUpdateRefills,
+    response: Response,
+    user: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+) -> Union[MedicationsOut, Error]:
+    return repo.update_quantity(medications_id, medication)

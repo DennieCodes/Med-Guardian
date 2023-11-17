@@ -80,6 +80,7 @@ steps = [
             frequency INTEGER NOT NULL,
             quantity INTEGER NOT NULL,
             refills INTEGER NOT NULL,
+            refill_count INTEGER NOT NULL,
             doctor_id INTEGER references doctors(id),
             pharmacy_id INTEGER references pharmacies(id),
             user_id INTEGER references user_accounts(id)
