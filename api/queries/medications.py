@@ -121,14 +121,53 @@ class MedicationRepository(BaseModel):
                     )
                     record = result.fetchone()
                     if record is None:
-                        return {"message":"You cannot access that medication"}
+                        return {"message": "You cannot access that medication"}
                     return self.record_to_medication_out(record)
         except Exception as e:
             print(e)
             return {"message": "Could not get that medication's information"}
 
-    def update(self):
-        pass
+    def update(
+        self,
+        medication_id: int,
+        medication: MedicationsIn,
+        user_id: int
+    ):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        UPDATE medications
+                        SET name = %s,
+                        strength = %s,
+                        dosage = %s,
+                        frequency = %s,
+                        quantity = %s,
+                        refills = %s,
+                        doctor_id = %s,
+                        pharmacy_id = %s
+                        WHERE id = %s AND user_id = %s
+                        """,
+                        [
+                            medication.name,
+                            medication.strength,
+                            medication.dosage,
+                            medication.frequency,
+                            medication.quantity,
+                            medication.refills,
+                            medication.doctor_id,
+                            medication.pharmacy_id,
+                            medication_id,
+                            user_id
+                        ]
+                    )
+                    return self.medication_in_to_out(
+                        medication_id, medication, user_id
+                    )
+        except Exception as e:
+            print(e)
+            return {"message": "Could not update that medication record"}
 
     def delete(self, medication_id: id, user_id: int):
         try:

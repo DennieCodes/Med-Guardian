@@ -42,7 +42,10 @@ def get_all(
 
 
 # GET MEDICATION
-@router.get("/api/medications/{medications_id}", response_model=Union[MedicationsOut, Error])
+@router.get(
+    "/api/medications/{medications_id}",
+    response_model=Union[MedicationsOut, Error]
+)
 def get_medication(
     medication_id: int,
     response: Response,
@@ -56,9 +59,17 @@ def get_medication(
 
 
 # UPDATE MEDICATION
-@router.put("/api/medications/{medications_id}")
-def update_medication():
-    pass
+@router.put(
+    "/api/medications/{medications_id}",
+    response_model=Union[MedicationsOut, Error]
+)
+def update_medication(
+    medication_id: int,
+    medication: MedicationsIn,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+) -> Union[MedicationsOut, Error]:
+    return repo.update(medication_id, medication, account_data["id"])
 
 
 # DELETE MEDICATION
