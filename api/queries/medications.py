@@ -94,8 +94,38 @@ class MedicationRepository(BaseModel):
             return {"message":
                     "Could not get a list of your medications"}
 
-    def get_one(self):
-        pass
+    def get_one(
+        self,
+        medication_id: int,
+        user_id: int
+    ) -> Union[MedicationsOut, Error]:
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    result = db.execute(
+                        """
+                        SELECT id
+                            , name
+                            , strength
+                            , dosage
+                            , frequency
+                            , quantity
+                            , refills
+                            , doctor_id
+                            , pharmacy_id
+                            , user_id
+                        FROM medications
+                        WHERE id =%s AND user_id = %s
+                        """,
+                        [medication_id, user_id]
+                    )
+                    record = result.fetchone()
+                    if record is None:
+                        return {"message":"You cannot access that medication"}
+                    return self.record_to_medication_out(record)
+        except Exception as e:
+            print(e)
+            return {"message": "Could not get that medication's information"}
 
     def update(self):
         pass

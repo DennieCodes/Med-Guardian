@@ -42,9 +42,17 @@ def get_all(
 
 
 # GET MEDICATION
-@router.get("/api/medications/{medications_id}")
-def get_medication():
-    pass
+@router.get("/api/medications/{medications_id}", response_model=Union[MedicationsOut, Error])
+def get_medication(
+    medication_id: int,
+    response: Response,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+) -> Union[MedicationsOut, Error]:
+    result = repo.get_one(medication_id, account_data["id"])
+    if type(result) is not MedicationsOut:
+        response.status_code = 400
+    return result
 
 
 # UPDATE MEDICATION
