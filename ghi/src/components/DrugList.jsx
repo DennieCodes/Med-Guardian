@@ -2,7 +2,7 @@ import React from 'react';
 import { useGetDrugListQuery } from '../store/drugListApi';
 
 function DrugList() {
-	const { data, error, isLoading } = useGetDrugListQuery();
+	const { data, isLoading } = useGetDrugListQuery();
 
 	return (
 		<div>

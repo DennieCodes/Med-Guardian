@@ -26,7 +26,6 @@ def create_medication(
     return new_med
 
 
-
 # GET ALL MEDICATION
 @router.get("/api/medications",
             response_model=Union[List[MedicationsOut], Error])
