@@ -7,7 +7,6 @@ from models.medications import (
     Error
 )
 
-from models.medications import MedicationsIn, MedicationsOut, Error
 from queries.pool import pool
 
 
@@ -121,7 +120,7 @@ class MedicationRepository(BaseModel):
                     )
                     record = result.fetchone()
                     if record is None:
-                        return {"message":"You cannot access that medication"}
+                        return {"message": "You cannot access that medication"}
                     return self.record_to_medication_out(record)
         except Exception as e:
             print(e)
@@ -181,18 +180,8 @@ class MedicationRepository(BaseModel):
 
         return {"message": "test"}
 
-
-
-
-
-
-
-
-
-
     def update_refill(self,):
         pass
-
 
     def medication_in_to_out(self,
                              id: int,
