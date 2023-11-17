@@ -26,38 +26,57 @@ def create_medication(
     return new_med
 
 
-
 # GET ALL MEDICATION
 @router.get("/api/medications",
             response_model=Union[List[MedicationsOut], Error])
 def get_all(
-    response: Response,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: MedicationRepository = Depends(),
 ):
     medications = repo.get_all(user_id=account_data["id"])
 
-    if type(medications) is not List[MedicationsOut]:
-        response.status_code = 400
     return medications
 
 
 # GET MEDICATION
-@router.get("/api/medications/{medications_id}")
-def get_medication():
-    pass
+@router.get(
+    "/api/medications/{medications_id}",
+    response_model=Union[MedicationsOut, Error]
+)
+def get_medication(
+    medication_id: int,
+    response: Response,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+) -> Union[MedicationsOut, Error]:
+    result = repo.get_one(medication_id, account_data["id"])
+    if type(result) is not MedicationsOut:
+        response.status_code = 400
+    return result
 
 
 # UPDATE MEDICATION
-@router.put("/api/medications/{medications_id}")
-def update_medication():
-    pass
+@router.put(
+    "/api/medications/{medications_id}",
+    response_model=Union[MedicationsOut, Error]
+)
+def update_medication(
+    medication_id: int,
+    medication: MedicationsIn,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+) -> Union[MedicationsOut, Error]:
+    return repo.update(medication_id, medication, account_data["id"])
 
 
 # DELETE MEDICATION
-@router.delete("/api/medications/{medications_id}")
-def delete_medication():
-    pass
+@router.delete("/api/medications/{medications_id}", response_model=bool)
+def delete_medication(
+    medication_id: int,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+) -> bool:
+    return repo.delete(medication_id, account_data['id'])
 
 
 # UPDATE MEDICATION QUANTITY
