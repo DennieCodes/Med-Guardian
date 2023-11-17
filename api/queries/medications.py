@@ -6,6 +6,7 @@ from models.medications import (
     MedicationUpdateRefills,
     Error
 )
+
 from models.medications import MedicationsIn, MedicationsOut, Error
 from queries.pool import pool
 
@@ -30,7 +31,7 @@ class MedicationRepository(BaseModel):
                         pharmacy_id,
                         user_id)
                         VALUES
-                        (%s, %s, %s, %s, %s,%s, %s, %s, %s)
+                        (%s, %s, %s, %s, %s,%s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -99,8 +100,21 @@ class MedicationRepository(BaseModel):
     def update(self):
         pass
 
-    def delete(self):
-        pass
+    def delete(self, medication_id: id, user_id: int):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        DELETE FROM medications
+                        WHERE id = %s AND user_id = %s
+                        """,
+                        [medication_id, user_id],
+                    )
+                    return True
+        except Exception as e:
+            print(e)
+            return False
 
     def update_quantity(
             self,

@@ -26,7 +26,6 @@ def create_medication(
     return new_med
 
 
-
 # GET ALL MEDICATION
 @router.get("/api/medications",
             response_model=Union[List[MedicationsOut], Error])
@@ -55,9 +54,13 @@ def update_medication():
 
 
 # DELETE MEDICATION
-@router.delete("/api/medications/{medications_id}")
-def delete_medication():
-    pass
+@router.delete("/api/medications/{medications_id}", response_model=bool)
+def delete_medication(
+    medication_id: int,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+) -> bool:
+    return repo.delete(medication_id, account_data['id'])
 
 
 # UPDATE MEDICATION QUANTITY
