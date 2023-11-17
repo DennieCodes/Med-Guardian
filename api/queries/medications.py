@@ -25,6 +25,7 @@ class MedicationRepository(BaseModel):
                         frequency,
                         quantity,
                         refills,
+                        refill_count,
                         doctor_id,
                         pharmacy_id,
                         user_id)
@@ -38,6 +39,7 @@ class MedicationRepository(BaseModel):
                             medication.dosage,
                             medication.frequency,
                             medication.quantity,
+                            medication.refills,
                             medication.refills,
                             medication.doctor_id,
                             medication.pharmacy_id,
