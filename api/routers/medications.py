@@ -1,15 +1,24 @@
-from fastapi import APIRouter
-
-# from models.medications import MedicationIn, MedicationOut, Error
-# from authenticator import authenticator
+from fastapi import APIRouter, Depends, Response
+from models.medications import MedicationsIn, MedicationsOut, Error
+from authenticator import authenticator
+from typing import Union
+from queries.medications import MedicationRepository
 
 router = APIRouter()
 
 
 # CREATE MEDICATION
-@router.post("/api/medications")
-def create_medication():
-    pass
+@router.post("/api/medications", response_model=Union[MedicationsOut, Error])
+def create_medication(
+    medication: MedicationsIn,
+    response: Response,
+    account_data: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+):
+    new_med = repo.create(medication, account_data["id"])
+    if type(new_med) is not MedicationsOut:
+        response.status_code = 400
+    return response
 
 
 # GET ALL MEDICATION

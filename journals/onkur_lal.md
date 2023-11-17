@@ -1,3 +1,11 @@
+## 11/16/23
+
+Today I worked on:
+
+- Completing a 3rd party api call and its route, this will get a list of medications from the FDA API so we can use it in our frontend.
+
+I also talked through our medications model iwth Dennie and Micael to soldify our model and methods for it.
+
 ## 11/15/23
 
 Today I worked on:

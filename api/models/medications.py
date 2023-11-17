@@ -26,11 +26,11 @@ class MedicationsIn(BaseModel):
     refills: int
     doctor_id: int
     pharmacy_id: int
-    user_id: int
 
 
 class MedicationsOut(BaseModel):
     id: int
+    name: str
     name: str
     strength: str
     dosage: int
