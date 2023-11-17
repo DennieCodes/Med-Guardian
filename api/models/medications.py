@@ -5,16 +5,10 @@ class Error(BaseModel):
     message: str
 
 
-class MedicationUpdateQty(BaseModel):
-    name: str
-    strength: str
-    dosage: int
-    frequency: int
+class MedicationUpdateRefills(BaseModel):
     quantity: int
     refills: int
-    doctor_id: int
-    pharmacy_id: int
-    user_id: int
+    refill_count: int
 
 
 class MedicationsIn(BaseModel):
