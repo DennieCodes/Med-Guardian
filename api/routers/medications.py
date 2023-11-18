@@ -3,6 +3,7 @@ from models.medications import (
     MedicationsIn,
     MedicationsOut,
     MedicationUpdateRefills,
+    MedicationUpdateRefillsOut,
     Error
 )
 from authenticator import authenticator
@@ -85,16 +86,12 @@ def update_medication_quantity():
     pass
 
 
-# UPDATE MEDICATION QUANTITY
+# UPDATE MEDICATION REFILL
 @router.put(
-    "/api/medications/{medications_id}/refill",
-    response_model=MedicationsOut
-)
+    "/api/medications/{medications_id}/refill", response_model=Union[MedicationUpdateRefillsOut, Error])
 def update_refill_quantity(
-    medications_id: int,
-    medication:  MedicationUpdateRefills,
-    response: Response,
+    medication_id: int,
     user: dict = Depends(authenticator.get_current_account_data),
     repo: MedicationRepository = Depends()
-) -> Union[MedicationsOut, Error]:
-    return repo.update_quantity(medications_id, medication)
+) -> Union[MedicationUpdateRefillsOut, Error]:
+    return repo.update_refill(medication_id)
