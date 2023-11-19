@@ -4,6 +4,8 @@ from models.medications import (
     MedicationsOut,
     MedicationUpdateRefills,
     MedicationUpdateRefillsOut,
+    MedicationQuantityIn,
+    MedicationQuantityOut,
     Error
 )
 from authenticator import authenticator
@@ -82,8 +84,13 @@ def delete_medication(
 
 # UPDATE MEDICATION QUANTITY
 @router.put("/api/medications/{medications_id}/quantity")
-def update_medication_quantity():
-    pass
+def update_medication_quantity(
+    medication: MedicationQuantityIn,
+    medications_id: int,
+    user: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+) -> Union[MedicationQuantityOut, Error]:
+    return repo.update_quantity(medications_id, medication)
 
 
 # UPDATE MEDICATION REFILL

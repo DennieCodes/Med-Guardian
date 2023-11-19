@@ -10,11 +10,19 @@ class MedicationUpdateRefills(BaseModel):
     refills: int
     refill_count: int
 
-class MedicationUpdateRefillsOut(BaseModel):
+
+class MedicationQuantityIn(BaseModel):
+    quantity: int
+
+
+class MedicationQuantityOut(BaseModel):
     id: int
     quantity: int
-    refills: int
-    refill_count: int
+
+
+class MedicationUpdateRefillsOut(BaseModel):
+    id: int
+
 
 class MedicationsIn(BaseModel):
     name: str
