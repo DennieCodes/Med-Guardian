@@ -3,8 +3,7 @@ from typing import Union, List
 from models.medications import (
     MedicationsIn,
     MedicationsOut,
-    MedicationUpdateRefills,
-    MedicationUpdateRefillsOut,
+    MedicationRefillsOut,
     MedicationQuantityIn,
     MedicationQuantityOut,
     Error
@@ -190,35 +189,37 @@ class MedicationRepository(BaseModel):
     def update_refill(
             self,
             medication_id: int,
-    ) -> Union[MedicationUpdateRefillsOut, Error]:
+    ) -> Union[MedicationRefillsOut, Error]:
         try:
             # connect the database
             with pool.connection() as conn:
                 # get a cursor (to run sql)
                 with conn.cursor() as db:
                     # run Update statement and store in result
-                    result = db.execute(
+                    db.execute(
                         """
                         UPDATE medications
                         SET quantity = quantity + refill_count
                         , refills = refills-1
                         WHERE id = %s
+                        RETURNING quantity, refills
                         """,
                         [medication_id],
-
                     )
-                    # data = result.fetchone()[0]
-                    # old_data['id'] = medication_id
-                    # record = MedicationUpdateRefillsOut(id=medication_id, **data)
-                    print('returned data: ', result)
-                    # record = MedicationUpdateRefillsOut(medication_id)
-                    # print(record)
-                    # return True
+                    result = db.fetchone()
+                    if not result:
+                        return None
+                    new_quantity = result[0]
+                    new_refills = result[1]
+                    updated_data = MedicationRefillsOut(
+                        id=medication_id,
+                        quantity=new_quantity,
+                        refills=new_refills,
+                        )
+                    return updated_data
         except Exception as e:
             print(e)
             return {"message": "There was a problem getting existing data"}
-        # print(f'data to be inserted: refills{new_refills}, quantity{new_quantity}')
-        return {"message": "test"}
 
     def update_quantity(
             self,
@@ -239,27 +240,19 @@ class MedicationRepository(BaseModel):
                         RETURNING quantity
                         """,
                         [medication.quantity, medications_id],
-
                     )
-
-                    # old_data['id'] = medication_id
-                    # record = MedicationUpdateRefillsOut(id=medication_id, **data)
-                    data = {result.fetchone()[0]}
-                    id=  medications_id
-                    # print('data: ', data)
-                    # record = MedicationUpdateRefillsOut(**data)
-                    # print('returning data: ', record)
-                    # return record
-                    # data = medication.dict()
-                    # data["id"] = medications_id
-                    # data["quantity"] = result.fetchone()[0]
-                    # return MedicationUpdateRefillsOut(id=id, **data)
+                    result = db.fetchone()
+                    if not result:
+                        return None
+                    new_quantity = result[0]
+                    updated_quantity = MedicationQuantityOut(
+                        id=medications_id,
+                        quantity=new_quantity
+                    )
+                    return updated_quantity
         except Exception as e:
             print(e)
             return {"message": "There was a problem getting existing data"}
-        # print(f'data to be inserted: refills{new_refills}, quantity{new_quantity}')
-        return {"message": "test"}
-
 
     def medication_in_to_out(self,
                              id: int,
