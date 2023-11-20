@@ -24,7 +24,9 @@ class ThirdPartyQueries:
                     )
                     rxnorm_ids = self.get_rxnorm_ids(result.fetchall())
                     string_ids = " ".join(rxnorm_ids)
-                    url = "https://rxnav.nlm.nih.gov/REST/interaction/list.json"
+                    url1 = "https://rxnav.nlm.nih.gov/"
+                    url2 = "REST/interaction/list.json"
+                    url = url1 + url2
                     params = {"rxcuis": string_ids}
                     response = requests.get(url, params=params)
                     response_data = response.json()["fullInteractionTypeGroup"]
