@@ -1,3 +1,19 @@
+## 11/17/23
+
+Today I worked on:
+
+- Completing the medicaionin and medicaion out models, the create, delete, put, and get one routes for the medication model. I also completed another 3rd party API call which is used to analyze for drug drug interactions.
+
+I had an aha moment when a new field was entered into the Medication table and forgot to add another %s to the create route query to account for the new value.
+
+## 11/16/23
+
+Today I worked on:
+
+- Completing a 3rd party api call and its route, this will get a list of medications from the FDA API so we can use it in our frontend.
+
+I also talked through our medications model iwth Dennie and Micael to soldify our model and methods for it.
+
 ## 11/15/23
 
 Today I worked on:

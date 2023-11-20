@@ -1,10 +1,5 @@
 from typing import Union, List
-from models.doctors import (
-    DoctorIn,
-    DoctorUpdate,
-    DoctorShow,
-    Error
-)
+from models.doctors import DoctorIn, DoctorUpdate, DoctorShow, Error
 from .pool import pool
 
 
@@ -28,8 +23,8 @@ class DoctorRepository:
                         doctor.specialty,
                         doctor.phone,
                         doctor.address,
-                        user_id
-                    ]
+                        user_id,
+                    ],
                 )
                 id = result.fetchone()[0]
                 data = doctor.dict()
@@ -48,7 +43,7 @@ class DoctorRepository:
                         FROM doctors
                         WHERE user_id = %s;
                         """,
-                        [user_id]
+                        [user_id],
                     )
                     # loop through list version
                     result = []
@@ -58,7 +53,7 @@ class DoctorRepository:
                             full_name=record[1],
                             specialty=record[2],
                             phone=record[3],
-                            address=record[4]
+                            address=record[4],
                         )
                         result.append(doctor)
                     return result
@@ -78,7 +73,7 @@ class DoctorRepository:
                         FROM doctors
                         WHERE id = %s;
                         """,
-                        [doctor_id]
+                        [doctor_id],
                     )
                     data = result.fetchone()
                     record = DoctorShow(
@@ -86,16 +81,14 @@ class DoctorRepository:
                         full_name=data[1],
                         specialty=data[2],
                         phone=data[3],
-                        address=data[4]
+                        address=data[4],
                     )
                     return record
         except Exception:
             return {"message": "There was an return record"}
 
     def update(
-            self,
-            doctor: DoctorUpdate,
-            doctor_id: int
+        self, doctor: DoctorUpdate, doctor_id: int
     ) -> Union[DoctorShow, Error]:
         try:
             # connect the database
@@ -117,11 +110,11 @@ class DoctorRepository:
                             doctor.specialty,
                             doctor.phone,
                             doctor.address,
-                            doctor_id
-                        ]
+                            doctor_id,
+                        ],
                     )
                     doctor_dict = doctor.dict()
-                    doctor_dict['id'] = doctor_id
+                    doctor_dict["id"] = doctor_id
                     return DoctorShow(**doctor_dict)
                     # return False
 
@@ -140,7 +133,7 @@ class DoctorRepository:
                         DELETE FROM doctors
                         WHERE id = %s
                         """,
-                        [doctor_id]
+                        [doctor_id],
                     )
                     return True
                     # return self.vacation_in_to_out(vacation_id, vacation)
