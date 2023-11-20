@@ -8,10 +8,10 @@ import { AuthProvider } from '@galvanize-inc/jwtdown-for-react';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<AuthProvider>
+		<AuthProvider baseUrl={process.env.REACT_APP_API_HOST}>
+			<Provider store={store}>
 				<App />
-			</AuthProvider>
-		</Provider>
+			</Provider>
+		</AuthProvider>
 	</React.StrictMode>,
 );

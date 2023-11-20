@@ -7,6 +7,7 @@ const initialState = {
 export const medicationQuantitySlice = createSlice({
 	name: 'medicationQuantity',
 	initialState,
+
 	reducers: {
 		increment: (state) => {
 			state.value += 1;

@@ -1,17 +1,19 @@
-import MedicationQuantity from './components/MedicationQuantity';
-import DrugList from './components/DrugList';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Nav from './components/Nav';
+import Home from './views/Home';
+import Login from './views/Login';
+import Register from './views/Register';
 
 function App() {
 	return (
-		<>
-			<h2>Medication Quantity</h2>
-			<MedicationQuantity />
-
-			<div>
-				<h2>Drug List</h2>
-				<DrugList />
-			</div>
-		</>
+		<BrowserRouter>
+			<Nav />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Register />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 
