@@ -2,7 +2,9 @@ from fastapi import APIRouter, Depends, Response
 from models.medications import (
     MedicationsIn,
     MedicationsOut,
-    MedicationUpdateRefills,
+    MedicationRefillsOut,
+    MedicationQuantityIn,
+    MedicationQuantityOut,
     Error
 )
 from authenticator import authenticator
@@ -80,21 +82,22 @@ def delete_medication(
 
 
 # UPDATE MEDICATION QUANTITY
-@router.put("/api/medications/{medications_id}/quantity")
-def update_medication_quantity():
-    pass
-
-
-# UPDATE MEDICATION QUANTITY
-@router.put(
-    "/api/medications/{medications_id}/refill",
-    response_model=MedicationsOut
-)
-def update_refill_quantity(
+@router.put("/api/medications/{medications_id}/quantity", response_model=Union[MedicationQuantityOut, Error])
+def update_medication_quantity(
+    medication: MedicationQuantityIn,
     medications_id: int,
-    medication:  MedicationUpdateRefills,
-    response: Response,
     user: dict = Depends(authenticator.get_current_account_data),
     repo: MedicationRepository = Depends()
-) -> Union[MedicationsOut, Error]:
+) -> Union[MedicationQuantityOut, Error]:
     return repo.update_quantity(medications_id, medication)
+
+
+# UPDATE MEDICATION REFILL
+@router.put(
+    "/api/medications/{medications_id}/refill", response_model=Union[MedicationRefillsOut, Error])
+def update_refill_quantity(
+    medication_id: int,
+    user: dict = Depends(authenticator.get_current_account_data),
+    repo: MedicationRepository = Depends()
+) -> Union[MedicationRefillsOut, Error]:
+    return repo.update_refill(medication_id)

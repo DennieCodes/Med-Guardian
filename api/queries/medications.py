@@ -3,7 +3,9 @@ from typing import Union, List
 from models.medications import (
     MedicationsIn,
     MedicationsOut,
-    MedicationUpdateRefills,
+    MedicationRefillsOut,
+    MedicationQuantityIn,
+    MedicationQuantityOut,
     Error
 )
 
@@ -40,7 +42,7 @@ class MedicationRepository(BaseModel):
                             medication.frequency,
                             medication.quantity,
                             medication.refills,
-                            medication.refills,
+                            medication.quantity,
                             medication.doctor_id,
                             medication.pharmacy_id,
                             user_id
@@ -184,43 +186,73 @@ class MedicationRepository(BaseModel):
             print(e)
             return False
 
-    def update_quantity(
+    def update_refill(
             self,
-            medications_id: int,
-            medication: MedicationUpdateRefills
-    ) -> Union[MedicationsOut, Error]:
-        print('medication: ', medication)
-        # Bring in existing data to change (quatity and or refills)
+            medication_id: int,
+    ) -> Union[MedicationRefillsOut, Error]:
         try:
             # connect the database
             with pool.connection() as conn:
                 # get a cursor (to run sql)
                 with conn.cursor() as db:
-                    # run Select statement and store in result
-                    old_data = db.execute(
+                    # run Update statement and store in result
+                    db.execute(
                         """
-                        SELECT  quantity, refills
-                        FROM medications
+                        UPDATE medications
+                        SET quantity = quantity + refill_count
+                        , refills = refills-1
                         WHERE id = %s
+                        RETURNING quantity, refills
                         """,
-                        [medications_id],
+                        [medication_id],
                     )
-                    tester = old_data.fetchone()
-                    result = MedicationUpdateRefills(
-                        quantity=tester[0],
-                        refills=tester[1]
-                    )
-                    print("result: ", result)
+                    result = db.fetchone()
+                    if not result:
+                        return None
+                    new_quantity = result[0]
+                    new_refills = result[1]
+                    updated_data = MedicationRefillsOut(
+                        id=medication_id,
+                        quantity=new_quantity,
+                        refills=new_refills,
+                        )
+                    return updated_data
         except Exception as e:
             print(e)
             return {"message": "There was a problem getting existing data"}
-        print(f'Old_data- quantity:{tester[0]}, refills:{tester[1]}')
-        print(f'incoming data- quantity:{medication.quantity}, refills:{medication.refills}')
 
-        return {"message": "test"}
-
-    def update_refill(self,):
-        pass
+    def update_quantity(
+            self,
+            medications_id: int,
+            medication: MedicationQuantityIn,
+    ) -> Union[MedicationQuantityOut, Error]:
+        try:
+            # connect the database
+            with pool.connection() as conn:
+                # get a cursor (to run sql)
+                with conn.cursor() as db:
+                    # run Update statement and store in result
+                    result = db.execute(
+                        """
+                        UPDATE medications
+                        SET quantity = quantity + %s
+                        WHERE id = %s
+                        RETURNING quantity
+                        """,
+                        [medication.quantity, medications_id],
+                    )
+                    result = db.fetchone()
+                    if not result:
+                        return None
+                    new_quantity = result[0]
+                    updated_quantity = MedicationQuantityOut(
+                        id=medications_id,
+                        quantity=new_quantity
+                    )
+                    return updated_quantity
+        except Exception as e:
+            print(e)
+            return {"message": "There was a problem getting existing data"}
 
     def medication_in_to_out(self,
                              id: int,
