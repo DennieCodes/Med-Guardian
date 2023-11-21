@@ -2,11 +2,12 @@ import { NavLink } from 'react-router-dom';
 import { useGetTokenQuery, useLogoutMutation } from '../store/authApi';
 
 function Nav() {
+	// These are what can be returned from these two functions
 	// const { data: account, error, isLoading } = useGetTokenQuery();
-	const { data: account } = useGetTokenQuery();
-	const [logout, logoutStatus] = useLogoutMutation();
+	// const [logout, logoutStatus] = useLogoutMutation();
 
-	console.log('Logout Status: ', logoutStatus);
+	const { data: account } = useGetTokenQuery();
+	const [logout] = useLogoutMutation();
 
 	return (
 		<nav>

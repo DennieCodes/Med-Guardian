@@ -15,7 +15,7 @@ function Login() {
 		e.target.reset();
 	};
 
-	console.log('account: ', account);
+	// console.log('account: ', account);
 
 	return (
 		<div>
@@ -29,7 +29,7 @@ function Login() {
 					type="text"
 					name="username"
 					value={username}
-					placeholder="username"
+					placeholder="User Name"
 					id="username"
 					required
 				/>
@@ -40,7 +40,7 @@ function Login() {
 					type="text"
 					name="password"
 					value={password}
-					placeholder="password"
+					placeholder="Password"
 					id="password"
 					required
 				/>
