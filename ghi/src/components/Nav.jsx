@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useGetTokenQuery, useLogoutMutation } from '../store/authApi';
+import { useEffect } from 'react';
 
 function Nav() {
 	// const { data: account, error, isLoading } = useGetTokenQuery();
@@ -7,42 +8,47 @@ function Nav() {
 	const [logout, logoutStatus] = useLogoutMutation();
 
 	console.log('Logout Status: ', logoutStatus);
+	useEffect(() => {
+		console.log("updating component");
+	}, [logoutStatus])
+
 
 	return (
-		<nav>
-			<ul>
-				<li>
-					<NavLink to="/">Home</NavLink>
+		<nav >
+			<ul className='row m-0 p-0'>
+				<li className='col-1'>
+					<NavLink to="/" >Home</NavLink>
 				</li>
 
 				{!account && (
-					<li>
-						<NavLink to="/login">Login</NavLink>
+					<li className='col-1'>
+						<NavLink to="/login" >Login</NavLink>
 					</li>
 				)}
 
 				{!account && (
-					<li>
-						<NavLink to="/register">Register</NavLink>
+					<li className='col-1'>
+						<NavLink to="/register" className='btn border'>Register</NavLink>
+					</li>
+				)}
+
+				{account && (
+					<li className='col'>
+						<p>Welcome, {account.account.first_name}</p>
+					</li>
+				)}
+				{account && (
+					<li className='col-1'>
+						<button
+							onClick={() => {
+								logout();
+							}}
+						>
+							Logout
+						</button>
 					</li>
 				)}
 			</ul>
-			{account && (
-				<li>
-					<p>Welcome, {account.account.first_name}</p>
-				</li>
-			)}
-			{account && (
-				<li>
-					<button
-						onClick={() => {
-							logout();
-						}}
-					>
-						Logout
-					</button>
-				</li>
-			)}
 		</nav>
 	);
 }
