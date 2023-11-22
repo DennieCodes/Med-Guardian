@@ -4,7 +4,7 @@ import { useLoginMutation, useGetTokenQuery } from '../store/authApi';
 function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	const { data: account } = useGetTokenQuery();
+	let { data: account } = useGetTokenQuery();
 	const [login, result] = useLoginMutation();
 
 	const handleSubmit = (e) => {
@@ -14,8 +14,6 @@ function Login() {
 		console.log('Result of Login: ', result);
 		e.target.reset();
 	};
-
-	// console.log('account: ', account);
 
 	return (
 		<div>
