@@ -3,15 +3,12 @@ import { useGetTokenQuery, useLogoutMutation } from '../store/authApi';
 import { useEffect } from 'react';
 
 function Nav() {
+	// These are what can be returned from these two functions
 	// const { data: account, error, isLoading } = useGetTokenQuery();
+	// const [logout, logoutStatus] = useLogoutMutation();
+
 	const { data: account } = useGetTokenQuery();
-	const [logout, logoutStatus] = useLogoutMutation();
-
-	console.log('Logout Status: ', logoutStatus);
-	useEffect(() => {
-		console.log("updating component");
-	}, [logoutStatus])
-
+	const [logout] = useLogoutMutation();
 
 	return (
 		<nav >

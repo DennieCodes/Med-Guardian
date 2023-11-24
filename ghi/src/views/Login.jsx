@@ -6,7 +6,7 @@ import { useLoginMutation, useGetTokenQuery } from '../store/authApi';
 function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	const { data: account } = useGetTokenQuery();
+	let { data: account } = useGetTokenQuery();
 	const [login, result] = useLoginMutation();
 	const navigate = useNavigate()
 
@@ -18,8 +18,6 @@ function Login() {
 		e.target.reset();
 		navigate("/");
 	};
-
-	console.log('account: ', account);
 
 	return (
 		<div>
@@ -33,7 +31,7 @@ function Login() {
 					type="text"
 					name="username"
 					value={username}
-					placeholder="username"
+					placeholder="User Name"
 					id="username"
 					required
 				/>
@@ -44,7 +42,7 @@ function Login() {
 					type="text"
 					name="password"
 					value={password}
-					placeholder="password"
+					placeholder="Password"
 					id="password"
 					required
 				/>
