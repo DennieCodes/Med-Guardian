@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import { useGetTokenQuery, useLogoutMutation } from '../store/authApi';
-import { useEffect } from 'react';
 
 function Nav() {
 	// These are what can be returned from these two functions

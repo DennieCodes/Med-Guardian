@@ -12,7 +12,7 @@ function MenuNav() {
 					<NavLink to="/" className='btn w-100'>Medications</NavLink>
 				</li>
 				<li className='p-2'>
-					<NavLink to="/" className='btn w-100'>Doctors</NavLink>
+					<NavLink to="/DoctorsList" className='btn w-100'>Doctors</NavLink>
 				</li>
 				<li className='p-2'>
 					<NavLink to="/" className='btn w-100'>Pharmacies</NavLink>
