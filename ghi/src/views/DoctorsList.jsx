@@ -9,7 +9,7 @@ function DoctorsList() {
     console.log('my data: ', data)
     console.log('my error: ', error)
     console.log('my data: ', isLoading)
-    console.log(account ? 'there is an account' : 'There is no account')
+    account ? console.log('there is an account') : console.log('There is no account')
     return (
         <>
             <h1>Users Doctors</h1>
