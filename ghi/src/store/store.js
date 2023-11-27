@@ -3,8 +3,9 @@ import medicationQuantityReducer from '../slice/medicationQuantitySlice';
 import { drugListApi } from './drugListApi';
 import { authApi } from './authApi';
 import { doctorsApi } from './doctorsApi';
-import { profileApi } from './profileApi';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { pharmaciesApi } from './pharmacies';
+import { profileApi } from './profileApi';
 
 export const store = configureStore({
 	reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
 		[drugListApi.reducerPath]: drugListApi.reducer,
 		[authApi.reducerPath]: authApi.reducer,
 		[doctorsApi.reducerPath]: doctorsApi.reducer,
+		[pharmaciesApi.reducerPath]: pharmaciesApi.reducer,
 		[profileApi.reducerPath]: profileApi.reducer,
 	},
 
@@ -20,6 +22,7 @@ export const store = configureStore({
 			.concat(drugListApi.middleware)
 			.concat(authApi.middleware)
 			.concat(doctorsApi.middleware)
+			.concat(pharmaciesApi.middleware)
 			.concat(profileApi.middleware),
 });
 
