@@ -8,12 +8,11 @@ function Register() {
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
 	const [password, setPassword] = useState('');
-	const { data: account } = useGetTokenQuery();
-	const [register, result] = useRegisterMutation();
+	const [register, regResponse] = useRegisterMutation();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await register({
+		const result = await register({
 			firstName,
 			lastName,
 			username,
@@ -22,8 +21,7 @@ function Register() {
 			password,
 		});
 
-		console.log('Result of register', result);
-		console.log('Account', account);
+		console.log('Result: ', result);
 		e.target.reset();
 	};
 

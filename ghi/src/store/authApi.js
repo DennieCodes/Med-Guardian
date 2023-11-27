@@ -29,9 +29,7 @@ export const authApi = createApi({
 				};
 			},
 			providesTags: ['Account'],
-			// invalidatesTags: (result) => {
-			// 	return (result && ['Account']) || [];
-			// },
+			invalidatesTags: ['Token'],
 		}),
 
 		// Register
@@ -52,7 +50,10 @@ export const authApi = createApi({
 					body: registerObj,
 				};
 			},
-			providesTags: ['Account'],
+			providesTags: (result, error) => [
+				(result.isSuccess = true),
+				{ type: 'Account' },
+			],
 		}),
 
 		// Logout
@@ -64,7 +65,7 @@ export const authApi = createApi({
 					credentials: 'include',
 				};
 			},
-			invalidatesTags: ['Account'],
+			invalidatesTags: ['Account', 'Token'],
 		}),
 
 		// Get Token
