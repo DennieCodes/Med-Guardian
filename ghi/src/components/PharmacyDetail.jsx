@@ -1,12 +1,26 @@
-import { useAddPharmacyMutation } from "../store/pharmacies";
-import { useState } from "react";
+import { useGetPharmacyQuery, useUpdatePharmacyMutation, useDeletePharmacyMutation } from "../store/pharmacies";
+import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
 
-const AddPharmacy = () => {
-    const [name, setName] = useState('');
-    const [phone, setPhone] = useState('');
-    const [address, setAddress] = useState('');
-    const [website, setWebsite] = useState('');
-    const [addPharmacy, result] = useAddPharmacyMutation()
+
+const PharmacyDetail = () => {
+    const navigate = useNavigate()
+    const { pharmacy_id } = useParams();
+    const { data: pharmacy, isLoading } = useGetPharmacyQuery(pharmacy_id)
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [website, setWebsite] = useState("");
+    const [updatePharmacy, update_result] = useUpdatePharmacyMutation()
+    const [deletePharmacy, delete_result] = useDeletePharmacyMutation()
+    useEffect(() => {
+        if (!isLoading && pharmacy) {
+            setName(pharmacy.name);
+            setPhone(pharmacy.phone);
+            setAddress(pharmacy.address);
+            setWebsite(pharmacy.website);
+        }
+    }, [isLoading, pharmacy]);
 
     const handleNameChange = (event) => {
         const value = event.target.value;
@@ -25,28 +39,38 @@ const AddPharmacy = () => {
         setWebsite(value);
     }
 
-    const handleSubmit = async (e) => {
+    const handleUpdate = async (e) => {
         e.preventDefault()
-        addPharmacy({
-            name: name,
-            phone: phone,
-            address: address,
-            website: website
-        })
-        if (result.isError) {
-            console.log(result.isError)
+        updatePharmacy({
+            pharmacy_id: pharmacy_id,
+            pharmacy: {
+                name: name,
+                phone: phone,
+                address: address,
+                website: website
+            }
         }
-        setAddress('')
-        setName("")
-        setPhone("")
-        setWebsite("")
+        )
+        navigate("/pharmacies")
     }
 
+    const handleDelete = async (e) => {
+        e.preventDefault()
+        deletePharmacy(pharmacy_id)
+        navigate("/pharmacies")
+    }
+    if (isLoading) {
+        return (
+            <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+        )
+    }
     return (
         <>
             <div className="forms p-4 d-flex flex-column align-items-center">
-                <h1 className="mb-2">Add Pharmacy</h1>
-                <form onSubmit={handleSubmit} className="w-75">
+                <h1 className="mb-2">Edit Pharmacy</h1>
+                <form className="w-75">
                     <div className="form-floating mb-3">
                         <input
                             onChange={handleNameChange}
@@ -99,8 +123,10 @@ const AddPharmacy = () => {
                         />
                         <label htmlFor="website">Website</label>
                     </div>
-                    <div className="d-flex justify-content-center">
-                        <button className="btn btn-primary px-3">Add</button>
+                    <div className="d-flex justify-content-evenly">
+                        <button className="btn btn-primary px-3" onClick={handleUpdate}>Update</button>
+                        <button className="btn btn-primary px-3" onClick={handleDelete}>Delete</button>
+
                     </div>
                 </form>
             </div>
@@ -108,4 +134,4 @@ const AddPharmacy = () => {
     );
 }
 
-export default AddPharmacy;
+export default PharmacyDetail;
