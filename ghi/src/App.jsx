@@ -23,7 +23,6 @@ function App() {
 							<MenuNav />
 						</aside>
 					)}
-
 					<section className="mainSection">
 						<Routes>
 							<Route path="/" element={<Home />} />

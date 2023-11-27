@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
-
+import { useGetTokenQuery } from '../store/authApi';
 function MenuNav() {
-	// const { data: account, error, isLoading } = useGetTokenQuery();
+	const { data: account } = useGetTokenQuery();
+	console.log({ account })
 	return (
 		<nav className='MenuNav'>
 			<ul className='text-center p-4'>
@@ -11,9 +12,9 @@ function MenuNav() {
 				<li className='p-2'>
 					<NavLink to="/" className='btn w-100'>Medications</NavLink>
 				</li>
-				<li className='p-2'>
+				{account && <li className='p-2'>
 					<NavLink to="/DoctorsList" className='btn w-100'>Doctors</NavLink>
-				</li>
+				</li>}
 				<li className='p-2'>
 					<NavLink to="/" className='btn w-100'>Pharmacies</NavLink>
 				</li>

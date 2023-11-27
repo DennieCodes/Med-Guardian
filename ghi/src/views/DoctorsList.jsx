@@ -1,15 +1,17 @@
 import React from 'react';
+import { useAuthContext } from "@galvanize-inc/jwtdown-for-react";
 import { useGetDoctorsQuery } from '../store/doctorsApi'
 import { useGetTokenQuery } from '../store/authApi';
 
 
 function DoctorsList() {
-    const { data, error, isLoading } = useGetDoctorsQuery();
+    // const { token } = useAuthContext();
+    const { data: doctors, error, isLoading } = useGetDoctorsQuery();
     const { data: account } = useGetTokenQuery();
-    console.log('my data: ', data)
-    console.log('my error: ', error)
-    console.log('my data: ', isLoading)
-    account ? console.log('there is an account') : console.log('There is no account')
+    // console.log('my data: ', data)
+    // console.log('my error: ', error)
+    // console.log('my data: ', isLoading)
+    account ? console.log('there is an account', doctors) : console.log('There is no account')
     return (
         <>
             <h1>Users Doctors</h1>

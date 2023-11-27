@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+
 export const doctorsApi = createApi({
     reducerpath: 'doctors',
     baseQuery: fetchBaseQuery({
@@ -7,9 +8,14 @@ export const doctorsApi = createApi({
 	}),
     endpoints: builder=>({
         getDoctors: builder.query({
-            query: ()=> '/api/doctors/'
-        })
+            query: ()=> ({
+                url: '/api/doctors',
+                credentials: 'include' // send the cookies tomthe api
+            })
+        }),
     })
 });
 
-export const { useGetDoctorsQuery } = doctorsApi
+export const {
+    useGetDoctorsQuery,
+} = doctorsApi
