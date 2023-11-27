@@ -12,3 +12,39 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.wrapper {
+  padding: 0 20px;
+  background-color: #FFFBF5;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr 50px;
+
+}
+a {
+  text-decoration: none;
+}
+header {
+  background-color: #164863;
+  color: whitesmoke !important;
+}
+main {
+  display: flex;
+}
+.sideNav {
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px;
+}
+.MenuNav a{
+  background-color: #164863 !important;
+  color: whitesmoke !important;
+}
+nav ul {
+
+  list-style: none;
+}
+
+.mainSection {
+  flex: 3
+}

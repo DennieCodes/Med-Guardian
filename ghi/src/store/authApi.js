@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const authApi = createApi({
 	reducerPath: 'authentication',
-	tagTypes: ['Token'],
+	tagTypes: ['Token', 'Account'],
 
 	baseQuery: fetchBaseQuery({
 		baseUrl: process.env.REACT_APP_API_HOST,
@@ -29,9 +29,31 @@ export const authApi = createApi({
 				};
 			},
 			providesTags: ['Account'],
-			// invalidatesTags: (result) => {
-			// 	return (result && ['Account']) || [];
-			// },
+			invalidatesTags: ['Token'],
+		}),
+
+		// Register
+		register: builder.mutation({
+			query: (info) => {
+				const registerObj = {
+					first_name: info.firstName,
+					last_name: info.lastName,
+					username: info.username,
+					email: info.email,
+					phone: info.phone,
+					password: info.password,
+				};
+
+				return {
+					url: '/api/accounts',
+					method: 'post',
+					body: registerObj,
+				};
+			},
+			providesTags: (result, error) => [
+				(result.isSuccess = true),
+				{ type: 'Account' },
+			],
 		}),
 
 		// Logout
@@ -43,7 +65,7 @@ export const authApi = createApi({
 					credentials: 'include',
 				};
 			},
-			invalidatesTags: ['Account'],
+			invalidatesTags: ['Account', 'Token'],
 		}),
 
 		// Get Token
@@ -57,5 +79,9 @@ export const authApi = createApi({
 	}),
 });
 
-export const { useLoginMutation, useLogoutMutation, useGetTokenQuery } =
-	authApi;
+export const {
+	useLoginMutation,
+	useRegisterMutation,
+	useLogoutMutation,
+	useGetTokenQuery,
+} = authApi;
