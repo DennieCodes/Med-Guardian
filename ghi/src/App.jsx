@@ -7,6 +7,7 @@ import Login from './views/Login';
 import Register from './views/Register';
 import DoctorsList from './views/DoctorsList'
 import './App.css'
+import Profile from './views/Profile';
 
 function App() {
 	const { data: account } = useGetTokenQuery();
@@ -29,6 +30,7 @@ function App() {
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />
 							<Route path="/doctorsList" element={<DoctorsList />} />
+							<Route path="/profile" element={<Profile />} />
 						</Routes>
 					</section>
 				</main>

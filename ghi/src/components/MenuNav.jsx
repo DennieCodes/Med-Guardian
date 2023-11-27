@@ -24,6 +24,9 @@ function MenuNav() {
 				<li className='p-2'>
 					<NavLink to="/" className='btn w-100'>Account Information</NavLink>
 				</li>
+				<li className='p-2'>
+					<NavLink to="/profile" className='btn w-100'>Health Profile</NavLink>
+				</li>
 
 			</ul>
 		</nav>
