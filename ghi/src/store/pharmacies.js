@@ -23,7 +23,36 @@ export const pharmaciesApi = createApi({
       }),
       invalidatesTags: ["PharmacyList"],
     }),
+    getPharmacy: builder.query({
+      query: (pharmacy_id) => ({
+        url: `/api/pharmacies/${pharmacy_id}`,
+        credentials: "include",
+      }),
+    }),
+    updatePharmacy: builder.mutation({
+      query: (data) => ({
+        url: `/api/pharmacies/${data.pharmacy_id}`,
+        body: data.pharmacy,
+        method: "put",
+        credentials: "include",
+      }),
+      invalidatesTags: ["PharmacyList"],
+    }),
+    deletePharmacy: builder.mutation({
+      query: (pharmacy_id) => ({
+        url: `/api/pharmacies/${pharmacy_id}`,
+        method: "delete",
+        credentials: "include",
+      }),
+      invalidatesTags: ["PharmacyList"],
+    }),
   }),
 });
 
-export const { useGetPharmaciesQuery, useAddPharmacyMutation } = pharmaciesApi;
+export const {
+  useGetPharmaciesQuery,
+  useAddPharmacyMutation,
+  useGetPharmacyQuery,
+  useUpdatePharmacyMutation,
+  useDeletePharmacyMutation,
+} = pharmaciesApi;
