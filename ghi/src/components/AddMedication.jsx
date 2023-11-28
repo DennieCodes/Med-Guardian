@@ -1,8 +1,7 @@
-import { useAddMedicationMutation } from "../store/medications"
+import { useAddMedicationMutation, useGetDrugListQuery } from "../store/medications"
 import { useGetPharmaciesQuery } from "../store/pharmacies";
 import { useGetDoctorsQuery } from "../store/doctorsApi"
 import { useState, useEffect } from "react";
-import { useGetDrugListQuery } from "../store/drugListApi"
 
 const AddMedication = () => {
     const { data: doctors, isLoading: doctorsLoading } = useGetDoctorsQuery()

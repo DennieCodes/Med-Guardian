@@ -46,6 +46,16 @@ export const medicationsApi = createApi({
       }),
       invalidatesTags: ["MedicationsList"],
     }),
+    getDrugList: builder.query({
+      query: () => "/api/drug_list/",
+    }),
+    getDrugInteractions: builder.query({
+      query: () => ({
+        url: "/api/users_drug_interactions",
+        credentials: "include",
+      }),
+      providesTags: ["MedicationsList"],
+    }),
   }),
 });
 
@@ -55,4 +65,6 @@ export const {
   useGetMedicationQuery,
   useUpdateMedicationMutation,
   useDeleteMedicationMutation,
+  useGetDrugListQuery,
+  useGetDrugInteractionsQuery,
 } = medicationsApi;

@@ -38,8 +38,7 @@ class ThirdPartyQueries:
                             interactions.append(item)
                     return interactions
         except Exception as e:
-            print(e)
-            return {"message": "There was an error getting drug interactions."}
+            return ["No drug-drug interactions were found"]
 
     def get_rxnorm_ids(self, medications):
         rxnorm_ids = []

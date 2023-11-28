@@ -75,10 +75,14 @@ def update_medication(
 @router.delete("/api/medications/{medication_id}", response_model=bool)
 def delete_medication(
     medication_id: int,
+    response: Response,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: MedicationRepository = Depends()
 ) -> bool:
-    return repo.delete(medication_id, account_data['id'])
+    result = repo.delete(medication_id, account_data['id'])
+    if not result:
+        response.status_code = 400
+    return result
 
 
 # UPDATE MEDICATION QUANTITY
