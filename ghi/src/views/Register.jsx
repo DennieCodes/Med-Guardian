@@ -11,7 +11,7 @@ function Register() {
 	const [email, setEmail] = useState('');
 	const [phone, setPhone] = useState('');
 	const [password, setPassword] = useState('');
-	const [register, regResponse] = useRegisterMutation();
+	const [register] = useRegisterMutation();
 	const [login] = useLoginMutation();
 	const navigate = useNavigate();
 
@@ -26,7 +26,6 @@ function Register() {
 			password,
 		});
 
-		console.log(regResponse);
 		e.target.reset();
 		login({ username, password });
 		navigate("/addProfile");
