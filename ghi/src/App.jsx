@@ -11,6 +11,8 @@ import PharmacyDetail from './views/PharmacyDetail';
 import Medications from './views/Medications';
 import MedicationDetail from './views/MedicationDetail';
 import './App.css'
+import Profile from './views/Profile';
+import AddProfile from './views/AddProfile';
 
 function App() {
 	const { data: account } = useGetTokenQuery();
@@ -33,8 +35,10 @@ function App() {
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />
 							<Route path="/doctorsList" element={<DoctorsList />} />
+							<Route path="/profile" element={<Profile />} />
 							<Route path='/pharmacies' element={<Pharmacies />} />
 							<Route path='/pharmacies/:pharmacy_id' element={<PharmacyDetail />} />
+							<Route path='/addProfile' element={<AddProfile />} />
 							<Route path='/medications' element={<Medications />} />
 							<Route path='/medications/:medication_id' element={<MedicationDetail />} />
 						</Routes>
