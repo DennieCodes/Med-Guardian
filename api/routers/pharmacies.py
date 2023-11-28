@@ -27,7 +27,7 @@ def create_pharmacy(
 
 # UPDATE PHARMACY
 @router.put(
-    "/api/pharmacies/{pharmacies_id}", response_model=Union[PharmacyOut, Error]
+    "/api/pharmacies/{pharmacy_id}", response_model=Union[PharmacyOut, Error]
 )
 def update_pharmacy(
     pharmacy_id: int,
@@ -49,7 +49,7 @@ def get_all(
 
 # GET A PHARMACY
 @router.get(
-    "/api/pharmacies/{pharmacies_id}", response_model=Union[PharmacyOut, Error]
+    "/api/pharmacies/{pharmacy_id}", response_model=Union[PharmacyOut, Error]
 )
 def get_pharmacy(
     pharmacy_id: int,
@@ -58,17 +58,20 @@ def get_pharmacy(
     repo: PharmacyRepository = Depends(),
 ) -> Union[PharmacyOut, Error]:
     result = repo.get_one(pharmacy_id, user_id=account_data["id"])
-
     if type(result) is not PharmacyOut:
         response.status_code = 400
     return result
 
 
 # DELETE PHARMACY
-@router.delete("/api/pharmacies/{pharmacies_id}", response_model=bool)
+@router.delete("/api/pharmacies/{pharmacy_id}", response_model=bool)
 def delete_pharmacy(
     pharmacy_id: int,
+    response: Response,
     account_data: dict = Depends(authenticator.get_current_account_data),
     repo: PharmacyRepository = Depends(),
 ) -> bool:
-    return repo.delete(pharmacy_id, user_id=account_data["id"])
+    result = repo.delete(pharmacy_id, user_id=account_data["id"])
+    if not result:
+        response.status_code = 400
+    return result

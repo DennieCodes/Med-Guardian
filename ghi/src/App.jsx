@@ -7,6 +7,7 @@ import Login from './views/Login';
 import Register from './views/Register';
 import DoctorsList from './views/DoctorsList'
 import Pharmacies from './views/Pharmacy';
+import PharmacyDetail from './components/PharmacyDetail';
 import './App.css'
 import Profile from './views/Profile';
 
@@ -33,6 +34,7 @@ function App() {
 							<Route path="/doctorsList" element={<DoctorsList />} />
 							<Route path="/profile" element={<Profile />} />
 							<Route path='/pharmacies' element={<Pharmacies />} />
+							<Route path='/pharmacies/:pharmacy_id' element={<PharmacyDetail />} />
 						</Routes>
 					</section>
 				</main>
