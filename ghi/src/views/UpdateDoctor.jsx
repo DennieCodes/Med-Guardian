@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useGetDoctorsQuery } from '../store/doctorsApi'
+import { useGetDoctorQuery } from '../store/doctorsApi'
 import { useGetTokenQuery } from '../store/authApi';
 import { useCreateDoctorMutation } from '../store/doctorsApi';
 import { Form, Button } from 'react-bootstrap';
 
 function UpdateDoctor() {
-    const { data: doctors, error, isLoading } = useGetDoctorsQuery();
+    const { data: doctors, error, isLoading } = useGetDoctorQuery();
     const { data: account } = useGetTokenQuery();
     const doctorFields = {
         "full_name": "",
