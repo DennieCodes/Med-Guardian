@@ -10,6 +10,7 @@ import Pharmacies from './views/Pharmacy';
 import PharmacyDetail from './views/PharmacyDetail';
 import Medications from './views/Medications';
 import MedicationDetail from './views/MedicationDetail';
+import DrugInteractions from './views/DrugInteractions';
 import './App.css'
 import Profile from './views/Profile';
 import AddProfile from './views/AddProfile';
@@ -41,6 +42,7 @@ function App() {
 							<Route path='/addProfile' element={<AddProfile />} />
 							<Route path='/medications' element={<Medications />} />
 							<Route path='/medications/:medication_id' element={<MedicationDetail />} />
+							<Route path='/medications/interactions/' element={<DrugInteractions />} />
 						</Routes>
 					</section>
 				</main>
