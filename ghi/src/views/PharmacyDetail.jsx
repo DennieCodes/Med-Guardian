@@ -1,10 +1,11 @@
 import { useGetPharmacyQuery, useUpdatePharmacyMutation, useDeletePharmacyMutation } from "../store/pharmacies";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
-
+import { useGetTokenQuery } from '../store/authApi';
 
 const PharmacyDetail = () => {
     const navigate = useNavigate()
+    const account = useGetTokenQuery();
     const { pharmacy_id } = useParams();
     const { data: pharmacy, isLoading } = useGetPharmacyQuery(pharmacy_id)
     const [name, setName] = useState("");
@@ -15,7 +16,11 @@ const PharmacyDetail = () => {
     const [deletePharmacy, deleteResult] = useDeletePharmacyMutation()
     const [deleteError, setDeleteError] = useState('');
     const [updateError, setUpdateError] = useState('');
+
     useEffect(() => {
+        if (!account.data) {
+            navigate("/");
+        }
         if (!isLoading && pharmacy) {
             setName(pharmacy.name);
             setPhone(pharmacy.phone);
@@ -27,11 +32,9 @@ const PharmacyDetail = () => {
         } else if (updateResult.isError) {
             setUpdateError(updateResult.error)
         } else if (deleteResult.isError) {
-
             setDeleteError(deleteResult.error)
-            console.log(deleteResult.error)
         }
-    }, [isLoading, pharmacy, updateResult, navigate, deleteResult]);
+    }, [isLoading, pharmacy, updateResult, deleteResult, account, navigate]);
 
     const handleNameChange = (event) => {
         const value = event.target.value;
