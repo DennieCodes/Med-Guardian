@@ -12,6 +12,7 @@ function Profile() {
 
   const [height, setHeight] = useState(0);
   const [weight, setWeight] = useState(0);
+  const [bmi, setBmi] = useState();
   const [cholesterol, setCholesterol] = useState(0);
   const [bloodPressure, setBloodPressure] = useState("");
   const [a1cSugarLevels, setA1cSugarLevels] = useState(0);
@@ -25,6 +26,12 @@ function Profile() {
       navigate("/");
     }
   }, [account.data, navigate]);
+
+  useEffect(() => {
+    let value = (weight * 703) / height ** 2;
+    setBmi(value.toFixed(2));
+
+  }, [height, weight])
 
   // If user is logged in then preload their profile into the form
   useEffect(() => {
@@ -83,7 +90,23 @@ function Profile() {
                 className="form-control"
                 onChange={(e) => setWeight(e.target.value)}
               />
-              <label htmlFor="weight">Weight</label>
+              <label htmlFor="weight">Weight (lbs)</label>
+            </div>
+
+            <div className="form-floating mb-3">
+              <p className="form-control" id="bmi">
+                {bmi}
+              </p>
+              {/* <input
+                type="number"
+                id="bmi"
+                name="bmi"
+                value={bmi}
+                placeholder="bmi"
+                className="form-control"
+                readOnly
+              /> */}
+              <label htmlFor="weight">BMI (auto-calculated) </label>
             </div>
 
             <div className="form-floating mb-3">
