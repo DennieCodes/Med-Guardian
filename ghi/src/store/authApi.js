@@ -50,10 +50,8 @@ export const authApi = createApi({
 					body: registerObj,
 				};
 			},
-			providesTags: (result, error) => [
-				(result.isSuccess = true),
-				{ type: 'Account' },
-			],
+			providesTags: ['Account'],
+			invalidatesTags: ['Token'],
 		}),
 
 		// Logout

@@ -20,7 +20,7 @@ def create_profile(
     return profile
 
 
-@router.get("/api/proflies/", response_model=Optional[ProfileOut])
+@router.get("/api/profiles/", response_model=Optional[ProfileOut])
 def get_profile(
     response: Response,
     account_data: dict = Depends(authenticator.get_current_account_data),

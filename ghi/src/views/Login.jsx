@@ -1,22 +1,17 @@
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
-
 import { useLoginMutation, useGetTokenQuery } from '../store/authApi';
 
 function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
-	let { data: account } = useGetTokenQuery();
+	const { data: account } = useGetTokenQuery();
 	const [login, result] = useLoginMutation();
-	const navigate = useNavigate()
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		login({ username, password });
-		// Need to further investiage result
 		console.log('Result of Login: ', result);
 		e.target.reset();
-		navigate("/");
 	};
 
 	return (
@@ -31,7 +26,7 @@ function Login() {
 					type="text"
 					name="username"
 					value={username}
-					placeholder="User Name"
+					placeholder="username"
 					id="username"
 					required
 				/>
@@ -42,7 +37,7 @@ function Login() {
 					type="text"
 					name="password"
 					value={password}
-					placeholder="Password"
+					placeholder="password"
 					id="password"
 					required
 				/>

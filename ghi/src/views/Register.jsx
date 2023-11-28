@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { useRegisterMutation, useGetTokenQuery } from '../store/authApi';
+import { useNavigate } from "react-router-dom";
+import { useRegisterMutation } from '../store/authApi';
+import { useLoginMutation } from '../store/authApi';
+
 
 function Register() {
 	const [firstName, setFirstName] = useState('');
@@ -9,6 +12,8 @@ function Register() {
 	const [phone, setPhone] = useState('');
 	const [password, setPassword] = useState('');
 	const [register, regResponse] = useRegisterMutation();
+	const [login] = useLoginMutation();
+	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -21,8 +26,10 @@ function Register() {
 			password,
 		});
 
-		console.log('Result: ', result);
+		console.log(regResponse);
 		e.target.reset();
+		login({ username, password });
+		navigate("/profile");
 	};
 
 	return (

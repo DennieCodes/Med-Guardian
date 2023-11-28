@@ -11,8 +11,10 @@ export const profileApi = createApi({
 	endpoints: (builder) => ({
 		// Get Profile
 		getProfile: builder.query({
-			url: '/api/profiles',
-			credentials: 'includes',
+			query: () => ({
+				url: '/api/profiles/',
+				credentials: 'include',
+			}),
 		}),
 		providesTags: ['Profile'],
 	}),
