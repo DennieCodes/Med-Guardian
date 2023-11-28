@@ -11,8 +11,10 @@ const PharmacyDetail = () => {
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [website, setWebsite] = useState("");
-    const [updatePharmacy, update_result] = useUpdatePharmacyMutation()
-    const [deletePharmacy, delete_result] = useDeletePharmacyMutation()
+    const [updatePharmacy, updateResult] = useUpdatePharmacyMutation()
+    const [deletePharmacy, deleteResult] = useDeletePharmacyMutation()
+    const [deleteError, setDeleteError] = useState('');
+    const [updateError, setUpdateError] = useState('');
     useEffect(() => {
         if (!isLoading && pharmacy) {
             setName(pharmacy.name);
@@ -20,7 +22,16 @@ const PharmacyDetail = () => {
             setAddress(pharmacy.address);
             setWebsite(pharmacy.website);
         }
-    }, [isLoading, pharmacy]);
+        if (updateResult.isSuccess || deleteResult.isSuccess) {
+            navigate("/pharmacies")
+        } else if (updateResult.isError) {
+            setUpdateError(updateResult.error)
+        } else if (deleteResult.isError) {
+
+            setDeleteError(deleteResult.error)
+            console.log(deleteResult.error)
+        }
+    }, [isLoading, pharmacy, updateResult, navigate, deleteResult]);
 
     const handleNameChange = (event) => {
         const value = event.target.value;
@@ -51,13 +62,12 @@ const PharmacyDetail = () => {
             }
         }
         )
-        navigate("/pharmacies")
     }
+
 
     const handleDelete = async (e) => {
         e.preventDefault()
         deletePharmacy(pharmacy_id)
-        navigate("/pharmacies")
     }
     if (isLoading) {
         return (
@@ -126,8 +136,10 @@ const PharmacyDetail = () => {
                     <div className="d-flex justify-content-evenly">
                         <button className="btn btn-primary px-3" onClick={handleUpdate}>Update</button>
                         <button className="btn btn-primary px-3" onClick={handleDelete}>Delete</button>
-
                     </div>
+                    {deleteError && <div className="text-center text-danger m-3">There was an error trying to delete this pharmacy, make sure it is not linked to a medication.</div>}
+                    {updateError && <div className="text-center text-danger m-3">There was an error trying to update this pharmacy.</div>}
+
                 </form>
             </div>
         </>

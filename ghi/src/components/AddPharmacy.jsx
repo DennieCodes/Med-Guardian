@@ -1,5 +1,5 @@
 import { useAddPharmacyMutation } from "../store/pharmacies";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const AddPharmacy = () => {
     const [name, setName] = useState('');
@@ -7,7 +7,18 @@ const AddPharmacy = () => {
     const [address, setAddress] = useState('');
     const [website, setWebsite] = useState('');
     const [addPharmacy, result] = useAddPharmacyMutation()
+    const [error, setError] = useState('');
 
+    useEffect(() => {
+        if (result.isSuccess) {
+            setAddress('')
+            setName("")
+            setPhone("")
+            setWebsite("")
+        } else if (result.isError) {
+            setError(result.error)
+        }
+    }, [result])
     const handleNameChange = (event) => {
         const value = event.target.value;
         setName(value);
@@ -33,15 +44,7 @@ const AddPharmacy = () => {
             address: address,
             website: website
         })
-        if (result.isError) {
-            console.log(result.isError)
-        }
-        setAddress('')
-        setName("")
-        setPhone("")
-        setWebsite("")
     }
-
     return (
         <>
             <div className="forms p-4 d-flex flex-column align-items-center">
@@ -102,6 +105,7 @@ const AddPharmacy = () => {
                     <div className="d-flex justify-content-center">
                         <button className="btn btn-primary px-3">Add</button>
                     </div>
+                    {error ? <div>There was an error trying to add the pharmacy.</div> : null}
                 </form>
             </div>
         </>
