@@ -15,33 +15,43 @@ function Login() {
 	};
 
 	return (
-		<div>
-			<h1>Login</h1>
+		<div className="forms p-4 d-flex flex-column align-items-center">
+			<h1 className="mb-2">Login</h1>
 			{account && <p>Welcome, {account.account.name}</p>}
 
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="username">username</label>
-				<input
-					onChange={(e) => setUsername(e.target.value)}
-					type="text"
-					name="username"
-					value={username}
-					placeholder="username"
-					id="username"
-					required
-				/>
+			<form className="w-50" onSubmit={handleSubmit}>
+				<div className="form-floating mb-3">
+					<input
+						onChange={(e) => setUsername(e.target.value)}
+						type="text"
+						name="username"
+						value={username}
+						placeholder="username"
+						className="form-control"
+						id="username"
+						required
+					/>
+					<label htmlFor="username">username</label>
+				</div>
 
-				<label htmlFor="password">Password</label>
-				<input
-					onChange={(e) => setPassword(e.target.value)}
-					type="text"
-					name="password"
-					value={password}
-					placeholder="password"
-					id="password"
-					required
-				/>
-				<button type="submit">Login</button>
+				<div className="form-floating mb-3">
+					<input
+						onChange={(e) => setPassword(e.target.value)}
+						type="text"
+						name="password"
+						value={password}
+						placeholder="password"
+						id="password"
+						className="form-control"
+						required
+					/>
+					<label htmlFor="password">Password</label>
+				</div>
+
+				<div className="d-flex justify-content-center">
+					<button className="btn btn-primary px-5" type="submit">Login</button>
+				</div>
+
 			</form>
 		</div>
 	);

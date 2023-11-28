@@ -33,11 +33,10 @@ function Register() {
 	};
 
 	return (
-		<div>
-			<h1>Register</h1>
-			<div>
-				<form onSubmit={handleSubmit}>
-					<label htmlFor="firstName">First Name</label>
+		<div className="forms p-4 d-flex flex-column align-items-center">
+			<h1 className="mb-2">Register</h1>
+			<form onSubmit={handleSubmit} className="w-50">
+				<div className="form-floating mb-3">
 					<input
 						required
 						type="text"
@@ -45,10 +44,13 @@ function Register() {
 						name="firstName"
 						value={firstName}
 						placeholder="First Name"
+						className="form-control"
 						onChange={(e) => setFirstName(e.target.value)}
 					/>
+					<label htmlFor="firstName">First Name</label>
+				</div>
 
-					<label htmlFor="lastName">Last Name</label>
+				<div className="form-floating mb-3">
 					<input
 						required
 						type="text"
@@ -56,10 +58,13 @@ function Register() {
 						name="lastName"
 						value={lastName}
 						placeholder="Last Name"
+						className="form-control"
 						onChange={(e) => setLastName(e.target.value)}
 					/>
+					<label htmlFor="lastName">Last Name</label>
+				</div>
 
-					<label htmlFor="lastName">User Name</label>
+				<div className="form-floating mb-3">
 					<input
 						required
 						type="text"
@@ -67,10 +72,13 @@ function Register() {
 						name="username"
 						value={username}
 						placeholder="User Name"
+						className="form-control"
 						onChange={(e) => setUsername(e.target.value)}
 					/>
+					<label htmlFor="lastName">User Name</label>
+				</div>
 
-					<label htmlFor="email">Email</label>
+				<div className="form-floating mb-3">
 					<input
 						required
 						type="text"
@@ -78,20 +86,26 @@ function Register() {
 						name="email"
 						value={email}
 						placeholder="Last Name"
+						className="form-control"
 						onChange={(e) => setEmail(e.target.value)}
 					/>
+					<label htmlFor="email">Email</label>
+				</div>
 
-					<label htmlFor="phone">Phone Number</label>
+				<div className="form-floating mb-3">
 					<input
 						type="text"
 						id="phone"
 						name="phone"
 						value={phone}
 						placeholder="Phone Number"
+						className="form-control"
 						onChange={(e) => setPhone(e.target.value)}
 					/>
+					<label htmlFor="phone">Phone Number</label>
+				</div>
 
-					<label htmlFor="password">Password</label>
+				<div className="form-floating mb-3">
 					<input
 						required
 						type="password"
@@ -99,12 +113,16 @@ function Register() {
 						name="password"
 						value={password}
 						placeholder="Password"
+						className="form-control"
 						onChange={(e) => setPassword(e.target.value)}
 					/>
+					<label htmlFor="password">Password</label>
+				</div>
 
-					<button type="submit">Register New Account</button>
-				</form>
-			</div>
+				<div className="d-flex justify-content-center">
+					<button className="btn btn-primary px-3" type="submit">Register New Account</button>
+				</div>
+			</form>
 		</div>
 	);
 }

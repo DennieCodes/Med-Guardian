@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
 import { useGetProfileQuery } from '../store/profileApi';
 import { useGetTokenQuery } from '../store/authApi';
 
@@ -12,17 +11,6 @@ function Profile() {
   const { data, isLoading } = useGetProfileQuery();
 
   const account = useGetTokenQuery();
-  // const navigate = useNavigate();
-
-  // console.log("Account: ", account);
-
-  // Redirect user if not authenticated
-  // useEffect(() => {
-  //   if (!account.data) {
-  //     console.log("Use Effect");
-  //     navigate("/");
-  //   }
-  // }, []);
 
   // If user is logged in then preload their profile into the form
   useEffect(() => {
@@ -35,16 +23,23 @@ function Profile() {
     }
   }, [data]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Call function mutation
+
+    e.target.reset();
+  }
+
   return (
-    <div>
-      <h1>Health Profile</h1>
+    <div className="forms p-4 d-flex flex-column align-items-center">
+      <h1 className="mb-4">Health Profile</h1>
       {isLoading ?
         <div className="spinner-border" role="status">
           <span className="sr-only">Loading...</span>
         </div>
         :
-        (<div className="p-4 forms shadow w-50">
-          <form>
+        (
+          <form onSubmit={handleSubmit} className="w-75">
             <div className="form-floating mb-3">
               <input
                 type="number"
@@ -110,9 +105,11 @@ function Profile() {
               <label htmlFor="a1cSugarLevels">A1C sugar levels</label>
             </div>
 
-            <button type="submit">Submit</button>
+            <div className="d-flex justify-content-center">
+              <button className="btn btn-primary px-4" type="submit">Submit</button>
+            </div>
           </form>
-        </div>)
+        )
       }
     </div>
   )
