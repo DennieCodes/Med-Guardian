@@ -6,6 +6,7 @@ import Home from './views/Home';
 import Login from './views/Login';
 import Register from './views/Register';
 import DoctorsList from './views/DoctorsList'
+import Pharmacies from './views/Pharmacy';
 import './App.css'
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />
 							<Route path="/doctorsList" element={<DoctorsList />} />
+							<Route path='/pharmacies' element={<Pharmacies />} />
 						</Routes>
 					</section>
 				</main>

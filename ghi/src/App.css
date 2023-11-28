@@ -16,7 +16,7 @@
 
 .wrapper {
   padding: 0 20px;
-  background-color: #FFFBF5;
+  background-color: #fffbf5;
   height: 100vh;
   display: grid;
   grid-template-rows: 100px 1fr 50px;
@@ -24,6 +24,11 @@
 a {
   text-decoration: none;
 }
+button {
+  background-color: #164863 !important;
+  color: whitesmoke !important;
+}
+
 header {
   background-color: #164863;
   color: whitesmoke !important;
@@ -37,7 +42,7 @@ main {
   min-width: 300px;
   max-width: 450px;
 }
-.MenuNav a{
+.MenuNav a {
   background-color: #164863 !important;
   color: whitesmoke !important;
 }
@@ -45,7 +50,7 @@ nav ul {
   list-style: none;
 }
 .mainSection {
-  flex: 3
+  flex: 3;
 }
 
 /* doctors */
