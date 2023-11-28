@@ -7,7 +7,7 @@ import Login from './views/Login';
 import Register from './views/Register';
 import DoctorsList from './views/DoctorsList'
 import Pharmacies from './views/Pharmacy';
-import PharmacyDetail from './components/PharmacyDetail';
+import PharmacyDetail from './views/PharmacyDetail';
 import './App.css'
 
 function App() {
