@@ -2,6 +2,14 @@
 
 Today I worked on:
 
+- I completed the frontend for the medications section and the view for the drug interactions.
+
+We had an aha moment when we realized that reducerPath needs a capital P and not lower case when working in redux.
+
+## 11/27/23
+
+Today I worked on:
+
 - I completed the frontend for the pharmacies section.
 
 I had an aha moment when I realized when setting a variable in the backend url routers that it needs to be the same name in the function as well.
