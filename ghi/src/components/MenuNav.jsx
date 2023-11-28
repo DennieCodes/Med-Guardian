@@ -10,7 +10,7 @@ function MenuNav() {
 					<NavLink to="/" className='btn  w-100'>Home</NavLink>
 				</li>
 				<li className='p-2'>
-					<NavLink to="/" className='btn w-100'>Medications</NavLink>
+					<NavLink to="/medications" className='btn w-100'>Medications</NavLink>
 				</li>
 				{account && <li className='p-2'>
 					<NavLink to="/DoctorsList" className='btn w-100'>Doctors</NavLink>

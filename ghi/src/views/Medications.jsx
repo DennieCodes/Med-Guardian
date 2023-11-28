@@ -1,10 +1,10 @@
-import PharmacyList from "../components/PharmacyList";
-import AddPharmacy from "../components/AddPharmacy";
 import { useNavigate } from 'react-router-dom';
 import { useGetTokenQuery } from '../store/authApi';
 import { useEffect } from "react";
+import MedicationList from "../components/MedicationList"
+import AddMedication from '../components/AddMedication';
 
-const Pharmacies = () => {
+const Medications = () => {
     const account = useGetTokenQuery();
     const navigate = useNavigate();
 
@@ -13,12 +13,13 @@ const Pharmacies = () => {
             navigate("/");
         }
     }, [account, navigate]);
+
     return (
         <>
-            <PharmacyList />
-            <AddPharmacy />
+            <MedicationList />
+            <AddMedication />
         </>
     );
 }
 
-export default Pharmacies;
+export default Medications;
