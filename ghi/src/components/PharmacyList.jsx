@@ -1,9 +1,14 @@
 import { useGetPharmaciesQuery } from "../store/pharmacies";
+import { Link } from "react-router-dom"
 
 const PharmacyList = () => {
     const { data: pharmacies, isLoading } = useGetPharmaciesQuery();
     if (isLoading) {
-        return <p>Loading...</p>
+        return (
+            <div className="spinner-border" role="status">
+                <span className="sr-only">Loading...</span>
+            </div>
+        )
     }
     return (
         <>
@@ -22,7 +27,7 @@ const PharmacyList = () => {
                         {pharmacies.map(pharmacy => {
                             return (
                                 <tr key={pharmacy.id}>
-                                    <td>{pharmacy.name}</td>
+                                    <td><Link to={`/pharmacies/${pharmacy.id}`}>{pharmacy.name}</Link></td>
                                     <td>{pharmacy.phone}</td>
                                     <td>{pharmacy.address}</td>
                                     <td>{pharmacy.website}</td>
@@ -31,7 +36,7 @@ const PharmacyList = () => {
                         })}
                     </tbody>
                 </table>
-            </div>
+            </div >
         </>
     );
 }

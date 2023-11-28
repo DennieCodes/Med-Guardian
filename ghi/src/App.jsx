@@ -7,6 +7,7 @@ import Login from './views/Login';
 import Register from './views/Register';
 import DoctorsList from './views/DoctorsList'
 import Pharmacies from './views/Pharmacy';
+import PharmacyDetail from './views/PharmacyDetail';
 import './App.css'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
 							<Route path="/register" element={<Register />} />
 							<Route path="/doctorsList" element={<DoctorsList />} />
 							<Route path='/pharmacies' element={<Pharmacies />} />
+							<Route path='/pharmacies/:pharmacy_id' element={<PharmacyDetail />} />
 						</Routes>
 					</section>
 				</main>
