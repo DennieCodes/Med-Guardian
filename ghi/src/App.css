@@ -1,3 +1,4 @@
+/* Gobal  */
 .App {
   text-align: center;
 }
@@ -19,7 +20,6 @@
   height: 100vh;
   display: grid;
   grid-template-rows: 100px 1fr 50px;
-
 }
 a {
   text-decoration: none;
@@ -30,6 +30,7 @@ header {
 }
 main {
   display: flex;
+  overflow-y: auto;
 }
 .sideNav {
   flex: 1;
@@ -41,10 +42,14 @@ main {
   color: whitesmoke !important;
 }
 nav ul {
-
   list-style: none;
 }
-
 .mainSection {
   flex: 3
+}
+
+/* doctors */
+.docsList {
+  border: thin solid red;
+  padding: 30px;
 }
