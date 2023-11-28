@@ -15,9 +15,33 @@ export const profileApi = createApi({
 				url: '/api/profiles/',
 				credentials: 'include',
 			}),
+			providesTags: ['Profile'],
 		}),
-		providesTags: ['Profile'],
+
+		addProfile: builder.mutation({
+			query: (data) => ({
+				url: '/api/profiles',
+				method: 'post',
+				body: data,
+				credentials: 'include',
+			}),
+			invalidatesTags: ['Profile'],
+		}),
+
+		updateProfile: builder.mutation({
+			query: (data) => ({
+				url: `/api/profiles/${data.profile_id}`,
+				body: data,
+				method: 'put',
+				credentials: 'include',
+			}),
+			invalidatesTags: ['Profile'],
+		}),
 	}),
 });
 
-export const { useGetProfileQuery } = profileApi;
+export const {
+	useGetProfileQuery,
+	useAddProfileMutation,
+	useUpdateProfileMutation,
+} = profileApi;

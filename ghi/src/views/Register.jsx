@@ -29,7 +29,7 @@ function Register() {
 		console.log(regResponse);
 		e.target.reset();
 		login({ username, password });
-		navigate("/profile");
+		navigate("/addProfile");
 	};
 
 	return (

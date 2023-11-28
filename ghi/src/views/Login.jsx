@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useLoginMutation, useGetTokenQuery } from '../store/authApi';
 
 function Login() {
@@ -6,11 +7,13 @@ function Login() {
 	const [password, setPassword] = useState('');
 	const { data: account } = useGetTokenQuery();
 	const [login, result] = useLoginMutation();
+	const navigate = useNavigate();
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		login({ username, password });
-		console.log('Result of Login: ', result);
+		navigate("/");
 		e.target.reset();
 	};
 

@@ -10,6 +10,7 @@ import Pharmacies from './views/Pharmacy';
 import PharmacyDetail from './components/PharmacyDetail';
 import './App.css'
 import Profile from './views/Profile';
+import AddProfile from './views/AddProfile';
 
 function App() {
 	const { data: account } = useGetTokenQuery();
@@ -35,6 +36,7 @@ function App() {
 							<Route path="/profile" element={<Profile />} />
 							<Route path='/pharmacies' element={<Pharmacies />} />
 							<Route path='/pharmacies/:pharmacy_id' element={<PharmacyDetail />} />
+							<Route path='/addProfile' element={<AddProfile />} />
 						</Routes>
 					</section>
 				</main>

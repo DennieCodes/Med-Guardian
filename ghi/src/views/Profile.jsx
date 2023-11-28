@@ -1,20 +1,34 @@
 import { useState, useEffect } from 'react';
-import { useGetProfileQuery } from '../store/profileApi';
+import { useNavigate } from 'react-router-dom';
 import { useGetTokenQuery } from '../store/authApi';
+import {
+  useGetProfileQuery,
+  useUpdateProfileMutation,
+} from '../store/profileApi';
 
 function Profile() {
-  const [height, setHeight] = useState(""); // int
-  const [weight, setWeight] = useState(""); // int
-  const [cholesterol, setCholesterol] = useState(""); // int
-  const [bloodPressure, setBloodPressure] = useState(""); // str
-  const [a1cSugarLevels, setA1cSugarLevels] = useState(""); // int
-  const { data, isLoading } = useGetProfileQuery();
-
   const account = useGetTokenQuery();
+  const navigate = useNavigate();
+
+  const [height, setHeight] = useState(0);
+  const [weight, setWeight] = useState(0);
+  const [cholesterol, setCholesterol] = useState(0);
+  const [bloodPressure, setBloodPressure] = useState("");
+  const [a1cSugarLevels, setA1cSugarLevels] = useState(0);
+
+  const { data, isLoading } = useGetProfileQuery();
+  const [updateProfile] = useUpdateProfileMutation();
+
+  // Redirect user if not authenticated
+  useEffect(() => {
+    if (!account.data) {
+      navigate("/");
+    }
+  }, [account.data, navigate]);
 
   // If user is logged in then preload their profile into the form
   useEffect(() => {
-    if (data) {
+    if (data && !isLoading) {
       setHeight(data.height);
       setWeight(data.weight);
       setCholesterol(data.cholesterol);
@@ -25,9 +39,15 @@ function Profile() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Call function mutation
 
-    e.target.reset();
+    updateProfile({
+      height: height,
+      weight: weight,
+      cholesterol: cholesterol,
+      blood_pressure: bloodPressure,
+      a1c_sugar_level: a1cSugarLevels,
+      profile_id: data.id
+    })
   }
 
   return (
@@ -106,7 +126,9 @@ function Profile() {
             </div>
 
             <div className="d-flex justify-content-center">
-              <button className="btn btn-primary px-4" type="submit">Submit</button>
+              <button className="btn btn-primary px-4" type="submit">
+                Update
+              </button>
             </div>
           </form>
         )
