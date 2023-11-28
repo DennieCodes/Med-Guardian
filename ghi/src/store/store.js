@@ -5,6 +5,7 @@ import { authApi } from "./authApi";
 import { doctorsApi } from "./doctorsApi";
 import { setupListeners } from "@reduxjs/toolkit/query";
 import { pharmaciesApi } from "./pharmacies";
+import { medicationsApi } from "./medications";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [doctorsApi.reducerPath]: doctorsApi.reducer,
     [pharmaciesApi.reducerPath]: pharmaciesApi.reducer,
+    [medicationsApi.reducerPath]: medicationsApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -20,7 +22,8 @@ export const store = configureStore({
       .concat(drugListApi.middleware)
       .concat(authApi.middleware)
       .concat(doctorsApi.middleware)
-      .concat(pharmaciesApi.middleware),
+      .concat(pharmaciesApi.middleware)
+      .concat(medicationsApi.middleware),
 });
 
 setupListeners(store.dispatch);

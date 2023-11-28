@@ -8,6 +8,8 @@ import Register from './views/Register';
 import DoctorsList from './views/DoctorsList'
 import Pharmacies from './views/Pharmacy';
 import PharmacyDetail from './views/PharmacyDetail';
+import Medications from './views/Medications';
+import MedicationDetail from './views/MedicationDetail';
 import './App.css'
 
 function App() {
@@ -33,6 +35,8 @@ function App() {
 							<Route path="/doctorsList" element={<DoctorsList />} />
 							<Route path='/pharmacies' element={<Pharmacies />} />
 							<Route path='/pharmacies/:pharmacy_id' element={<PharmacyDetail />} />
+							<Route path='/medications' element={<Medications />} />
+							<Route path='/medications/:medication_id' element={<MedicationDetail />} />
 						</Routes>
 					</section>
 				</main>
