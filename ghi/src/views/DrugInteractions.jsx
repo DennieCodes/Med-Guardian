@@ -24,14 +24,16 @@ const DrugInteractions = () => {
 
     return (
         <>
-            <h1>Current Drug-Drug Interactions</h1>
-            <ul>
-                {interactions.map(interaction => {
-                    return (
-                        <li key={interaction}>{interaction}</li>
-                    )
-                })}
-            </ul>
+            <div className='px-5'>
+                <h1 className='text-center m-3'>Current Drug-Drug Interactions</h1>
+                <ul className='text-center'>
+                    {interactions.map(interaction => {
+                        return (
+                            <li className="my-3" key={interaction}>{interaction}</li>
+                        )
+                    })}
+                </ul>
+            </div>
         </>
     );
 }
