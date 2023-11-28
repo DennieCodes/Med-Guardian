@@ -1,3 +1,11 @@
+## 11/27/23
+
+Today I worked on:
+
+- I completed the frontend for the pharmacies section.
+
+I had an aha moment when I realized when setting a variable in the backend url routers that it needs to be the same name in the function as well.
+
 ## 11/17/23
 
 Today I worked on:

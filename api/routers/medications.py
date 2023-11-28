@@ -42,7 +42,7 @@ def get_all(
 
 # GET MEDICATION
 @router.get(
-    "/api/medications/{medications_id}",
+    "/api/medications/{medication_id}",
     response_model=Union[MedicationsOut, Error]
 )
 def get_medication(
@@ -59,7 +59,7 @@ def get_medication(
 
 # UPDATE MEDICATION
 @router.put(
-    "/api/medications/{medications_id}",
+    "/api/medications/{medication_id}",
     response_model=Union[MedicationsOut, Error]
 )
 def update_medication(
@@ -72,7 +72,7 @@ def update_medication(
 
 
 # DELETE MEDICATION
-@router.delete("/api/medications/{medications_id}", response_model=bool)
+@router.delete("/api/medications/{medication_id}", response_model=bool)
 def delete_medication(
     medication_id: int,
     account_data: dict = Depends(authenticator.get_current_account_data),
@@ -83,7 +83,7 @@ def delete_medication(
 
 # UPDATE MEDICATION QUANTITY
 @router.put(
-    "/api/medications/{medications_id}/quantity",
+    "/api/medications/{medication_id}/quantity",
     response_model=Union[MedicationQuantityOut, Error]
 )
 def update_medication_quantity(
@@ -97,7 +97,7 @@ def update_medication_quantity(
 
 # UPDATE MEDICATION REFILL
 @router.put(
-    "/api/medications/{medications_id}/refill",
+    "/api/medications/{medication_id}/refill",
     response_model=Union[MedicationRefillsOut, Error]
 )
 def update_refill_quantity(
