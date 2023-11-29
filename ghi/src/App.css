@@ -1,76 +1,71 @@
 /* Gobal  */
 .App {
-	text-align: center;
+  text-align: center;
 }
 
 .App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 body {
-	background-color: #fffbf5;
+  background-color: #fffbf5;
 }
 .wrapper {
-	padding: 0 20px;
-	height: 100vh;
-	display: grid;
-	grid-template-rows: 100px 1fr 50px;
+  padding: 0 20px;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 100px 1fr 50px;
 }
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 button {
-	background-color: #164863 !important;
-	color: whitesmoke !important;
+  background-color: #164863 !important;
+  color: whitesmoke !important;
 }
 
 header {
-	background-color: #164863;
-	color: whitesmoke !important;
+  background-color: #164863;
+  color: whitesmoke !important;
 }
 main {
-<<<<<<< HEAD
-	display: flex;
-=======
   display: flex;
   overflow-y: auto;
->>>>>>> main
 }
 .sideNav {
-	flex: 1;
-	min-width: 300px;
-	max-width: 450px;
+  flex: 1;
+  min-width: 300px;
+  max-width: 450px;
 }
 .MenuNav a {
-	background-color: #164863 !important;
-	color: whitesmoke !important;
+  background-color: #164863 !important;
+  color: whitesmoke !important;
 }
 nav ul {
-	list-style: none;
+  list-style: none;
 }
 .mainSection {
-	flex: 3;
+  flex: 3;
 }
 
 .activeHoverBackground:hover {
-	background-color: #9bbec8;
+  background-color: #9bbec8;
 }
 /* home */
 .homePage {
-   background-image: url('./assets/med2.jpeg');
-   background-repeat: no-repeat;
-   background-size: cover;
-   min-height: 100%;
+  background-image: url("./assets/med2.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
 }
 /* Calendar */
 .medCalendar {
-
 }
 /* doctors */
 .docsList {
