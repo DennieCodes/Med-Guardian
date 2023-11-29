@@ -13,7 +13,7 @@ class ProfilesQueries:
                         INSERT INTO user_profiles
                         (height, weight, cholesterol, blood_pressure,
                         A1C_sugar_level, notif_type, username)
-                        VALUES (%s, %s, %s, %s, %s, %s)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
                         [
@@ -71,7 +71,7 @@ class ProfilesQueries:
                         weight = %s,
                         cholesterol = %s,
                         blood_pressure = %s,
-                        A1C_sugar_level = %s
+                        A1C_sugar_level = %s,
                         notif_type = %s
                         WHERE id = %s AND username = %s
                         RETURNING id

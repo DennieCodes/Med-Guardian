@@ -8,6 +8,7 @@ class ProfileIn(BaseModel):
     cholesterol: Optional[int]
     blood_pressure: Optional[str]
     a1c_sugar_level: Optional[float]
+    notif_type: Optional[str]
 
 
 class ProfileOut(BaseModel):
@@ -17,4 +18,5 @@ class ProfileOut(BaseModel):
     cholesterol: Optional[int]
     blood_pressure: Optional[str]
     a1c_sugar_level: Optional[float]
+    notif_type: Optional[str]
     username: str

@@ -98,15 +98,15 @@ steps = [
         CREATE TABLE med_events (
             id SERIAL PRIMARY KEY NOT NULL,
             color VARCHAR(200) NOT NULL,
-            from VARCHAR(30) NOT NULL,
-            to VARCHAR(30) NOT NULL,
+            from_date VARCHAR(30) NOT NULL,
+            to_date VARCHAR(30) NOT NULL,
             title VARCHAR(100) NOT NULL,
             notif_type VARCHAR(30) NOT NULL,
             pill_count INTEGER NOT NULL,
-            med references medications(id),
-            prescribed_by references doctors(id),
-            user_id INTEGER references user_accounts(id)
-            user_profile_id references user_profiles(id)
+            med_id INTEGER references medications(id),
+            prescribed_by INTEGER references doctors(id),
+            user_id INTEGER references user_accounts(id),
+            user_profile_id INTEGER references user_profiles(id)
         );
         """,
         # "Down" SQL statement
