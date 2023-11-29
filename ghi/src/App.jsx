@@ -16,6 +16,7 @@ import DrugInteractions from './views/DrugInteractions';
 import './App.css'
 import Profile from './views/Profile';
 import AddProfile from './views/AddProfile';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
 		<BrowserRouter>
 			<div className='container-fluid wrapper'>
 				<header className='text-center'>
-					<h1>The App Name medication tracker</h1>
+					<h1 >The App Name medication tracker</h1>
 					<Nav />
 				</header>
 				<main>
@@ -51,8 +52,8 @@ function App() {
 						</Routes>
 					</section>
 				</main>
-				<footer className='bg-info'>
-					<h6>App Name &copy;2023 developed by DOM Squad</h6>
+				<footer className='text-center p-3'>
+					<p>App Name ©2023 developed by DOM Squad</p>
 				</footer>
 			</div>
 

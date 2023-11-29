@@ -64,8 +64,10 @@ function Profile() {
     <div className="forms p-4 d-flex flex-column align-items-center">
       <h1 className="mb-4">Health Profile</h1>
       {isLoading ?
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
+        <div className='d-flex justify-content-center align-items-center vh-100'>
+          <div className="spinner-border" role="status">
+            <span className="sr-only"></span>
+          </div>
         </div>
         :
         (

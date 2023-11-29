@@ -17,7 +17,7 @@ body {
   background-color: #fffbf5;
 }
 .wrapper {
-  padding: 0 20px;
+  padding: 0 !important;
   height: 100vh;
   display: grid;
   grid-template-rows: 100px 1fr 50px;
@@ -74,4 +74,22 @@ nav ul {
 }
 ul {
   list-style-type: none;
+}
+
+.navHover:hover {
+  color: #9bbec8 !important;
+  border-color: #9bbec8 !important;
+}
+.homeSection {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1.25rem;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+  max-width: 55rem;
+  margin: 1.5rem auto;
+  color: #333;
+}
+footer {
+  background-color: #164863;
+  color: white;
 }

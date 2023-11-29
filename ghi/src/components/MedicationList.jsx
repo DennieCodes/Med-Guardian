@@ -9,9 +9,13 @@ const MedicationList = () => {
     const { data: doctors, isLoading: doctorsLoading } = useGetDoctorsQuery()
     if (isLoading || pharmaciesLoading || doctorsLoading) {
         return (
-            <div className="spinner-border" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
+            <>
+                <div className='d-flex justify-content-center align-items-center vh-100'>
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only"></span>
+                    </div>
+                </div>
+            </>
         )
     }
     return (
@@ -35,7 +39,7 @@ const MedicationList = () => {
                         {medications.map(medication => {
                             return (
                                 <tr key={medication.id}>
-                                    <td><Link to={`/medications/${medication.id}`}>{medication.name}</Link></td>
+                                    <td className='activeHoverBackground'><Link to={`/medications/${medication.id}`}>{medication.name}</Link></td>
                                     <td>{medication.strength}</td>
                                     <td>{medication.dosage}</td>
                                     <td>{medication.frequency}</td>

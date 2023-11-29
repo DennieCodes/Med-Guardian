@@ -74,9 +74,13 @@ const PharmacyDetail = () => {
     }
     if (isLoading) {
         return (
-            <div className="spinner-border" role="status">
-                <span className="sr-only">Loading...</span>
-            </div>
+            <>
+                <div className='d-flex justify-content-center align-items-center vh-100'>
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only"></span>
+                    </div>
+                </div>
+            </>
         )
     }
     return (

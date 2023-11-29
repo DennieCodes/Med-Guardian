@@ -11,20 +11,19 @@ function Nav() {
 
 	return (
 		<nav >
-			<ul className='row m-0 p-0'>
-				<li className='col-1'>
-					<NavLink to="/" >Home</NavLink>
+			<ul className='row text-white d-flex justify-content-center'>
+				<li className='col-3'>
+					<NavLink to="/" className="btn border text-white navHover" >Home</NavLink>
 				</li>
-
 				{!account && (
-					<li className='col-1'>
-						<NavLink to="/login" >Login</NavLink>
+					<li className='col-3'>
+						<NavLink to="/login" className="btn border text-white navHover" >Login </NavLink>
 					</li>
 				)}
 
 				{!account && (
-					<li className='col-1'>
-						<NavLink to="/register" className='btn border'>Register</NavLink>
+					<li className='col-3'>
+						<NavLink to="/register" className='btn border text-white navHover'>Register</NavLink>
 					</li>
 				)}
 
@@ -34,18 +33,18 @@ function Nav() {
 					</li>
 				)}
 				{account && (
-					<li className='col-1'>
-						<button
+					<li className='col-3'>
+						<NavLink className="btn border navHover"
 							onClick={() => {
 								logout();
 							}}
 						>
 							Logout
-						</button>
+						</NavLink>
 					</li>
 				)}
 			</ul>
-		</nav>
+		</nav >
 	);
 }
 
