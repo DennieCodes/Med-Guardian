@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import { useGetDoctorQuery, useUpdateDoctorMutation } from '../store/doctorsApi'
+import { useGetDoctorQuery, useUpdateDoctorMutation, useDeleteDoctorMutation } from '../store/doctorsApi'
 import { useGetTokenQuery } from '../store/authApi';
-import { Form, Button } from 'react-bootstrap';
 
 const UpdateDoctor = () => {
     const navigate = useNavigate();
     const { doctor_id } = useParams();
     const { data: doc, isLoading } = useGetDoctorQuery(doctor_id);
-    const [updateDoctor, response] = useUpdateDoctorMutation()
+    const [updateDoctor, updateResponse] = useUpdateDoctorMutation()
+    const [deleteDoctor, deleteResponse] = useDeleteDoctorMutation()
+    const [deleteError, setDeleteError] = useState('');
+    const [updateError, setUpdateError] = useState('');
     const { data: account } = useGetTokenQuery();
     const doctorFields = {
         "full_name": "",
@@ -29,13 +31,20 @@ const UpdateDoctor = () => {
                 address: doc.address
             });
         }
-    }, [isLoading, doc]);
+        if (updateResponse.isSuccess || deleteResponse.isSuccess) {
+            navigate('/DoctorsList')
+        } else if (updateResponse.isError) {
+            setUpdateError(updateResponse.error)
+        } else if (deleteResponse.isError) {
+            setDeleteError(deleteResponse.error)
+        }
+    }, [isLoading, doc, updateResponse, deleteResponse, account, navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
-    async function handleSubmit(e) {
+    async function handleUpdate(e) {
         e.preventDefault();
         const info = { ...formData }
         updateDoctor({
@@ -45,61 +54,87 @@ const UpdateDoctor = () => {
         setFormData(doctorFields);
 
     }
+
+    const handleDelete = async (e) => {
+        e.preventDefault()
+        deleteDoctor(doctor_id)
+    }
+
     if (isLoading) {
         return (
-            <h3>Data Loading</h3>
+            <>
+                <div className='d-flex justify-content-center'>
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only"></span>
+                    </div>
+                </div>
+            </>
         )
     }
     return (
-        <section className='docsForm'>
-            <h1>Create Doctor Component</h1>
-            <Form className="w-50" onSubmit={handleSubmit}>
-                { }
-
-                <Form.Group>
-                    <Form.Label>Full Name</Form.Label>
-                    <Form.Control
+        <section className='forms p-4 d-flex flex-column align-items-center'>
+            <h1>Update Doctor</h1>
+            <form className="w-75">
+                <div className="form-floating mb-3">
+                    <input
                         type="text"
-                        placeholder="Enter Full Name"
+                        placeholder="Full Name"
                         name="full_name"
+                        required
+                        id="full_name"
+                        className="form-control"
                         value={formData.full_name}
                         onChange={handleChange}
                     />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Specialty</Form.Label>
-                    <Form.Control
+                    <label htmlFor="full_name">Full Name</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <input
                         type="text"
-                        placeholder="Enter Specialty"
+                        placeholder="Specialty"
                         name="specialty"
+                        id="specialty"
+                        required
+                        className="form-control"
                         value={formData.specialty}
                         onChange={handleChange}
                     />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Price</Form.Label>
-                    <Form.Control
+                    <label htmlFor="specialty">Specialty</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <input
                         type="phone"
-                        placeholder="Enter Phone"
+                        placeholder="Phone Number"
                         name="phone"
+                        id="phone"
+                        className="form-control"
                         value={formData.phone}
                         onChange={handleChange}
                     />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control
+                    <label htmlFor="phone">Phone Number</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <input
                         type="text"
-                        placeholder="Enter Address"
+                        placeholder="Address"
                         name="address"
+                        id="address"
+                        className="form-control"
                         value={formData.address}
                         onChange={handleChange}
                     />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Create
-                </Button>
-            </Form>
+                    <label htmlFor="address">Address</label>
+                </div>
+                <div className="d-flex justify-content-evenly">
+                    <button onClick={handleUpdate} className="btn btn-primary px-3">
+                        Update
+                    </button>
+                    <button className="btn btn-primary px-3" onClick={handleDelete}>Delete</button>
+                </div>
+                {deleteError && <div className="text-center text-danger m-3">There was an error trying to delete this pharmacy, make sure it is not linked to a medication.</div>}
+                {updateError && <div className="text-center text-danger m-3">There was an error trying to update this pharmacy.</div>}
+
+            </form>
         </section>
     )
 }

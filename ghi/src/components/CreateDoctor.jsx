@@ -26,55 +26,65 @@ function CreateDoctor() {
     }
 
     return (
-        <section className='docsForm'>
-            <h1>Create Doctor Component</h1>
-            <Form className="w-50" onSubmit={handleSubmit}>
-                { }
-
-                <Form.Group>
-                    <Form.Label>Full Name</Form.Label>
-                    <Form.Control
+        <section className="forms p-4 d-flex flex-column align-items-center">
+            <h1 className="mb-2">Add Doctor</h1>
+            <form className="w-75" onSubmit={handleSubmit}>
+                <div className="form-floating mb-3">
+                    <input
                         type="text"
-                        placeholder="Enter Full Name"
+                        placeholder="Full Name"
                         name="full_name"
+                        required
+                        id="full_name"
+                        className="form-control"
                         value={formData.full_name}
                         onChange={handleChange}
                     />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Specialty</Form.Label>
-                    <Form.Control
+                    <label htmlFor="full_name">Full Name</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <input
                         type="text"
-                        placeholder="Enter Specialty"
+                        placeholder="Specialty"
                         name="specialty"
+                        id="specialty"
+                        required
+                        className="form-control"
                         value={formData.specialty}
                         onChange={handleChange}
                     />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Price</Form.Label>
-                    <Form.Control
+                    <label htmlFor="specialty">Specialty</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <input
                         type="phone"
-                        placeholder="Enter Phone"
+                        placeholder="Phone Number"
                         name="phone"
+                        id="phone"
+                        className="form-control"
                         value={formData.phone}
                         onChange={handleChange}
                     />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Address</Form.Label>
-                    <Form.Control
+                    <label htmlFor="phone">Phone Number</label>
+                </div>
+                <div className="form-floating mb-3">
+                    <input
                         type="text"
-                        placeholder="Enter Address"
+                        placeholder="Address"
                         name="address"
+                        id="address"
+                        className="form-control"
                         value={formData.address}
                         onChange={handleChange}
                     />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Create
-                </Button>
-            </Form>
+                    <label htmlFor="address">Address</label>
+                </div>
+                <div className="d-flex justify-content-center">
+                    <button className="btn btn-primary px-3">
+                        Add
+                    </button>
+                </div>
+            </form>
         </section>
     )
 }
