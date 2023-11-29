@@ -5,10 +5,13 @@ import MenuNav from './components/MenuNav';
 import Home from './views/Home';
 import Login from './views/Login';
 import Register from './views/Register';
-import DoctorsList from './views/DoctorsList'
+import DoctorsList from './views/DoctorsList';
+import UpdateDoctor from './views/UpdateDoctor';
 import Pharmacies from './views/Pharmacy';
 import PharmacyDetail from './views/PharmacyDetail';
+import MedCalendar from './views/MedCalendar';
 import './App.css'
+
 
 function App() {
 	const { data: account } = useGetTokenQuery();
@@ -27,12 +30,14 @@ function App() {
 					)}
 					<section className="mainSection">
 						<Routes>
-							<Route path="/" element={<Home />} />
+							{/* <Route path="/" element={<Home />} /> */}
+							<Route path="/" element={account ? <MedCalendar /> : <Home />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />
 							<Route path="/doctorsList" element={<DoctorsList />} />
 							<Route path='/pharmacies' element={<Pharmacies />} />
 							<Route path='/pharmacies/:pharmacy_id' element={<PharmacyDetail />} />
+							<Route path='/doctors/:doctor_id' element={<UpdateDoctor />} />
 						</Routes>
 					</section>
 				</main>

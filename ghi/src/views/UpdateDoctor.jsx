@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import { useGetDoctorQuery } from '../store/doctorsApi'
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from 'react-router-dom';
+import { useGetDoctorQuery, useUpdateDoctorMutation } from '../store/doctorsApi'
 import { useGetTokenQuery } from '../store/authApi';
-import { useCreateDoctorMutation } from '../store/doctorsApi';
 import { Form, Button } from 'react-bootstrap';
 
-function UpdateDoctor() {
-    const { data: doctors, error, isLoading } = useGetDoctorQuery();
+const UpdateDoctor = () => {
+    const navigate = useNavigate();
+    const { doctor_id } = useParams();
+    const { data: doc, isLoading } = useGetDoctorQuery(doctor_id);
+    const [updateDoctor, response] = useUpdateDoctorMutation()
     const { data: account } = useGetTokenQuery();
     const doctorFields = {
         "full_name": "",
@@ -13,21 +16,40 @@ function UpdateDoctor() {
         "phone": "",
         "address": ""
     }
-    const [formData, setFormData] = useState(emptyFields)
-    const [doctor] = useCreateDoctorMutation();
+    const [formData, setFormData] = useState(doctorFields)
+    useEffect(() => {
+        if (!account) {
+            navigate('/');
+        }
+        if (!isLoading && doc) {
+            setFormData({
+                specialty: doc.specialty,
+                full_name: doc.full_name,
+                phone: doc.phone,
+                address: doc.address
+            });
+        }
+    }, [isLoading, doc]);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
     async function handleSubmit(e) {
         e.preventDefault();
-        const data = { ...formData }
-        const result = await doctor(data);
-        console.log('result: ', result);
-        setFormData(emptyFields);
+        const info = { ...formData }
+        updateDoctor({
+            doctor_id: doctor_id,
+            doctor: info
+        })
+        setFormData(doctorFields);
 
     }
-
+    if (isLoading) {
+        return (
+            <h3>Data Loading</h3>
+        )
+    }
     return (
         <section className='docsForm'>
             <h1>Create Doctor Component</h1>
@@ -81,5 +103,6 @@ function UpdateDoctor() {
         </section>
     )
 }
+
 
 export default UpdateDoctor;

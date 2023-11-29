@@ -52,7 +52,17 @@ nav ul {
 .mainSection {
   flex: 3;
 }
+/* home */
+.homePage {
+   background-image: url('./assets/med2.jpeg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   min-height: 100%;
+}
+/* Calendar */
+.medCalendar {
 
+}
 /* doctors */
 .docsList {
   border: thin solid red;

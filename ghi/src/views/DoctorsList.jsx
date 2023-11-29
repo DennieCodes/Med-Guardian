@@ -1,19 +1,22 @@
-import React from 'react';
-import useNavigation from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useGetDoctorsQuery } from '../store/doctorsApi'
 import { useGetTokenQuery } from '../store/authApi';
 import CreateDoctor from '../components/CreateDoctor';
 
-
-
 function DoctorsList() {
-    const { data: doctors, error, isLoading } = useGetDoctorsQuery();
-    console.log('error: ', isLoading)
+    const { data: doctors, isLoading } = useGetDoctorsQuery();
     const { data: account } = useGetTokenQuery();
-    account ? console.log('there is an account', doctors) : console.log('There is no account')
-    const updateDoctor = (e) => {
-        console.log('user: ', e.target.id)
-
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (!account) {
+            navigate('/');
+        }
+    }, []);
+    if (isLoading) {
+        return (
+            <h3>Data Loading</h3>
+        )
     }
     return (
         <>
@@ -44,7 +47,7 @@ function DoctorsList() {
                                     <td>{doctor.full_name}</td>
                                     <td>{doctor.phone}</td>
                                     <td>{doctor.address}</td>
-                                    <td><button id={doctor.id} className='btn btn-primary' onClick={updateDoctor}>Edit/Update</button></td>
+                                    <td><Link to={`/doctors/${doctor.id}`}>Edit/Update</Link></td>
                                 </tr>
                             )
                         })}

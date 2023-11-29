@@ -11,10 +11,10 @@ export const doctorsApi = createApi({
     endpoints: builder=>({
         updateDoctor: builder.mutation({
              query: (data)=> ({
-                url: `/api/doctors/${user_id}`,
+                url: `/api/doctors/${data.doctor_id}`,
                 method: 'put',
                 credentials: 'include', // send the cookies tomthe api
-                body: data
+                body: data.doctor
             }),
             invalidatesTags: ["DoctorsPage"]
         }),
@@ -28,8 +28,8 @@ export const doctorsApi = createApi({
             invalidatesTags: ["DoctorsPage"]
         }),
         getDoctor: builder.query({
-            query: (user_id) => ({
-                url: `/api/doctors${user_id}`,
+            query: (doctor_id) => ({
+                url: `/api/doctors/${doctor_id}`,
                 credentials: "include" // send the cookies tomthe api
             }),
             providesTags: ["DoctorsPage"]
@@ -46,6 +46,7 @@ export const doctorsApi = createApi({
 
 export const {
     useGetDoctorsQuery,
+    useGetDoctorQuery,
     useCreateDoctorMutation,
     useUpdateDoctorMutation,
 } = doctorsApi
