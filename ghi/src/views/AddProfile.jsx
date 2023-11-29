@@ -9,6 +9,7 @@ function AddProfile() {
   const [cholesterol, setCholesterol] = useState(0);
   const [bloodPressure, setBloodPressure] = useState("");
   const [a1cSugarLevels, setA1cSugarLevels] = useState(0);
+  const [notifType, setNotifType] = useState("");
 
   const [addProfile] = useAddProfileMutation();
   const account = useGetTokenQuery();
@@ -22,6 +23,7 @@ function AddProfile() {
       cholesterol: cholesterol,
       blood_pressure: bloodPressure,
       a1c_sugar_level: a1cSugarLevels,
+      notif_type: notifType,
       username: account.username,
     });
 
@@ -30,6 +32,7 @@ function AddProfile() {
     setCholesterol(0);
     setBloodPressure("");
     setA1cSugarLevels(0);
+    setNotifType("");
     e.target.reset();
     navigate("/");
   }
@@ -101,6 +104,20 @@ function AddProfile() {
             onChange={(e) => setA1cSugarLevels(e.target.value)}
           />
           <label htmlFor="a1cSugarLevels">A1C sugar levels</label>
+        </div>
+        <div class="mb-3">
+          <label for="notifType" class="form-label">Notification Type</label>
+          <select
+            id="notifType"
+            name="notifType"
+            className="form-select"
+            value={notifType}
+            onChange={(e) => setNotifType(e.target.value)}>
+            <option selected>Choose Notification</option>
+            <option value="none">None</option>
+            <option value="email">Email</option>
+            <option value="text">Text</option>
+          </select>
         </div>
 
         <div className="d-flex justify-content-center">

@@ -5,7 +5,9 @@ import {
     useGetProfileQuery,
     useUpdateProfileMutation,
 } from '../store/profileApi';
-
+//
+// Note: need to update Calendar if NotifType changes
+//
 function Profile() {
     const account = useGetTokenQuery();
     const navigate = useNavigate();
@@ -42,7 +44,7 @@ function Profile() {
             setCholesterol(data.cholesterol);
             setBloodPressure(data.blood_pressure);
             setA1cSugarLevels(data.a1c_sugar_level);
-            setNotifType(data.notif_type)
+            setNotifType(data.notif_type);
         }
     }, [data]);
 
@@ -103,14 +105,14 @@ function Profile() {
                                 {bmi}
                             </p>
                             {/* <input
-                type="number"
-                id="bmi"
-                name="bmi"
-                value={bmi}
-                placeholder="bmi"
-                className="form-control"
-                readOnly
-              /> */}
+                                type="number"
+                                id="bmi"
+                                name="bmi"
+                                value={bmi}
+                                placeholder="bmi"
+                                className="form-control"
+                                readOnly
+                            /> */}
                             <label htmlFor="weight">BMI (auto-calculated) </label>
                         </div>
 
@@ -153,7 +155,7 @@ function Profile() {
                             <label htmlFor="a1cSugarLevels">A1C sugar levels</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <label for="inputState" class="form-label">Notification Type</label>
+                            <label for="notifType" class="form-label">Notification Type</label>
                             <select
                                 id="notifType"
                                 name="notifType"
