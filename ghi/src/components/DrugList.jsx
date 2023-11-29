@@ -1,28 +1,24 @@
 import React from 'react';
-import { useGetDrugListQuery } from '../store/drugListApi';
 
-function DrugList() {
-	const { data, isLoading } = useGetDrugListQuery();
+function DrugList({ drugList, onDrugListClick }) {
+	const lengthOfList = 7;
 
 	return (
-		<div>
-			<h1>Drug List</h1>
+		<ul className="list-group" style={{ cursor: "pointer" }}>
+			{
+				drugList.slice(0, lengthOfList)
+					.map((item, index) => (
+						<li
+							key={index}
+							className="list-group-item activeHoverBackground"
+							onClick={() => onDrugListClick(item)}
+						>
+							{item}
+						</li>
+					))
+			}
 
-			{isLoading ? (
-				<p>Loading</p>
-			) : (
-				<div>
-					<label htmlFor="drugList">Drug List:</label>
-					<select name="drugList" id="drugList">
-						<option value="">Select a drug from the list</option>
-						{data &&
-							data.map((drug) => {
-								return <option value={drug}>{drug}</option>;
-							})}
-					</select>
-				</div>
-			)}
-		</div>
+		</ul>
 	);
 }
 
