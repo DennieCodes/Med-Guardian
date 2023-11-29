@@ -54,7 +54,11 @@ def update(
 @router.delete("/api/doctors/{doctor_id}", response_model=bool)
 def delete(
     doctor_id: int,
+    response: Response,
     user: dict = Depends(authenticator.get_current_account_data),
     repo: DoctorRepository = Depends(),
 ) -> bool:
-    return repo.delete(doctor_id)
+    result = repo.delete(doctor_id)
+    if not result:
+        response.status_code = 400
+    return result

@@ -15,47 +15,43 @@ function DoctorsList() {
     }, []);
     if (isLoading) {
         return (
-            <h3>Data Loading</h3>
+            <>
+                <div className='d-flex justify-content-center align-items-center vh-100'>
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only"></span>
+                    </div>
+                </div>
+            </>
         )
     }
     return (
         <>
-            <section className='docsList'>
-                <h1>Users Doctors</h1>
-                <table className="table">
+            <section className='px-5'>
+                <h1 className="m-5 text-center">Users Doctors</h1>
+                <table className="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Phone</th>
                             <th scope="col">Address</th>
-                            <th scope="col"></th>
+                            <th scope="col">Specialty</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark Otto</td>
-                            <td>555-555-5555</td>
-                            <td>123 Somewhere, Ca 90101 Suite #5</td>
-                            <td><button>Edit/Update</button></td>
-                        </tr>
-                        {doctors && doctors.map(doctor => {
+                        {doctors.map(doctor => {
                             return (
                                 <tr key={doctor.id} >
-                                    <th scope="row">{doctor.id}</th>
-                                    <td>{doctor.full_name}</td>
+                                    <td className='activeHoverBackground'><Link to={`/doctors/${doctor.id}`}>{doctor.full_name}</Link></td>
                                     <td>{doctor.phone}</td>
                                     <td>{doctor.address}</td>
-                                    <td><Link to={`/doctors/${doctor.id}`}>Edit/Update</Link></td>
+                                    <td>{doctor.specialty}</td>
                                 </tr>
+
                             )
                         })}
-
-
                     </tbody>
                 </table>
-            </section>
+            </section >
             <CreateDoctor />
         </>
     )

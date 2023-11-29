@@ -7,10 +7,13 @@ function MenuNav() {
 		<nav className='MenuNav'>
 			<ul className='text-center p-4'>
 				<li className='p-2'>
-					<NavLink to="/" className='btn  w-100'>Home</NavLink>
+					<NavLink to="/" className='btn  w-100'>Schedule</NavLink>
 				</li>
 				<li className='p-2'>
-					<NavLink to="/medications" className='btn w-100'>Medications</NavLink>
+					<NavLink to="/" className='btn w-100'>Account Information</NavLink>
+				</li>
+				<li className='p-2'>
+					<NavLink to="/profile" className='btn w-100'>Health Profile</NavLink>
 				</li>
 				{account && <li className='p-2'>
 					<NavLink to="/DoctorsList" className='btn w-100'>Doctors</NavLink>
@@ -19,12 +22,8 @@ function MenuNav() {
 					<NavLink to="/pharmacies" className='btn w-100'>Pharmacies</NavLink>
 				</li>
 				<li className='p-2'>
-					<NavLink to="/" className='btn w-100'>Account Information</NavLink>
+					<NavLink to="/medications" className='btn w-100'>Medications</NavLink>
 				</li>
-				<li className='p-2'>
-					<NavLink to="/profile" className='btn w-100'>Health Profile</NavLink>
-				</li>
-
 			</ul>
 		</nav>
 	);
