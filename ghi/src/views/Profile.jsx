@@ -155,7 +155,6 @@ function Profile() {
                             <label htmlFor="a1cSugarLevels">A1C sugar levels</label>
                         </div>
                         <div class="mb-3">
-                            <label for="notifType" class="form-label">Notification Type</label>
                             <select
                                 id="notifType"
                                 name="notifType"
