@@ -16,7 +16,6 @@ import DrugInteractions from './views/DrugInteractions';
 import './App.css'
 import Profile from './views/Profile';
 import AddProfile from './views/AddProfile';
-import Footer from './components/Footer';
 
 
 function App() {
