@@ -1,3 +1,4 @@
+/* Gobal  */
 .App {
   text-align: center;
 }
@@ -35,6 +36,7 @@ header {
 }
 main {
   display: flex;
+  overflow-y: auto;
 }
 .sideNav {
   flex: 1;
@@ -48,11 +50,25 @@ main {
 nav ul {
   list-style: none;
 }
-
 .mainSection {
   flex: 3;
 }
+/* home */
+.homePage {
+   background-image: url('./assets/med2.jpeg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   min-height: 100%;
+}
+/* Calendar */
+.medCalendar {
 
+}
+/* doctors */
+.docsList {
+  border: thin solid red;
+  padding: 30px;
+}
 ul {
   list-style-type: none;
 }

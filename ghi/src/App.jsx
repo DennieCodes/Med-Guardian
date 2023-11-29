@@ -5,15 +5,18 @@ import MenuNav from './components/MenuNav';
 import Home from './views/Home';
 import Login from './views/Login';
 import Register from './views/Register';
-import DoctorsList from './views/DoctorsList'
+import DoctorsList from './views/DoctorsList';
+import UpdateDoctor from './views/UpdateDoctor';
 import Pharmacies from './views/Pharmacy';
 import PharmacyDetail from './views/PharmacyDetail';
+import MedCalendar from './views/MedCalendar';
 import Medications from './views/Medications';
 import MedicationDetail from './views/MedicationDetail';
 import DrugInteractions from './views/DrugInteractions';
 import './App.css'
 import Profile from './views/Profile';
 import AddProfile from './views/AddProfile';
+
 
 function App() {
 	const { data: account } = useGetTokenQuery();
@@ -32,7 +35,8 @@ function App() {
 					)}
 					<section className="mainSection">
 						<Routes>
-							<Route path="/" element={<Home />} />
+							{/* <Route path="/" element={<Home />} /> */}
+							<Route path="/" element={account ? <MedCalendar /> : <Home />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />
 							<Route path="/doctorsList" element={<DoctorsList />} />
@@ -43,6 +47,7 @@ function App() {
 							<Route path='/medications' element={<Medications />} />
 							<Route path='/medications/:medication_id' element={<MedicationDetail />} />
 							<Route path='/medications/interactions/' element={<DrugInteractions />} />
+							<Route path='/doctors/:doctor_id' element={<UpdateDoctor />} />
 						</Routes>
 					</section>
 				</main>
