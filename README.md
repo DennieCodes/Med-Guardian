@@ -10,6 +10,14 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 - Michael Zinzun
 - Dennie Chan
 
+### Design Color Palette
+
+Button Colors, Title Bar, (#164863)
+Borders for forms and tables (#427D9D)
+Active item (#9BBEC8)
+Alternate background for table (#DDF2FD)
+Background color (#FFFBF5)
+
 ### Database Models Design
 
 The diagram below showcases the various database models utilized in our project and their relationship to one another.

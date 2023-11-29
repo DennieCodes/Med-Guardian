@@ -1,3 +1,22 @@
+## 11/29/23
+
+Today I worked on:
+
+- Created a component for the Add Medication page which shows the user a list of medications from the FDA
+
+- The list is generated dynamically when a user begins typing any name into the input field
+
+- The user can click on the name which will transfer itself to the input field.
+  The reason behind this is that medication names are usually lenghty and complex so we added this feature to make it easier.
+
+## 11/28/23
+
+Today I worked on:
+
+- Finished functionality for Register, Login and Profile page views
+
+- Several back and forth merge requests, code reviews with fellow team mates
+
 ## 11/16/23
 
 Today I worked on:

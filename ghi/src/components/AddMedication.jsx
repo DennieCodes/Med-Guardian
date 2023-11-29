@@ -1,12 +1,14 @@
 import { useAddMedicationMutation, useGetDrugListQuery } from "../store/medications"
 import { useGetPharmaciesQuery } from "../store/pharmacies";
-import { useGetDoctorsQuery } from "../store/doctorsApi"
+import { useGetDoctorsQuery } from "../store/doctorsApi";
 import { useState, useEffect } from "react";
+
+import DrugList from "./DrugList";
 
 const AddMedication = () => {
     const { data: doctors, isLoading: doctorsLoading } = useGetDoctorsQuery()
     const { data: pharmacies, isLoading: pharmaciesLoading } = useGetPharmaciesQuery()
-    const { data: drugs, isLoading: drugListLoading } = useGetDrugListQuery()
+    const { data: drugList, isLoading: drugListLoading } = useGetDrugListQuery()
     const [name, setName] = useState('');
     const [strength, setStrength] = useState('');
     const [dosage, setDosage] = useState('');
@@ -16,6 +18,8 @@ const AddMedication = () => {
     const [doctor, setDoctor] = useState('');
     const [pharmacy, setPharmacy] = useState('');
     const [error, setError] = useState('');
+    const [filteredDrugList, setFilteredDrugList] = useState('');
+    const [drugListDisplay, setDrugListDisplay] = useState(false);
     const [addMedication, result] = useAddMedicationMutation()
 
     useEffect(() => {
@@ -33,9 +37,22 @@ const AddMedication = () => {
         }
     }, [result])
 
+    const handleDrugListClick = (value) => {
+        setName(value);
+        setDrugListDisplay(false);
+    }
+
     const handleNameChange = (event) => {
         const value = event.target.value;
         setName(value);
+        setDrugListDisplay(true);
+
+        const filteredDrugList = drugList.filter((item) =>
+            item.toLowerCase()
+                .includes(value.toLowerCase())
+        );
+
+        setFilteredDrugList(filteredDrugList);
     }
     const handleStrengthChange = (event) => {
         const value = event.target.value;
@@ -105,6 +122,12 @@ const AddMedication = () => {
                         />
                         <label htmlFor="name">Name</label>
                     </div>
+                    {drugListDisplay && (
+                        <DrugList drugList={filteredDrugList}
+                            onDrugListClick={handleDrugListClick}
+                        />
+                    )}
+
                     <div className="form-floating mb-3">
                         <input
                             onChange={handleStrengthChange}
