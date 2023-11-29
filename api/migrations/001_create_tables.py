@@ -27,6 +27,7 @@ steps = [
             cholesterol INTEGER NULL,
             blood_pressure VARCHAR(10) NULL,
             A1C_sugar_level DECIMAL NULL,
+            notif_type VARCHAR(20) NULL,
             username VARCHAR(50) references user_accounts(username)
         );
         """,
@@ -89,6 +90,28 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE medications;
+        """,
+    ],
+    [
+        # "Up" SQL statement
+        """
+        CREATE TABLE med_events (
+            id SERIAL PRIMARY KEY NOT NULL,
+            color VARCHAR(200) NOT NULL,
+            from VARCHAR(30) NOT NULL,
+            to VARCHAR(30) NOT NULL,
+            title VARCHAR(100) NOT NULL,
+            notif_type VARCHAR(30) NOT NULL,
+            pill_count INTEGER NOT NULL,
+            med references medications(id),
+            prescribed_by references doctors(id),
+            user_id INTEGER references user_accounts(id)
+            user_profile_id references user_profiles(id)
+        );
+        """,
+        # "Down" SQL statement
+        """
+        DROP TABLE med_events;
         """,
     ],
 ]

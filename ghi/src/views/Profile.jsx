@@ -16,6 +16,7 @@ function Profile() {
   const [cholesterol, setCholesterol] = useState(0);
   const [bloodPressure, setBloodPressure] = useState("");
   const [a1cSugarLevels, setA1cSugarLevels] = useState(0);
+  const [notifType, setnotifType] = useState("");
 
   const { data, isLoading } = useGetProfileQuery();
   const [updateProfile] = useUpdateProfileMutation();
@@ -41,6 +42,7 @@ function Profile() {
       setCholesterol(data.cholesterol);
       setBloodPressure(data.blood_pressure);
       setA1cSugarLevels(data.a1c_sugar_level);
+      setnotifType(data.notif_type)
     }
   }, [data]);
 
@@ -53,6 +55,7 @@ function Profile() {
       cholesterol: cholesterol,
       blood_pressure: bloodPressure,
       a1c_sugar_level: a1cSugarLevels,
+      notif_type: notifType,
       profile_id: data.id
     })
   }
@@ -135,6 +138,18 @@ function Profile() {
               <label htmlFor="bloodPressure">Blood pressure (Systolic/Diastolic)</label>
             </div>
 
+            <div className="form-floating mb-3">
+              <input
+                type="number"
+                id="a1cSugarLevels"
+                name="a1cSugarLevels"
+                value={a1cSugarLevels}
+                placeholder="a1cSugarLevels"
+                className="form-control"
+                onChange={(e) => setA1cSugarLevels(e.target.value)}
+              />
+              <label htmlFor="a1cSugarLevels">A1C sugar levels</label>
+            </div>
             <div className="form-floating mb-3">
               <input
                 type="number"

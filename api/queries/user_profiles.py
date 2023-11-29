@@ -12,7 +12,7 @@ class ProfilesQueries:
                         """
                         INSERT INTO user_profiles
                         (height, weight, cholesterol, blood_pressure,
-                        A1C_sugar_level, username)
+                        A1C_sugar_level, notif_type, username)
                         VALUES (%s, %s, %s, %s, %s, %s)
                         RETURNING id;
                         """,
@@ -22,6 +22,7 @@ class ProfilesQueries:
                             profile["cholesterol"],
                             profile["blood_pressure"],
                             profile["a1c_sugar_level"],
+                            profile["notif_type"],
                             account_username,
                         ],
                     )
@@ -38,7 +39,7 @@ class ProfilesQueries:
                 result = db.execute(
                     """
                     SELECT id, height, weight, cholesterol,
-                    blood_pressure, A1C_sugar_level, username
+                    blood_pressure, A1C_sugar_level, notif_type, username
                     FROM user_profiles
                     WHERE username = %s
                     """,
@@ -54,7 +55,8 @@ class ProfilesQueries:
                     cholesterol=record[3],
                     blood_pressure=record[4],
                     a1c_sugar_level=record[5],
-                    username=record[6],
+                    notif_type=record[6],
+                    username=record[7],
                 )
 
     def update(self, profile_id: int, info: ProfileIn, username: str):
@@ -70,6 +72,7 @@ class ProfilesQueries:
                         cholesterol = %s,
                         blood_pressure = %s,
                         A1C_sugar_level = %s
+                        notif_type = %s
                         WHERE id = %s AND username = %s
                         RETURNING id
                         """,
@@ -79,6 +82,7 @@ class ProfilesQueries:
                             profile["cholesterol"],
                             profile["blood_pressure"],
                             profile["a1c_sugar_level"],
+                            profile["notif_type"],
                             profile_id,
                             username,
                         ],
