@@ -46,7 +46,7 @@ function Profile() {
             setA1cSugarLevels(data.a1c_sugar_level);
             setNotifType(data.notif_type);
         }
-    }, [data]);
+    }, [data, isLoading]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -154,14 +154,14 @@ function Profile() {
                             />
                             <label htmlFor="a1cSugarLevels">A1C sugar levels</label>
                         </div>
-                        <div class="mb-3">
+                        <div className="mb-3">
                             <select
                                 id="notifType"
                                 name="notifType"
                                 className="form-select"
                                 value={notifType}
                                 onChange={(e) => setNotifType(e.target.value)}>
-                                <option value="none" selected>Choose Notification</option>
+                                <option value="none" >Choose Notification</option>
                                 <option value="none">None</option>
                                 <option value="email">Email</option>
                                 <option value="text">Text</option>
