@@ -78,6 +78,7 @@ class UpdateMedication:
         result.update(medication)
         return MedicationsOut(**result)
 
+
 def test_create_medication():
     # Arrange
     app.dependency_overrides[MedicationRepository] = CreateMedication
