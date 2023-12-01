@@ -154,14 +154,14 @@ function Profile() {
                             />
                             <label htmlFor="a1cSugarLevels">A1C sugar levels</label>
                         </div>
-                        <div class="mb-3">
+                        <div className="mb-3">
                             <select
                                 id="notifType"
                                 name="notifType"
                                 className="form-select"
                                 value={notifType}
                                 onChange={(e) => setNotifType(e.target.value)}>
-                                <option value="none" selected>Choose Notification</option>
+                                <option value="">Choose Notification</option>
                                 <option value="none">None</option>
                                 <option value="email">Email</option>
                                 <option value="text">Text</option>
