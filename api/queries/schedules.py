@@ -76,6 +76,30 @@ class EventsRepository:
             return {"message":
                     "Could not get a list of events"}
 
+    def update_color(self, event_id: int, color: str, user_id: int):
+        try:
+            with pool.connection() as conn:
+                with conn.cursor() as db:
+                    db.execute(
+                        """
+                        UPDATE med_events
+                        SET color = %s
+                        WHERE id = %s AND user_id = %s
+                        RETURNING id,
+                        color,
+                        from_date,
+                        to_date,
+                        title,
+                        med_id,
+                        user_id
+                        """,
+                        [color, event_id, user_id]
+                    )
+                    record = db.fetchone()
+                    return self.record_to_event_out(record)
+        except Exception as e:
+            print(e)
+            return {"message": "The color of this even could not be updated."}
 
     def event_in_to_out(self,
                         id: int,

@@ -15,9 +15,11 @@ def create(
     repo: EventsRepository = Depends()
 ):
     events = repo.create(events, user["id"])
-    if not isinstance(events, list) or not all(isinstance(e, EventOut) for e in events):
+    if not isinstance(events, list) or \
+       not all(isinstance(e, EventOut) for e in events):
         response.status_code = 400
     return events
+
 
 @router.get("/api/events", response_model=Union[List[EventOut], Error])
 def get_all(
@@ -26,3 +28,16 @@ def get_all(
 ):
     events = repo.get_all(user["id"])
     return events
+
+
+@router.put(
+    "/api/events/{event_id}/{color}",
+    response_model=Union[EventOut, Error]
+)
+def updat_color(
+    event_id: int,
+    color: str,
+    user: dict = Depends(authenticator.get_current_account_data),
+    repo: EventsRepository = Depends()
+):
+    return repo.update_color(event_id, color, user["id"])

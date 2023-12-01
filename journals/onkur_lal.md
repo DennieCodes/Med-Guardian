@@ -1,3 +1,9 @@
+## 12/1/23
+
+Today I worked on:
+
+- I completed the backend routes for the medication events model.
+
 ## 11/30/23
 
 Today I worked on:
