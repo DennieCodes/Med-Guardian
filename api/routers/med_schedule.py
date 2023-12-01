@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Response, Depends
 from typing import Union, List
-from api.models.schedules import ScheduleIn, ScheduleOut, Error
+from models.schedules import ScheduleIn, ScheduleOut, Error
 from queries.schedules import ScheduleRepository
 from authenticator import authenticator
 
