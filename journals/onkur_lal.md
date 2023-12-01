@@ -1,10 +1,16 @@
-## 11/28/23
+## 11/30/23
+
+Today I worked on:
+
+- I completed the unit tests for all the CRUD operation routes for the medications.
+
+## 11/29/23
 
 Today I worked on:
 
 - I completed the frontend for the doctors section and implemented consistent styling to all componenets. I also add styling to the nav and home page.
 
-## 11/27/23
+## 11/28/23
 
 Today I worked on:
 
