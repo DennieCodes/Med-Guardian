@@ -1,9 +1,12 @@
+
 import React from 'react';
 import Calendar from 'react-awesome-calendar';
 import moment from 'moment';
 import './MedCal.css';
 const localizer = momentLocalizer(moment);
 // Events will be populated by MedEvent Class based on Medication dosage, frequency, and pill count
+
+// Construct date formats
 const testDate = new Date();
 const holdDate = new Date();
 holdDate.setMinutes(0);
