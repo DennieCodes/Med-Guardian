@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 
-class ScheduleIn(BaseModel):
+class EventIn(BaseModel):
     color: str
     from_date: str
     to_date: str
@@ -10,7 +10,7 @@ class ScheduleIn(BaseModel):
     user_id: int
 
 
-class ScheduleOut(BaseModel):
+class EventOut(BaseModel):
     id: int
     color: str
     from_date: str

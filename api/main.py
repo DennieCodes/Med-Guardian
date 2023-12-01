@@ -9,6 +9,7 @@ from routers import (
     pharmacies,
     doctors,
     medications,
+    med_schedule,
 )
 
 app = FastAPI()
@@ -28,6 +29,7 @@ app.include_router(user_profiles.router, tags=["UserProfiles"])
 app.include_router(pharmacies.router, tags=["Pharmacies"])
 app.include_router(medications.router, tags=["Medications"])
 app.include_router(third_party_calls.router, tags=["3rd Party Calls"])
+app.include_router(med_schedule.router, tags=["Med Schedules"])
 
 
 @app.get("/api/launch-details")
