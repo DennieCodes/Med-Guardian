@@ -9,7 +9,7 @@ import DoctorsList from './views/DoctorsList';
 import UpdateDoctor from './views/UpdateDoctor';
 import Pharmacies from './views/Pharmacy';
 import PharmacyDetail from './views/PharmacyDetail';
-import MedCalendar from './views/MedCalendar';
+import MedCalendar2 from './views/MedCalendar2';
 import Medications from './views/Medications';
 import MedicationDetail from './views/MedicationDetail';
 import DrugInteractions from './views/DrugInteractions';
@@ -36,7 +36,7 @@ function App() {
 					<section className="mainSection">
 						<Routes>
 							{/* <Route path="/" element={<Home />} /> */}
-							<Route path="/" element={account ? <MedCalendar /> : <Home />} />
+							<Route path="/" element={account ? <MedCalendar2 /> : <Home />} />
 							<Route path="/login" element={<Login />} />
 							<Route path="/register" element={<Register />} />
 							<Route path="/doctorsList" element={<DoctorsList />} />

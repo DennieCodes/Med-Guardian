@@ -12,3 +12,46 @@ main {
   padding: 50px !important;
 
 }
+/* Calendar.css */
+.calendar-container {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rbc-calendar {
+  font-family: 'Arial', sans-serif;
+}
+
+.rbc-header {
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ddd;
+}
+
+.rbc-day-bg {
+  background-color: #fff;
+}
+
+.rbc-off-range-bg {
+  background-color: #f9f9f9;
+}
+
+.rbc-today {
+  background-color: #fcfcfc;
+  border: 1px solid #ddd;
+}
+
+.rbc-event {
+  background-color: #3174ad;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+
+.rbc-selected-cell {
+  background-color: #e6f7ff;
+}
