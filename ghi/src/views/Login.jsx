@@ -40,7 +40,7 @@ function Login() {
 				<div className="form-floating mb-3">
 					<input
 						onChange={(e) => setPassword(e.target.value)}
-						type="text"
+						type="password"
 						name="password"
 						value={password}
 						placeholder="password"

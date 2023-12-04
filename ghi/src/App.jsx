@@ -24,7 +24,6 @@ function App() {
 		<BrowserRouter>
 			<div className='container-fluid wrapper'>
 				<header className='text-center'>
-					<h1>Drug Guardian</h1>
 					<Nav />
 				</header>
 				<main>
@@ -52,7 +51,7 @@ function App() {
 					</section>
 				</main>
 				<footer className='text-center p-3'>
-					<p>App Name ©2023 developed by DOM Squad</p>
+					<p>Med Guardian ©2023 developed by DOM Squad</p>
 				</footer>
 			</div>
 

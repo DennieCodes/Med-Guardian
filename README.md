@@ -22,26 +22,26 @@ Background color (#FFFBF5)
 
 The diagram below showcases the various database models utilized in our project and their relationship to one another.
 
-![](docs/images/API-Design.png)
+![](docs/images/API-Design-web.png)
 
 ### Backend API Endpoints
 
 Here are diagrams of the API endpoints serving our project:
 
 **Medications API**
-![](docs/images/Medications-endpoints.jpg)
+![](docs/images/Medications-endpoints-web.jpg)
 
 **Pharmacy API**
-![](docs/images/Pharmacy-endpoints.jpg)
+![](docs/images/Pharmacy-endpoints-web.jpg)
 
 **Doctors API**
-![](docs/images/Doctors-endpoints.jpg)
+![](docs/images/Doctors-endpoints-web.jpg)
 
 **User Account API**
-![](docs/images/user-account-endpoints.jpg)
+![](docs/images/user-account-endpoints-web.jpg)
 
 **User Profile API**
-![](docs/images/user-profile-endpoints.jpg)
+![](docs/images/user-profile-endpoints-web.jpg)
 
 ### Steps to Run the Project
 
