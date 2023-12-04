@@ -13,14 +13,7 @@ const localizer = momentLocalizer(moment);
 
 // function to get medication data. Note: will change to get med_events data
 const MedCalendar = () => {
-    let events = [
-        {
-            title: 'Event 1',
-            start: new Date(2023, 11, 3, 12, 0), // month is zero-based
-            end: new Date(2023, 11, 3, 12, 30),
-        },
-
-    ];
+    let events = [];
     const { data: event_data, isLoading } = useGetEventsQuery();
     const { data: account } = useGetTokenQuery();
 

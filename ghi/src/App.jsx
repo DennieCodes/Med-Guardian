@@ -24,7 +24,7 @@ function App() {
 		<BrowserRouter>
 			<div className='container-fluid wrapper'>
 				<header className='text-center'>
-					<h1 >The App Name medication tracker</h1>
+					<h1 >MedGuardian</h1>
 					<Nav />
 				</header>
 				<main>
@@ -52,7 +52,7 @@ function App() {
 					</section>
 				</main>
 				<footer className='text-center p-3'>
-					<p>App Name ©2023 developed by DOM Squad</p>
+					<p>MedGuardian ©2023 developed by DOM Squad</p>
 				</footer>
 			</div>
 

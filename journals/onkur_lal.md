@@ -1,3 +1,9 @@
+## 12/4/23
+
+Today I worked on:
+
+- I fixed our med events table to handle on delete cascade and updated our erorr message for deleting doctors and pahramcies. I also updated our application name where needed.
+
 ## 12/1/23
 
 Today I worked on:
