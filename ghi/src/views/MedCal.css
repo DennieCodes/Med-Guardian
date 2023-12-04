@@ -50,6 +50,12 @@ main {
   border-radius: 3px;
   padding: 2px 5px;
   cursor: pointer;
+  justify-content: center;
+}
+.rbc-event-content {
+  font-size: 10px;
+  line-height: unset !important;
+  width: fit-content !important;
 }
 
 .rbc-selected-cell {
