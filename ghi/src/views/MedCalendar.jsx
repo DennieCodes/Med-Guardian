@@ -29,7 +29,6 @@ const MedCalendar = () => {
         // Handle slot selection
         console.log('Slot selected:', { start, end, slots, action });
     };
-    let events = [];
     const { data: event_data, isLoading } = useGetEventsQuery();
 
     useEffect(() => {
@@ -89,6 +88,9 @@ const MedCalendar = () => {
                 onSelectSlot={handleSelectSlot}
                 style={{ height: '500px' }} // Set the height of the calendar
             />
+            <section className='popup'>
+                <h1>popup goes here!</h1>
+            </section>
 
         </div >
     );
