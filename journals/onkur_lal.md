@@ -1,10 +1,28 @@
-## 11/28/23
+## 12/4/23
+
+Today I worked on:
+
+- I fixed our med events table to handle on delete cascade and updated our erorr message for deleting doctors and pahramcies. I also updated our application name where needed.
+
+## 12/1/23
+
+Today I worked on:
+
+- I completed the backend routes for the medication events model.
+
+## 11/30/23
+
+Today I worked on:
+
+- I completed the unit tests for all the CRUD operation routes for the medications.
+
+## 11/29/23
 
 Today I worked on:
 
 - I completed the frontend for the doctors section and implemented consistent styling to all componenets. I also add styling to the nav and home page.
 
-## 11/27/23
+## 11/28/23
 
 Today I worked on:
 

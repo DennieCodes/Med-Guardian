@@ -1,3 +1,25 @@
+## 12/05/23
+
+- Created a new logo for the project after we finalized on our application name: Med Guardian
+
+- Revised layout on Top Navigation
+
+- Optimized site images for Web
+
+- Updated ReadMe with screenshots
+
+## 12/01/23
+
+- Created the Redux store for medications scheduling which is a new feature that my team and I are working on.
+
+Good team dynamic as Michael worked on developing the calendar features which he researched and introduced, and also built out the SQL models to accommodate them. Onkur then built out the FastApi routes and queries. I built out the Redux and state management for the feature
+
+## 11/30/23
+
+Today I worked on:
+
+- Researching and experimenting on different technologies to try and create a scheduler for the server to send out notifications.
+
 ## 11/29/23
 
 Today I worked on:

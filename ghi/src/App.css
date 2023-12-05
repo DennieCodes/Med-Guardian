@@ -1,95 +1,121 @@
 /* Gobal  */
 .App {
-  text-align: center;
+	text-align: center;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+	margin: 2em 0;
 }
 body {
-  background-color: #fffbf5;
+	background-color: #fffbf5;
 }
 .wrapper {
-  padding: 0 !important;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 100px 1fr 50px;
+	padding: 0 !important;
+	height: 100vh;
+	display: grid;
+	grid-template-rows: 100px 1fr 50px;
 }
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 button {
-  background-color: #164863 !important;
-  color: whitesmoke !important;
+	background-color: #164863 !important;
+	color: whitesmoke !important;
 }
 
 header {
-  background-color: #164863;
-  color: whitesmoke !important;
+	background-color: #164863;
+	color: whitesmoke !important;
 }
 main {
-  display: flex;
-  overflow-y: auto;
+	display: flex;
+	overflow-y: auto;
 }
 .sideNav {
-  flex: 1;
-  min-width: 300px;
-  max-width: 450px;
+	flex: 1;
+	min-width: 300px;
+	max-width: 450px;
 }
 .MenuNav a {
-  background-color: #164863 !important;
-  color: whitesmoke !important;
+	background-color: #164863 !important;
+	color: whitesmoke !important;
 }
 nav ul {
-  list-style: none;
+	list-style: none;
 }
 .mainSection {
-  flex: 3;
+	flex: 3;
 }
 
 .activeHoverBackground:hover {
-  background-color: #9bbec8;
+	background-color: #9bbec8;
 }
+
+.top-nav {
+	padding-right: 2em;
+
+	& li {
+		width: 12ch;
+
+		& a {
+			cursor: pointer;
+			color: white;
+
+			&:hover {
+				color: #9bbec8;
+			}
+		}
+	}
+}
+
+.logo {
+	margin-left: 1em;
+}
+
 /* home */
 .homePage {
-  background-image: url("./assets/med2.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100%;
+	background-image: url('./assets/hero-image-laurynas-me-1TL8AoEDj_c-unsplash-web.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	min-height: 100%;
 }
 /* Calendar */
 .medCalendar {
 }
 /* doctors */
 .docsList {
-  border: thin solid red;
-  padding: 30px;
+	border: thin solid red;
+	padding: 30px;
 }
 ul {
-  list-style-type: none;
+	list-style-type: none;
 }
 
 .navHover:hover {
-  color: #9bbec8 !important;
-  border-color: #9bbec8 !important;
+	color: #9bbec8 !important;
+	border-color: #9bbec8 !important;
 }
 .homeSection {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 1.25rem;
-  border-radius: 0.625rem;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
-  max-width: 55rem;
-  margin: 1.5rem auto;
-  color: #333;
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 1.25rem;
+	border-radius: 0.625rem;
+	box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.1);
+	max-width: 55rem;
+	margin: 1.5rem auto;
+	color: #333;
 }
 footer {
-  background-color: #164863;
-  color: white;
+	background-color: #164863;
+	color: white;
+}
+.myCustomHeight {
+  height: 100%;
 }

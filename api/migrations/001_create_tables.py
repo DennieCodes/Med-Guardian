@@ -101,12 +101,8 @@ steps = [
             from_date VARCHAR(30) NOT NULL,
             to_date VARCHAR(30) NOT NULL,
             title VARCHAR(100) NOT NULL,
-            notif_type VARCHAR(30) NOT NULL,
-            pill_count INTEGER NOT NULL,
-            med_id INTEGER references medications(id),
-            prescribed_by INTEGER references doctors(id),
-            user_id INTEGER references user_accounts(id),
-            user_profile_id INTEGER references user_profiles(id)
+            med_id INTEGER references medications(id) ON DELETE CASCADE,
+            user_id INTEGER references user_accounts(id)
         );
         """,
         # "Down" SQL statement
