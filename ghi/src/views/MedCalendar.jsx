@@ -1,89 +1,76 @@
-import React from 'react';
-import Calendar from 'react-awesome-calendar';
-import './MedCal.css';
-// Events will be populated by MedEvent Class based on Medication dosage, frequency, and pill count
-const events = [{
-    id: 1,
-    color: '#fd3153',
-    from: '2023-11-28T18:00:00+00:00',
-    to: '2023-11-28T19:00:00+00:00',
-    title: 'Take Tylon',
-    user: 'User Id',
-    med: "med_id",
-    notif_type: "[none, email or text]",
-    pill_count: 'pill_count',
-    prescribed_by: 'doctor',
-}, {
-    id: 2,
-    color: '#1ccb9e',
-    from: '2023-11-27T18:00:00+00:00',
-    to: '2023-11-27T19:00:00+00:00',
-    title: 'Holiday',
-    user: 'User Id',
-    med: "med_id",
-    notification_type: "[none, email or text]",
-    pill_count: 'pill_count',
-    prescribed_by: 'doctor',
-}, {
-    id: 3,
-    color: '#F480A8',
-    from: '2023-11-29T05:00:00+00:00',
-    to: '2023-11-29T06:01:00+00:00',
-    title: 'Jet skiing',
-    user: 'User Id',
-    med: "med_id",
-    notification_type: "[none, email or text]",
-    pill_count: 'pill_count',
-    prescribed_by: 'doctor',
-}, {
-    id: 4,
-    color: '#fda256',
-    from: '2020-11-05T18:00:00+00:00',
-    to: '2020-11-05T19:30:00+00:00',
-    title: 'Dinner',
-    user: 'User Id',
-    med: "med_id",
-    notification_type: "[none, email or text]",
-    pill_count: 'pill_count',
-    prescribed_by: 'doctor',
-}, {
-    id: 5,
-    color: '#8281fd',
-    from: '2020-11-15T12:00:00+00:00',
-    to: '2020-11-15T21:00:00+00:00',
-    title: {},
-    user: 'User Id',
-    med: "med_id",
-    notification_type: "[none, email or text]",
-    pill_count: 'pill_count',
-    prescribed_by: 'doctor',
-}];
 
-class MedCalendar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.calendar = React.createRef();
+import React, { useEffect } from 'react';
+import { Calendar, momentLocalizer } from 'react-big-calendar';
+import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useGetEventsQuery } from "../store/medScheduleApi";
+import { useGetTokenQuery } from '../store/authApi';
+import './MedCal.css'; // Import your custom CSS file
+// declare events array to populate calendar
+
+
+const localizer = momentLocalizer(moment);
+
+// function to get medication data. Note: will change to get med_events data
+const MedCalendar = () => {
+    let events = [];
+    const { data: event_data, isLoading } = useGetEventsQuery();
+    const { data: account } = useGetTokenQuery();
+
+    useEffect(() => {
+        getData();
+    }, [event_data])
+
+    function getData() {
+        if (event_data !== undefined) {
+            for (let event of event_data) {
+                let fromDate = new Date(event.from_date)
+                let toDate = new Date(event.to_date)
+                // format dates
+                const fy = fromDate.getFullYear();
+                const fm = fromDate.getMonth();
+                const fd = fromDate.getDate();
+                const fh = fromDate.getHours();
+                const fmin = fromDate.getMinutes()
+                const ty = toDate.getFullYear();
+                const tm = toDate.getMonth();
+                const td = toDate.getDate();
+                const th = toDate.getHours();
+                const tmin = toDate.getMinutes();
+                const _from = new Date(fy, fm, fd, fh, fmin);
+                const _to = new Date(ty, tm, td, th, tmin);
+                const _title = event.title
+
+                events.push({
+                    title: _title,
+                    start: _from,
+                    end: _to
+                })
+
+            }
+            console.log('event: ', events);
+        }
+
     }
 
-    componentDidMount() {
-        const details = this.calendar.current.getDetails();
-        console.log('deatils: ', details)
-        // call get events endpoint
-    }
-
-    render() {
+    console.log("event_data: ", event_data);
+    if (isLoading) {
         return (
-            <section className='pageCalendar'>
-                <Calendar
-                    ref={this.calendar}
-                    onClickEvent={(event) => console.log('this is an event', event)}
-                    onChange={(dates) => console.log(dates)}
-                    onClickTimeLine={(date) => console.log(date)}
-                    events={events}
-                />
-            </section>
-        );
+            <h1>is loading</h1>
+        )
     }
-}
+    return (
+
+        < div className="calendar-container" >
+            <Calendar
+                localizer={localizer}
+                events={events}
+                startAccessor="start"
+                endAccessor="end"
+                style={{ height: '500px' }} // Set the height of the calendar
+            />
+        </div >
+    );
+};
 
 export default MedCalendar;

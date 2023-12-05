@@ -1,5 +1,6 @@
 import { useAddMedicationMutation, useGetDrugListQuery } from "../store/medications"
 import { useGetPharmaciesQuery } from "../store/pharmacies";
+import { useAddEventMutation, } from "../store/medScheduleApi";
 import { useGetDoctorsQuery } from "../store/doctorsApi";
 import { useState, useEffect } from "react";
 
@@ -20,10 +21,73 @@ const AddMedication = () => {
     const [error, setError] = useState('');
     const [filteredDrugList, setFilteredDrugList] = useState('');
     const [drugListDisplay, setDrugListDisplay] = useState(false);
-    const [addMedication, result] = useAddMedicationMutation()
+    const [addMedication, result] = useAddMedicationMutation();
+    const [med_events, event_results] = useAddEventMutation();
+    // function to add scheduled event (schedule medication)
+    async function createCalendarEvents(medID, userID) {
+        let color = "red"
+        const events = [];
+        const med_data = {
+            title: name,
+            dosage: dosage,
+            freq: frequency,
+            qty: quantity,
+            doctor_id: doctor,
+            pharmacy_id: pharmacy
+        }
+        const freq = med_data.freq;
+        const dose = med_data.dosage;
+        const qty = med_data.qty;
+        const startDate = new Date();
+        startDate.setHours(8);
+        startDate.setMinutes(0);
+        let beginDate = new Date(startDate)
+        const changeHours = Math.floor(24 / freq)
 
+        // construct events until quantity is 0 based on frequency and dosage
+        let count = qty
+        while (count > 0) {
+            if (count === med_data.qty) {
+                const fromDate = new Date(beginDate);
+                const toDate = new Date(fromDate);
+                toDate.setMinutes(30)
+                console.log('fromDate: ', fromDate);
+                console.log('toDate: ', toDate);
+                events.push({
+                    color: color,
+                    title: med_data.title,
+                    from_date: fromDate,
+                    to_date: toDate,
+                    med_id: medID,
+                    user_id: userID
+                })
+            } else {
+                let fromDate = incrementDate(beginDate, changeHours);
+                let toDate = new Date(fromDate);
+                toDate.setMinutes(30);
+                events.push({
+                    color: color,
+                    title: med_data.title,
+                    from_date: fromDate,
+                    to_date: toDate,
+                    med_id: medID,
+                    user_id: userID
+                });
+                beginDate = new Date(fromDate);
+            }
+            count -= dose;
+        }
+        med_events(events);
+        function incrementDate(myDate, hours_to_change) {
+            myDate.setHours(myDate.getHours() + hours_to_change);
+            myDate.setMinutes(0);
+            return myDate;
+        }
+    }
+    // createCalendarEvents();
     useEffect(() => {
         if (result.isSuccess) {
+            createCalendarEvents(result.data.id, result.data.user_id);
             setName('')
             setStrength("")
             setDosage("")
@@ -219,9 +283,9 @@ const AddMedication = () => {
                     <div className="mb-3">
                         <select
                             onChange={handlePharmacyChange}
-                            required
                             id="pharmacy"
                             name="pharmacy"
+                            required
                             className="form-select"
                             value={pharmacy}
                         >

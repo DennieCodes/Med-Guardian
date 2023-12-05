@@ -116,3 +116,6 @@ footer {
 	background-color: #164863;
 	color: white;
 }
+.myCustomHeight {
+  height: 100%;
+}

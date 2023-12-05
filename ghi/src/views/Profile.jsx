@@ -161,7 +161,11 @@ function Profile() {
                                 className="form-select"
                                 value={notifType}
                                 onChange={(e) => setNotifType(e.target.value)}>
+<<<<<<< HEAD
                                 <option value="none" >Choose Notification</option>
+=======
+                                <option value="">Choose Notification</option>
+>>>>>>> mz-calendar-dev
                                 <option value="none">None</option>
                                 <option value="email">Email</option>
                                 <option value="text">Text</option>
