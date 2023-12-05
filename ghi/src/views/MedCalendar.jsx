@@ -1,31 +1,41 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+// import { Modal, Button } from 'react-bootstrap';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useGetEventsQuery } from "../store/medScheduleApi";
-import { useGetTokenQuery } from '../store/authApi';
 import './MedCal.css'; // Import your custom CSS file
 // declare events array to populate calendar
 
 
-const localizer = momentLocalizer(moment);
+
 
 // function to get medication data. Note: will change to get med_events data
 const MedCalendar = () => {
-    let events = [
-        {
-            title: 'Event 1',
-            start: new Date(2023, 11, 3, 12, 0), // month is zero-based
-            end: new Date(2023, 11, 3, 12, 30),
-        },
+    const localizer = momentLocalizer(moment);
+    const [showSched, setShowSched] = useState(false);
+    const handleClose = () => setShowSched(false);
+    // const handleShow = () => setShowSched(true);
+    let events = [];
+    const handleSelectEvent = (event, e) => {
+        // Handle event selection
+        console.log('Event selected:', event);
+        // setShowSched(true)
+        let el = document.createElement('div');
+        el.innerHTML('<h1>I am here!!</h1>')
+    };
 
-    ];
+    const handleSelectSlot = ({ start, end, slots, action }) => {
+        // Handle slot selection
+        console.log('Slot selected:', { start, end, slots, action });
+    };
     const { data: event_data, isLoading } = useGetEventsQuery();
-    const { data: account } = useGetTokenQuery();
 
     useEffect(() => {
+
         getData();
+
     }, [event_data])
 
     function getData() {
@@ -69,13 +79,17 @@ const MedCalendar = () => {
     return (
 
         < div className="calendar-container" >
+
             <Calendar
                 localizer={localizer}
                 events={events}
                 startAccessor="start"
                 endAccessor="end"
+                onSelectEvent={handleSelectEvent}
+                onSelectSlot={handleSelectSlot}
                 style={{ height: '500px' }} // Set the height of the calendar
             />
+
         </div >
     );
 };
