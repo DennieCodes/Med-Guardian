@@ -10,7 +10,6 @@ import './MedCal.css'; // Import your custom CSS file
 
 
 
-
 // function to get medication data. Note: will change to get med_events data
 const MedCalendar = () => {
     const localizer = momentLocalizer(moment);

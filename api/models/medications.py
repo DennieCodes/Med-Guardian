@@ -12,6 +12,7 @@ class MedicationRefillsOut(BaseModel):
 
 
 class MedicationQuantityIn(BaseModel):
+    dosage: int
     quantity: int
 
 
