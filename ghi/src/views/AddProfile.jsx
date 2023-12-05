@@ -111,7 +111,8 @@ function AddProfile() {
             name="notifType"
             className="form-select"
             value={notifType}
-            onChange={(e) => setNotifType(e.target.value)}>
+            onChange={(e) => setNotifType(e.target.value)}
+          >
             <option value="">Choose Notification</option>
             <option value="none">None</option>
             <option value="email">Email</option>

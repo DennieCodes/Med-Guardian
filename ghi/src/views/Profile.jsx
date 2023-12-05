@@ -23,6 +23,8 @@ function Profile() {
     const { data, isLoading } = useGetProfileQuery();
     const [updateProfile] = useUpdateProfileMutation();
 
+    console.log("Data: ", data);
+
     // Redirect user if not authenticated
     useEffect(() => {
         if (!account.data) {
@@ -46,7 +48,7 @@ function Profile() {
             setA1cSugarLevels(data.a1c_sugar_level);
             setNotifType(data.notif_type);
         }
-    }, [data]);
+    }, [data, isLoading]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

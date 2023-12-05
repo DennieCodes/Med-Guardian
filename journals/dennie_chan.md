@@ -1,3 +1,13 @@
+## 12/05/23
+
+- Created a new logo for the project after we finalized on our application name: Med Guardian
+
+- Revised layout on Top Navigation
+
+- Optimized site images for Web
+
+- Updated ReadMe with screenshots
+
 ## 12/01/23
 
 - Created the Redux store for medications scheduling which is a new feature that my team and I are working on.
