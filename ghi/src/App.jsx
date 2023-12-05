@@ -24,10 +24,6 @@ function App() {
 		<BrowserRouter>
 			<div className='container-fluid wrapper'>
 				<header className='text-center'>
-<<<<<<< HEAD
-=======
-					<h1 >MedGuardian</h1>
->>>>>>> mz-calendar-dev
 					<Nav />
 				</header>
 				<main>
@@ -55,11 +51,7 @@ function App() {
 					</section>
 				</main>
 				<footer className='text-center p-3'>
-<<<<<<< HEAD
 					<p>Med Guardian ©2023 developed by DOM Squad</p>
-=======
-					<p>MedGuardian ©2023 developed by DOM Squad</p>
->>>>>>> mz-calendar-dev
 				</footer>
 			</div>
 

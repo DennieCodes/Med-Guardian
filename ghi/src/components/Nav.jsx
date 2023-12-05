@@ -20,25 +20,25 @@ function Nav() {
 						<NavLink to="/" className="nav-link" >Home</NavLink>
 					</li>
 					{!account && (
-						<li className='col-3'>
+						<li className='nav-item'>
 							<NavLink to="/login" className="nav-link" >Login </NavLink>
 						</li>
 					)}
 
 					{!account && (
-						<li className='col-3'>
+						<li className='nav-item'>
 							<NavLink to="/register" className='nav-link'>Register</NavLink>
 						</li>
 					)}
 
 					{account && (
-						<li className='col'>
-							<p>Welcome, {account.account.first_name}</p>
+						<li className='nav-item'>
+							<p className="nav-link text-white">Welcome, {account.account.first_name}</p>
 						</li>
 					)}
 					{account && (
-						<li className='col-3'>
-							<NavLink className="btn border navHover"
+						<li className='nav-item'>
+							<NavLink className="nav-link text-white"
 								onClick={() => {
 									logout();
 								}}
