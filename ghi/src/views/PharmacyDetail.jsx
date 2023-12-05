@@ -144,7 +144,7 @@ const PharmacyDetail = () => {
                         <button className="btn btn-primary px-3" onClick={handleUpdate}>Update</button>
                         <button className="btn btn-primary px-3" onClick={handleDelete}>Delete</button>
                     </div>
-                    {deleteError && <div className="text-center text-danger m-3">There was an error trying to delete this pharmacy, make sure it is not linked to a medication.</div>}
+                    {deleteError && <div className="text-center text-danger m-3">There was an error trying to delete this pharmacy, make sure it is not linked any medication.</div>}
                     {updateError && <div className="text-center text-danger m-3">There was an error trying to update this pharmacy.</div>}
 
                 </form>

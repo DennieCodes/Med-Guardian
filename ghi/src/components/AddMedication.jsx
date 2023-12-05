@@ -283,9 +283,9 @@ const AddMedication = () => {
                     <div className="mb-3">
                         <select
                             onChange={handlePharmacyChange}
-                            required
                             id="pharmacy"
                             name="pharmacy"
+                            required
                             className="form-select"
                             value={pharmacy}
                         >

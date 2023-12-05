@@ -1,7 +1,7 @@
-from pydantic import BaseModel
 from typing import Union, List
 from models.schedules import EventIn, EventOut, Error
 from queries.pool import pool
+
 
 class EventsRepository:
     def create(self, events: List[EventIn], user_id: int):

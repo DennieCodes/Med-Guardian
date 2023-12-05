@@ -101,7 +101,7 @@ steps = [
             from_date VARCHAR(30) NOT NULL,
             to_date VARCHAR(30) NOT NULL,
             title VARCHAR(100) NOT NULL,
-            med_id INTEGER references medications(id),
+            med_id INTEGER references medications(id) ON DELETE CASCADE,
             user_id INTEGER references user_accounts(id)
         );
         """,

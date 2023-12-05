@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-import time
 from fastapi.middleware.cors import CORSMiddleware
 import os
 from authenticator import authenticator

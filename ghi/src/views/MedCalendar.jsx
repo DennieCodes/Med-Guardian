@@ -30,6 +30,7 @@ const MedCalendar = () => {
         // Handle slot selection
         console.log('Slot selected:', { start, end, slots, action });
     };
+    let events = [];
     const { data: event_data, isLoading } = useGetEventsQuery();
 
     useEffect(() => {
