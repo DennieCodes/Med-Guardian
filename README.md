@@ -22,8 +22,6 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 
 ## Screenshots
 
----
-
 ### Home Page
 
 ![](docs/images/Home-Page.jpg)
@@ -83,19 +81,19 @@ The diagram below showcases the various database models utilized in our project 
 Here are diagrams of the API endpoints serving our project:
 
 **Medications API**
-![](docs/images/Medications-endpoints-web.jpg)
+![](docs/images/Medications-endpoints-web.png)
 
 **Pharmacy API**
-![](docs/images/Pharmacy-endpoints-web.jpg)
+![](docs/images/Pharmacy-endpoints-web.png)
 
 **Doctors API**
-![](docs/images/Doctors-endpoints-web.jpg)
+![](docs/images/Doctors-endpoints-web.png)
 
 **User Account API**
-![](docs/images/user-account-endpoints-web.jpg)
+![](docs/images/user-account-endpoints-web.png)
 
 **User Profile API**
-![](docs/images/user-profile-endpoints-web.jpg)
+![](docs/images/user-profile-endpoints-web.png)
 
 ### Steps to Run the Project
 
