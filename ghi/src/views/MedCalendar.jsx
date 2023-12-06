@@ -5,7 +5,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 // import { Modal, Button } from 'react-bootstrap';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { useGetEventsQuery, } from "../store/medScheduleApi";
+import { useGetEventsQuery, useUpdateEventColorMutation } from "../store/medScheduleApi";
 import { useUpdateMedicationQuantityMutation, useGetMedicationsQuery } from "../store/medications"
 import './MedCal.css'; // Import your custom CSS file
 // declare events array to populate calendar
@@ -18,19 +18,31 @@ const MedCalendar = () => {
     const { data: event_data, isLoading } = useGetEventsQuery();
     const { data: medications, medsIsLoading } = useGetMedicationsQuery();
     const [updateCount] = useUpdateMedicationQuantityMutation();
+    const [updateColor] = useUpdateEventColorMutation();
     const [showSched, setShowSched] = useState({ display: "none", opacity: 0 });
     const [stateChange, setStateChange] = useState(false);
+    const [eventData, setEventData] = useState({
+        color: '',
+        from_date: '',
+        to_date: '',
+        title: '',
+        med_id: '',
+        user_id: '',
+    });
     // const navigate = useNavigate();
     // const handleShow = () => setShowSched(true);
     let events = [];
     const handleSelectEvent = (event, e) => {
+        // console.log('starting handleSelectEvent')
+        setShowSched({ display: "block", opacity: 1 })
         // variables needed
         // const medId = event_data[0].med_title;
-        console.log("medication: ", medications)
-        const medication = (medications.filter(med => med.name === event.title)[0])
+        // console.log("event: ", event)
+        // setEventData(event)
+        // const medication = (medications.filter(med => med.name === event.title)[0])
         // Handle event selection
-        console.log("medication: ", medication)
-        setShowSched({ display: "block", opacity: 1 })
+        // console.log("medication: ", medication)
+
 
         //
 
@@ -38,19 +50,21 @@ const MedCalendar = () => {
     };
     const handleClosePopup = () => setShowSched({ display: "none", opacity: 0 });
     const handleUpdateCount = async (event) => {
-
         if (!medsIsLoading) {
-            const medication = await (medications.filter(med => med.name === event.title)[0])
-            console.log("medication: ", medication)
+            const medication = await (medications.filter(med => med.name === eventData.title)[0])
             // let data = {
-            //     medications_id: medication.id
+            //     medications_id: medication.id,
+            //     medication: { dosage: medication.dosage, quantity: medication.quantity }
             // }
-            // const countData = {}
-            // updateCount(data);
 
+            console.log("evenData:", event_data)
+            // console.log(new Date(eventData.start))
+            // console.log('event_data: ', (event_data.filter(x => x.from_date === eventData.start))[0])
+            // updateCount(data);
+            // updateColor(colorData);
             handleClosePopup();
-            let val = !stateChange
-            setStateChange(val);
+            // let val = !stateChange
+            // setStateChange(val);
         }
     }
 
@@ -117,7 +131,7 @@ const MedCalendar = () => {
                 <h4>Taking your meds?</h4>
                 <h3>Press confirm</h3>
                 <div>
-                    <button className='back' onClick={handleClosePopup}>back</button>
+                    <button id={eventData.title} className='back' onClick={handleClosePopup}>back</button>
                     <button className='confirm' onClick={handleUpdateCount}>confirm</button>
                 </div>
             </section>

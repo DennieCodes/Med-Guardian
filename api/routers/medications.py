@@ -87,7 +87,7 @@ def delete_medication(
 
 # UPDATE MEDICATION QUANTITY
 @router.put(
-    "/api/medications/{medication_id}/quantity",
+    "/api/medications/{medications_id}/quantity",
     response_model=Union[MedicationQuantityOut, Error]
 )
 def update_medication_quantity(
