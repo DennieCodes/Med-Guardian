@@ -17,7 +17,7 @@ function Register() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const result = await register({
+		await register({
 			firstName,
 			lastName,
 			username,

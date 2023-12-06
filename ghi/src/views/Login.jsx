@@ -7,7 +7,7 @@ function Login() {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const { data: account } = useGetTokenQuery();
-	const [login, result] = useLoginMutation();
+	const [login] = useLoginMutation();
 	const navigate = useNavigate();
 
 
