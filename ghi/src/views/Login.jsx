@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLoginMutation, useGetTokenQuery } from '../store/authApi';
+import loginComputer from '../assets/login-web.jpg';
 
 function Login() {
 	const [username, setUsername] = useState('');
@@ -18,44 +19,50 @@ function Login() {
 	};
 
 	return (
-		<div className="forms p-4 d-flex flex-column align-items-center">
-			<h1 className="mb-2">Login</h1>
-			{account && <p>Welcome, {account.account.name}</p>}
+		<div className="container d-flex flex-row align-items-center pt-4 mt-4">
+			<div className="w-50">
+				<img src={loginComputer} alt="Person typing on a laptop" className="img-fluid rounded shadow" />
+			</div>
+			<div className="forms p-4 d-flex flex-column align-items-center w-50">
+				<h1 className="mb-2">Log in to your account</h1>
 
-			<form className="w-50" onSubmit={handleSubmit}>
-				<div className="form-floating mb-3">
-					<input
-						onChange={(e) => setUsername(e.target.value)}
-						type="text"
-						name="username"
-						value={username}
-						placeholder="username"
-						className="form-control"
-						id="username"
-						required
-					/>
-					<label htmlFor="username">username</label>
-				</div>
+				{account && <p>Welcome, {account.account.name}</p>}
 
-				<div className="form-floating mb-3">
-					<input
-						onChange={(e) => setPassword(e.target.value)}
-						type="password"
-						name="password"
-						value={password}
-						placeholder="password"
-						id="password"
-						className="form-control"
-						required
-					/>
-					<label htmlFor="password">Password</label>
-				</div>
+				<form className="w-100" onSubmit={handleSubmit}>
+					<div className="form-floating mb-3">
+						<input
+							onChange={(e) => setUsername(e.target.value)}
+							type="text"
+							name="username"
+							value={username}
+							placeholder="username"
+							className="form-control"
+							id="username"
+							required
+						/>
+						<label htmlFor="username">username</label>
+					</div>
 
-				<div className="d-flex justify-content-center">
-					<button className="btn btn-primary px-5" type="submit">Login</button>
-				</div>
+					<div className="form-floating mb-3">
+						<input
+							onChange={(e) => setPassword(e.target.value)}
+							type="password"
+							name="password"
+							value={password}
+							placeholder="password"
+							id="password"
+							className="form-control"
+							required
+						/>
+						<label htmlFor="password">Password</label>
+					</div>
 
-			</form>
+					<div className="d-flex justify-content-center">
+						<button className="btn btn-primary px-5" type="submit">Login</button>
+					</div>
+
+				</form>
+			</div>
 		</div>
 	);
 }
