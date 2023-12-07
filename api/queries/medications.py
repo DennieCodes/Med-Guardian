@@ -235,11 +235,11 @@ class MedicationRepository(BaseModel):
                     result = db.execute(
                         """
                         UPDATE medications
-                        SET quantity = quantity + %s
+                        SET quantity = quantity - %s
                         WHERE id = %s
                         RETURNING quantity
                         """,
-                        [medication.quantity, medications_id],
+                        [medication.dosage, medications_id],
                     )
                     result = db.fetchone()
                     if not result:

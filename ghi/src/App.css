@@ -38,6 +38,7 @@ header {
 main {
 	display: flex;
 	overflow-y: auto;
+	position: relative;
 }
 .sideNav {
 	flex: 1;
@@ -53,6 +54,7 @@ nav ul {
 }
 .mainSection {
 	flex: 3;
+	position: relative;
 }
 
 .activeHoverBackground:hover {
@@ -118,4 +120,22 @@ footer {
 }
 .myCustomHeight {
   height: 100%;
+}
+
+.popup {
+	border: thin solid red;
+	background-color: goldenrod;
+	width: 50%;
+	height: fit-content;
+	position: absolute;
+	left: 50%;
+	top: 20%;
+	transform: translate(-50%);
+	z-index: 100;
+	transition: all 2s;
+}
+.popup p{
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
 }

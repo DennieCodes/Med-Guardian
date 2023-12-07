@@ -63,8 +63,10 @@ const AddMedication = () => {
                 })
             } else {
                 let fromDate = incrementDate(beginDate, changeHours);
+                fromDate.setSeconds(0);
                 let toDate = new Date(fromDate);
                 toDate.setMinutes(30);
+                toDate.setSeconds(0);
                 events.push({
                     color: color,
                     title: med_data.title,
@@ -81,6 +83,7 @@ const AddMedication = () => {
         function incrementDate(myDate, hours_to_change) {
             myDate.setHours(myDate.getHours() + hours_to_change);
             myDate.setMinutes(0);
+            myDate.setSeconds(0);
             return myDate;
         }
     }

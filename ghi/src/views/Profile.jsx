@@ -104,15 +104,6 @@ function Profile() {
                             <p className="form-control" id="bmi">
                                 {bmi}
                             </p>
-                            {/* <input
-                                type="number"
-                                id="bmi"
-                                name="bmi"
-                                value={bmi}
-                                placeholder="bmi"
-                                className="form-control"
-                                readOnly
-                            /> */}
                             <label htmlFor="weight">BMI (auto-calculated) </label>
                         </div>
 
@@ -126,7 +117,7 @@ function Profile() {
                                 className="form-control"
                                 onChange={(e) => setCholesterol(e.target.value)}
                             />
-                            <label htmlFor="cholesterol">Cholesterol</label>
+                            <label htmlFor="cholesterol"> Total Cholesterol (mg/dL)</label>
                         </div>
 
                         <div className="form-floating mb-3">
