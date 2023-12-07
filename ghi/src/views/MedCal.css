@@ -10,7 +10,6 @@ main {
   margin: 20px auto !important;
   width: 80% !important;
   padding: 50px !important;
-
 }
 /* Calendar.css */
 .calendar-container {
@@ -22,7 +21,7 @@ main {
 }
 
 .rbc-calendar {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
 .rbc-header {
@@ -50,14 +49,16 @@ main {
   border-radius: 3px;
   padding: 2px 5px;
   cursor: pointer;
-  justify-content: center;
 }
 .rbc-event-content {
   font-size: 10px;
   line-height: unset !important;
-  width: fit-content !important;
+  width: auto !important;
 }
 
 .rbc-selected-cell {
   background-color: #e6f7ff;
+}
+.rbc-event-label {
+  display: none !important;
 }

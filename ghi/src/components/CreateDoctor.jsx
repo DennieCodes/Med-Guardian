@@ -19,7 +19,7 @@ function CreateDoctor() {
     async function handleSubmit(e) {
         e.preventDefault();
         const data = { ...formData }
-        const result = await doctor(data);
+        await doctor(data);
         setFormData(emptyFields);
 
     }

@@ -13,6 +13,7 @@ const MedCalendar = () => {
     const { data: event_data, isLoading } = useGetEventsQuery();
     const { data: medications, medsIsLoading } = useGetMedicationsQuery();
     const [updateColor] = useUpdateEventColorMutation();
+    const [updateCount] = useUpdateMedicationQuantityMutation();
     const [showSched, setShowSched] = useState({ display: "none", opacity: 0 });
     const [eventData, setEventData] = useState({});
     const [med, setMed] = useState({})
@@ -28,11 +29,7 @@ const MedCalendar = () => {
     const eventPropGetter = (event, start, end, isSelected) => {
         const style = {
             backgroundColor: event.color, // Use the color specified in the event
-            borderRadius: '0px',
-            opacity: 0.8,
-            color: 'black',
-            border: '0px',
-            display: 'block',
+            color: 'white',
         };
         return { style };
     };
@@ -51,15 +48,16 @@ const MedCalendar = () => {
 
             const colorData = await event_data.filter(event => event.id === eventData.id)[0]
             let myData = { ...colorData }
-            myData.color = "brown";
-            // updateCount(data);
-            updateColor({ event_id: myData.id, color: myData.color });
+            myData.color = "grey";
+            await updateCount(data);
+            await updateColor({ event_id: myData.id, color: myData.color });
             handleClosePopup();
 
         }
     }
     useEffect(() => {
         getData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [event_data])
     function getData() {
         if (event_data !== undefined) {

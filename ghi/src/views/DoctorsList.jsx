@@ -12,7 +12,7 @@ function DoctorsList() {
         if (!account) {
             navigate('/');
         }
-    }, []);
+    }, [account, navigate]);
     if (isLoading) {
         return (
             <>
