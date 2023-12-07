@@ -23,8 +23,6 @@ function Profile() {
     const { data, isLoading } = useGetProfileQuery();
     const [updateProfile] = useUpdateProfileMutation();
 
-    console.log("Data: ", data);
-
     // Redirect user if not authenticated
     useEffect(() => {
         if (!account.data) {
