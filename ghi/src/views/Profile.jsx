@@ -152,7 +152,7 @@ function Profile() {
                                 className="form-control"
                                 onChange={(e) => setA1cSugarLevels(e.target.value)}
                             />
-                            <label htmlFor="a1cSugarLevels">A1C sugar levels</label>
+                            <label htmlFor="a1cSugarLevels">A1C sugar levels (%)</label>
                         </div>
                         <div className="mb-3">
                             <select

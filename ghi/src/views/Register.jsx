@@ -81,6 +81,7 @@ function Register() {
 						<label htmlFor="lastName">User Name</label>
 					</div>
 
+<<<<<<< HEAD
 					<div className="form-floating mb-3">
 						<input
 							required
@@ -107,6 +108,34 @@ function Register() {
 						/>
 						<label htmlFor="phone">Phone Number</label>
 					</div>
+=======
+				<div className="form-floating mb-3">
+					<input
+						required
+						type="email"
+						id="email"
+						name="email"
+						value={email}
+						placeholder="Last Name"
+						className="form-control"
+						onChange={(e) => setEmail(e.target.value)}
+					/>
+					<label htmlFor="email">Email</label>
+				</div>
+
+				<div className="form-floating mb-3">
+					<input
+						type="tel"
+						id="phone"
+						name="phone"
+						value={phone}
+						placeholder="Phone Number"
+						className="form-control"
+						onChange={(e) => setPhone(e.target.value)}
+					/>
+					<label htmlFor="phone">Phone Number</label>
+				</div>
+>>>>>>> d80ab7f082f96d5d5e5c435b274b0efa59240750
 
 					<div className="form-floating mb-3">
 						<input
