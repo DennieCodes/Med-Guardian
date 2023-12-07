@@ -57,8 +57,8 @@ build-front-end-job:
     - cd ghi
     - npm install
     - npm run build
-    The following line creates a _redirects file to redirect all URLs to index.html
-    Documentation: https://docs.gitlab.com/ee/user/project/pages/redirects.html#rewrite-all-requests-to-a-root-indexhtml
+    # The following line creates a _redirects file to redirect all URLs to index.html
+    # Documentation: https://docs.gitlab.com/ee/user/project/pages/redirects.html#rewrite-all-requests-to-a-root-indexhtml
     - echo "/* /index.html 200" > build/_redirects
   artifacts:
     paths:
