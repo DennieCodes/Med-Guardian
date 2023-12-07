@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-import os
 from authenticator import authenticator
 from routers import (
     accounts,
