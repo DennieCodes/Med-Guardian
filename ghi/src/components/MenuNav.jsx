@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import { useGetTokenQuery } from '../store/authApi';
 function MenuNav() {
 	const { data: account } = useGetTokenQuery();
-	console.log({ account })
 	return (
 		<nav className='MenuNav'>
 			<ul className='text-center p-4'>

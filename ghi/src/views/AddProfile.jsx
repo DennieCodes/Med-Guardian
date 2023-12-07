@@ -64,7 +64,7 @@ function AddProfile() {
             className="form-control"
             onChange={(e) => setWeight(e.target.value)}
           />
-          <label htmlFor="weight">Weight</label>
+          <label htmlFor="weight">Weight (lbs)</label>
         </div>
 
         <div className="form-floating mb-3">
@@ -77,7 +77,7 @@ function AddProfile() {
             className="form-control"
             onChange={(e) => setCholesterol(e.target.value)}
           />
-          <label htmlFor="cholesterol">Cholesterol</label>
+          <label htmlFor="cholesterol">Total Cholesterol (mg/dL)</label>
         </div>
 
         <div className="form-floating mb-3">

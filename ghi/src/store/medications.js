@@ -58,7 +58,7 @@ export const medicationsApi = createApi({
 		}),
 		updateMedicationQuantity: builder.mutation({
 			query: (data) => ({
-				url: `/api/medications/${data.medication_id}/quantity`,
+				url: `/api/medications/${data.medications_id}/quantity`,
 				body: data.medication,
 				method: 'put',
 				credentials: 'include',

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useCreateDoctorMutation } from '../store/doctorsApi';
-import { Form, Button } from 'react-bootstrap';
 import doctorImage from '../assets/doctor-web.jpg';
 
 function CreateDoctor() {
@@ -21,7 +20,6 @@ function CreateDoctor() {
         e.preventDefault();
         const data = { ...formData }
         const result = await doctor(data);
-        console.log('result: ', result);
         setFormData(emptyFields);
 
     }
@@ -63,14 +61,15 @@ function CreateDoctor() {
                     <div className="form-floating mb-3">
                         <input
                             type="tel"
-                            placeholder="Phone Number"
+                            pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+                            placeholder="Phone Number (xxx-xxx-xxxx)"
                             name="phone"
                             id="phone"
                             className="form-control"
                             value={formData.phone}
                             onChange={handleChange}
                         />
-                        <label htmlFor="phone">Phone Number</label>
+                        <label htmlFor="phone">Phone Number (xxx-xxx-xxxx)</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input

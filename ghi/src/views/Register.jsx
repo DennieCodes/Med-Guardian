@@ -111,6 +111,33 @@ function Register() {
 					<div className="form-floating mb-3">
 						<input
 							required
+							type="email"
+							id="email"
+							name="email"
+							value={email}
+							placeholder="Last Name"
+							className="form-control"
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+						<label htmlFor="email">Email</label>
+					</div>
+
+					<div className="form-floating mb-3">
+						<input
+							type="tel"
+							pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+							id="phone"
+							name="phone"
+							value={phone}
+							placeholder="Phone Number (xxx-xxx-xxxx)"
+							className="form-control"
+							onChange={(e) => setPhone(e.target.value)}
+						/>
+						<label htmlFor="phone">Phone Number (xxx-xxx-xxxx)</label>
+					</div>
+					<div className="form-floating mb-3">
+						<input
+							required
 							type="password"
 							id="password"
 							name="password"

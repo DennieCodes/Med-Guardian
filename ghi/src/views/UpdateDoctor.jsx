@@ -104,14 +104,15 @@ const UpdateDoctor = () => {
                 <div className="form-floating mb-3">
                     <input
                         type="tel"
-                        placeholder="Phone Number"
+                        pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
+                        placeholder="Phone Number (xxx-xxx-xxxx)"
                         name="phone"
                         id="phone"
                         className="form-control"
                         value={formData.phone}
                         onChange={handleChange}
                     />
-                    <label htmlFor="phone">Phone Number</label>
+                    <label htmlFor="phone">Phone Number (xxx-xxx-xxxx)</label>
                 </div>
                 <div className="form-floating mb-3">
                     <input
