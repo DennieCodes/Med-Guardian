@@ -33,10 +33,10 @@ function Register() {
 
 	return (
 		<div className="container d-flex flex-row align-items-center pt-4">
-			<div className="w-50">
+			<div className="col-sm-4">
 				<img src={registerComputer} alt="Registering" className="img-fluid rounded shadow" />
 			</div>
-			<div className="forms p-4 d-flex flex-column align-items-center w-50">
+			<div className="forms p-4 d-flex flex-column align-items-center col-sm-8">
 				<h1 className="mb-2">Register Account</h1>
 				<form onSubmit={handleSubmit} className="w-100">
 					<div className="form-floating mb-3">
@@ -81,11 +81,10 @@ function Register() {
 						<label htmlFor="lastName">User Name</label>
 					</div>
 
-<<<<<<< HEAD
 					<div className="form-floating mb-3">
 						<input
 							required
-							type="text"
+							type="email"
 							id="email"
 							name="email"
 							value={email}
@@ -98,7 +97,7 @@ function Register() {
 
 					<div className="form-floating mb-3">
 						<input
-							type="text"
+							type="tel"
 							id="phone"
 							name="phone"
 							value={phone}
@@ -108,34 +107,6 @@ function Register() {
 						/>
 						<label htmlFor="phone">Phone Number</label>
 					</div>
-=======
-				<div className="form-floating mb-3">
-					<input
-						required
-						type="email"
-						id="email"
-						name="email"
-						value={email}
-						placeholder="Last Name"
-						className="form-control"
-						onChange={(e) => setEmail(e.target.value)}
-					/>
-					<label htmlFor="email">Email</label>
-				</div>
-
-				<div className="form-floating mb-3">
-					<input
-						type="tel"
-						id="phone"
-						name="phone"
-						value={phone}
-						placeholder="Phone Number"
-						className="form-control"
-						onChange={(e) => setPhone(e.target.value)}
-					/>
-					<label htmlFor="phone">Phone Number</label>
-				</div>
->>>>>>> d80ab7f082f96d5d5e5c435b274b0efa59240750
 
 					<div className="form-floating mb-3">
 						<input
