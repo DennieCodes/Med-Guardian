@@ -32,6 +32,11 @@ app.include_router(third_party_calls.router, tags=["3rd Party Calls"])
 app.include_router(med_schedule.router, tags=["Med Schedules"])
 
 
+@app.get("/")
+def root():
+    return {"message": "You hit the root path!"}
+
+
 @app.get("/api/launch-details")
 def launch_details():
     return {
