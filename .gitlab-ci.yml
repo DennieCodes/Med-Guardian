@@ -24,6 +24,8 @@ api-unit-tests-job:
     - cd api
     - pip install -r requirements.txt
     - python -m pytest
+  variables:
+    SIGNING_KEY: dfasf32432423sdfdsfsd234
 # # Build API Image:
 # build-api-image:
 # stage: build
