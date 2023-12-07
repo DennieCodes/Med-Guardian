@@ -40,7 +40,6 @@ build-api-image:
     - docker push $GITLAB_IMAGE:latest
   only:
     - main
-
 # # Build the React/JavaScript front-end
 # build-front-end-job:
 #   stage: build
