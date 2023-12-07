@@ -19,9 +19,11 @@ import AddProfile from './views/AddProfile';
 
 
 function App() {
+	const domain = /https:\/\/[^/]+/;
+	const basename = process.env.PUBLIC_URL.replace(domain, '');
 	const { data: account } = useGetTokenQuery();
 	return (
-		<BrowserRouter>
+		<BrowserRouter basename={basename}>
 			<div className='container-fluid wrapper'>
 				<header className='text-center'>
 					<Nav />
