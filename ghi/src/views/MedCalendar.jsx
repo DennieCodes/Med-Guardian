@@ -19,11 +19,8 @@ const MedCalendar = () => {
     let events = [];
     const handleSelectEvent = async (event, e) => {
         if (!medsIsLoading) {
-            console.log("medications: ", medications)
-            console.log("event: ", event)
             const medication = await (medications.filter(med => med.id === event.med_id)[0])
             setMed({ ...medication })
-            console.log("medication: ", medication)
         }
         setShowSched({ display: "block", opacity: 1 })
         setEventData({ ...event });
@@ -62,13 +59,11 @@ const MedCalendar = () => {
         }
     }
     useEffect(() => {
-        console.log('get data state changed')
         getData();
     }, [event_data])
     function getData() {
         if (event_data !== undefined) {
             for (let event of event_data) {
-                console.log("event: ", event);
                 let fromDate = new Date(event.from_date)
                 let toDate = new Date(event.to_date)
                 // format dates

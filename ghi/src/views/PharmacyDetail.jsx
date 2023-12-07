@@ -104,15 +104,16 @@ const PharmacyDetail = () => {
                     <div className="form-floating mb-3">
                         <input
                             onChange={handlePhoneChange}
-                            placeholder="Phone Number"
+                            placeholder="Phone Number (xxx-xxx-xxxx)"
                             required
                             type="tel"
+                            pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
                             id="phone"
                             name="phone"
                             className="form-control"
                             value={phone}
                         />
-                        <label htmlFor="phone">Phone Number</label>
+                        <label htmlFor="phone">Phone Number (xxx-xxx-xxxx)</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input

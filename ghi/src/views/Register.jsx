@@ -94,14 +94,15 @@ function Register() {
 				<div className="form-floating mb-3">
 					<input
 						type="tel"
+						pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
 						id="phone"
 						name="phone"
 						value={phone}
-						placeholder="Phone Number"
+						placeholder="Phone Number (xxx-xxx-xxxx)"
 						className="form-control"
 						onChange={(e) => setPhone(e.target.value)}
 					/>
-					<label htmlFor="phone">Phone Number</label>
+					<label htmlFor="phone">Phone Number (xxx-xxx-xxxx)</label>
 				</div>
 
 				<div className="form-floating mb-3">
