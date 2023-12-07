@@ -120,7 +120,7 @@ const MedicationDetail = () => {
     return (
         <>
             <div className="forms p-4 d-flex flex-column align-items-center">
-                <h1 className="mb-2">Add Medication</h1>
+                <h1 className="mb-2">Update Medication</h1>
                 <form className="w-75">
                     <div className="form-floating mb-3">
                         <input

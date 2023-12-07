@@ -22,7 +22,7 @@ const AddMedication = () => {
     const [filteredDrugList, setFilteredDrugList] = useState('');
     const [drugListDisplay, setDrugListDisplay] = useState(false);
     const [addMedication, result] = useAddMedicationMutation();
-    const [med_events, event_results] = useAddEventMutation();
+    const [med_events] = useAddEventMutation();
     // function to add scheduled event (schedule medication)
     async function createCalendarEvents(medID, userID) {
         let color = "red"
@@ -51,8 +51,6 @@ const AddMedication = () => {
                 const fromDate = new Date(beginDate);
                 const toDate = new Date(fromDate);
                 toDate.setMinutes(30)
-                console.log('fromDate: ', fromDate);
-                console.log('toDate: ', toDate);
                 events.push({
                     color: color,
                     title: med_data.title,
@@ -102,6 +100,7 @@ const AddMedication = () => {
         } else if (result.isError) {
             setError(result.error)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [result])
 
     const handleDrugListClick = (value) => {

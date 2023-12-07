@@ -36,6 +36,7 @@ const DrugInteractions = () => {
                         )
                     })}
                 </ul>
+                <p><em>Source: National Library of Medicine</em></p>
             </div>
         </>
     );
