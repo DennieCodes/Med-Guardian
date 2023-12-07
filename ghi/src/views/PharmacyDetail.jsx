@@ -106,7 +106,7 @@ const PharmacyDetail = () => {
                             onChange={handlePhoneChange}
                             placeholder="Phone Number"
                             required
-                            type="text"
+                            type="tel"
                             id="phone"
                             name="phone"
                             className="form-control"

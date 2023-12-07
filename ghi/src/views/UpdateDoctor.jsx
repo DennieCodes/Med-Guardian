@@ -103,7 +103,7 @@ const UpdateDoctor = () => {
                 </div>
                 <div className="form-floating mb-3">
                     <input
-                        type="phone"
+                        type="tel"
                         placeholder="Phone Number"
                         name="phone"
                         id="phone"

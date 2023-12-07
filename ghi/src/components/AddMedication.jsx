@@ -223,7 +223,7 @@ const AddMedication = () => {
                             className="form-control"
                             value={dosage}
                         />
-                        <label htmlFor="dosage">Dosage</label>
+                        <label htmlFor="dosage">Dosage (how many for 1 dose?)</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input
@@ -236,7 +236,7 @@ const AddMedication = () => {
                             className="form-control"
                             value={frequency}
                         />
-                        <label htmlFor="frequency">Frequency</label>
+                        <label htmlFor="frequency">Frequency (how many times a day?)</label>
                     </div>
                     <div className="form-floating mb-3">
                         <input

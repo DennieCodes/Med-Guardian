@@ -8,6 +8,8 @@
 
 - Updated ReadMe with screenshots
 
+- Created tests for Pharmacy API routes
+
 ## 12/01/23
 
 - Created the Redux store for medications scheduling which is a new feature that my team and I are working on.
