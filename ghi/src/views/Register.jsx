@@ -80,7 +80,7 @@ function Register() {
 				<div className="form-floating mb-3">
 					<input
 						required
-						type="text"
+						type="email"
 						id="email"
 						name="email"
 						value={email}
@@ -93,7 +93,7 @@ function Register() {
 
 				<div className="form-floating mb-3">
 					<input
-						type="text"
+						type="tel"
 						id="phone"
 						name="phone"
 						value={phone}
