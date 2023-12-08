@@ -4,8 +4,9 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useGetEventsQuery, useUpdateEventColorMutation } from "../store/medScheduleApi";
-import { useUpdateMedicationQuantityMutation, useGetMedicationsQuery } from "../store/medications"
-import './MedCal.css'; // Import your custom CSS file
+import { useUpdateMedicationQuantityMutation, useGetMedicationsQuery } from "../store/medications";
+import Popup from '../components/Popup';
+import './MedCal.css';
 
 // function to get medication data. Note: will change to get med_events data
 const MedCalendar = () => {
@@ -57,19 +58,20 @@ const MedCalendar = () => {
     }
     useEffect(() => {
         getData();
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [event_data])
+    }, [event_data, medications])
     function getData() {
-        if (event_data !== undefined) {
+        if (event_data) {
             for (let event of event_data) {
-                let fromDate = new Date(event.from_date)
-                let toDate = new Date(event.to_date)
+                let fromDate = new Date(event.from_date);
+                let toDate = new Date(event.to_date);
                 // format dates
                 const fy = fromDate.getFullYear();
                 const fm = fromDate.getMonth();
                 const fd = fromDate.getDate();
                 const fh = fromDate.getHours();
-                const fmin = fromDate.getMinutes()
+                const fmin = fromDate.getMinutes();
                 const ty = toDate.getFullYear();
                 const tm = toDate.getMonth();
                 const td = toDate.getDate();
@@ -77,8 +79,6 @@ const MedCalendar = () => {
                 const tmin = toDate.getMinutes();
                 const _from = new Date(fy, fm, fd, fh, fmin);
                 const _to = new Date(ty, tm, td, th, tmin);
-                // const _title = event.title
-
                 events.push({
                     title: event.title,
                     start: _from,
@@ -93,7 +93,13 @@ const MedCalendar = () => {
     }
     if (isLoading || medsIsLoading) {
         return (
-            <h1>is loading</h1>
+            <>
+                <div className='d-flex justify-content-center align-items-center vh-100'>
+                    <div className="spinner-border" role="status">
+                        <span className="sr-only"></span>
+                    </div>
+                </div>
+            </>
         )
     }
     return (
@@ -107,18 +113,7 @@ const MedCalendar = () => {
                 onSelectEvent={handleSelectEvent}
                 style={{ height: '500px' }} // Set the height of the calendar
             />
-            <section className='popup' style={{ opacity: showSched.opacity, display: showSched.display }}>
-                <div className='medDetail'></div>
-                <p>medication: {med.name}</p>
-                <p>strength: {med.strength}</p>
-                <p>dosage: {med.dosage} pills</p>
-                <h5>Medication Taken? Press confirm</h5>
-                <p></p>
-                <div className='row m-0 p-2 justify-content-between'>
-                    <button id={eventData.title} className='col-4 back' onClick={handleClosePopup}>close</button>
-                    <button className='col-4 confirm' onClick={handleUpdateCount}>confirm</button>
-                </div>
-            </section>
+            <Popup med={med} eventData={eventData} showSched={showSched} handleClosePopup={handleClosePopup} handleUpdateCount={handleUpdateCount} />
 
         </div >
     );
