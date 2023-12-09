@@ -33,11 +33,6 @@ function Nav() {
 
 					{account && (
 						<li className='nav-item'>
-							<p className="nav-link text-white">Welcome, {account.account.first_name}</p>
-						</li>
-					)}
-					{account && (
-						<li className='nav-item'>
 							<NavLink className="nav-link text-white"
 								onClick={() => {
 									logout();

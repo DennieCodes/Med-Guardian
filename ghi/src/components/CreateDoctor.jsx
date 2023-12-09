@@ -25,13 +25,13 @@ function CreateDoctor() {
     }
 
     return (
-        <section className="container d-flex flex-row align-items-center mt-5">
+        <section className="container d-flex flex-row align-items-start mt-5">
             <div className="w-50 px-5 d-flex flex-column align-items-center">
                 <img src={doctorImage} alt="Doctor sitting on a stool" className="img-fluid rounded shadow w-75" />
             </div>
-            <div className="forms px-4 d-flex flex-column align-items-center align-self-start w-50">
+            <div className="forms px-4 d-flex flex-column align-items-center w-50">
                 <h1 className="mb-4">Add Doctor</h1>
-                <form className="w-100" onSubmit={handleSubmit}>
+                <form className="w-75" onSubmit={handleSubmit}>
                     <div className="form-floating mb-3">
                         <input
                             type="text"

@@ -5,6 +5,7 @@ import { useGetDoctorsQuery } from "../store/doctorsApi";
 import { useState, useEffect } from "react";
 
 import DrugList from "./DrugList";
+import medication from "../assets/medications.jpg";
 
 const AddMedication = () => {
     const { data: doctors, isLoading: doctorsLoading } = useGetDoctorsQuery()
@@ -175,8 +176,11 @@ const AddMedication = () => {
         )
     }
     return (
-        <>
-            <div className="forms p-4 d-flex flex-column align-items-center">
+        <section className="container d-flex flex-row align-items-start mt-5">
+            <div className="w-50 px-5 d-flex flex-column align-items-center">
+                <img src={medication} alt="Doctor sitting on a stool" className="img-fluid rounded shadow w-75" />
+            </div>
+            <div className="forms px-4 d-flex flex-column align-items-center w-50">
                 <h1 className="mb-2">Add Medication</h1>
                 <form onSubmit={handleSubmit} className="w-75">
                     <div className="form-floating mb-3">
@@ -307,7 +311,7 @@ const AddMedication = () => {
                     {error ? <div>There was an error trying to add the medication.</div> : null}
                 </form>
             </div>
-        </>
+        </section>
     );
 }
 
