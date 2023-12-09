@@ -33,11 +33,11 @@ function Register() {
 
 	return (
 		<div className="container d-flex flex-row align-items-center pt-4">
-			<div className="col-sm-4">
+			<div className="col-sm-6">
 				<img src={registerComputer} alt="Registering" className="img-fluid rounded shadow" />
 			</div>
-			<div className="forms p-4 d-flex flex-column align-items-center col-sm-8">
-				<h1 className="mb-2">Register Account</h1>
+			<div className="forms py-4 px-5 d-flex flex-column align-items-center col-sm-6">
+				<h1 className="mb-4">Register Account</h1>
 				<form onSubmit={handleSubmit} className="w-100">
 					<div className="form-floating mb-3">
 						<input
@@ -121,8 +121,8 @@ function Register() {
 						<label htmlFor="password">Password</label>
 					</div>
 
-					<div className="d-flex justify-content-center">
-						<button className="btn btn-primary px-3" type="submit">Register New Account</button>
+					<div className="d-flex justify-content-center pt-3">
+						<button className="btn btn-primary py-2 px-5" type="submit">Register New Account</button>
 					</div>
 				</form>
 			</div>
