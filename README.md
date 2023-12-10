@@ -50,6 +50,7 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 ### Design Color Palette
 
 - Button Colors, Title Bar, (#164863)
+- Button Color, Complimentary/Contrast (#e69937)
 - Borders for forms and tables (#427D9D)
 - Active item (#9BBEC8)
 - Alternate background for table (#DDF2FD)

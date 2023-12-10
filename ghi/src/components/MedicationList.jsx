@@ -36,7 +36,7 @@ const MedicationList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {medications.map(medication => {
+                        {medications && medications.map(medication => {
                             return (
                                 <tr key={medication.id}>
                                     <td className='activeHoverBackground'><Link to={`/medications/${medication.id}`}>{medication.name}</Link></td>

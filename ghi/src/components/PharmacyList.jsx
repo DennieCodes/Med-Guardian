@@ -28,7 +28,7 @@ const PharmacyList = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {pharmacies.map(pharmacy => {
+                        {pharmacies && pharmacies.map(pharmacy => {
                             return (
                                 <tr key={pharmacy.id}>
                                     <td className='activeHoverBackground'><Link to={`/pharmacies/${pharmacy.id}`}>{pharmacy.name}</Link></td>
