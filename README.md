@@ -2,7 +2,7 @@
 
 ![](docs/images/Med%20Guardian%20logo.png)
 
-Project Med Guardian is an application that allows users to manage and track their medication schedules.
+Empowering Health: Seamless Medication Management, Tracking, and Scheduling for Your Well-Being
 
 The project is a full stack FastAPI, PostgreSQL and React application that is built to run on Docker.
 
@@ -20,11 +20,48 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 - React
 - Redux
 
+## Project Overview
+
+<ins>Problem Statement</ins>: Many individuals face challenges in effectively managing, tracking, and scheduling their medication regimens, leading to potential health risks, missed doses, and overall suboptimal health outcomes. The complexity of medication schedules, diverse prescriptions, and the lack of user-friendly tools contribute to the struggle individuals experience in adhering to their prescribed medication plans. Additionally, the absence of a centralized platform for medication management poses a barrier to efficient communication between patients, healthcare providers, and caregivers.
+
+<ins>Goals and Objectives</ins>: Our goal is to address these issues by developing a comprehensive medication management application that simplifies the process of managing, tracking, and scheduling medications. This application aims to provide users with an intuitive and accessible tool to enhance medication adherence, and improve health outcomes.
+
+<ins>User Stories</ins>: We created several user personae to help visualize our users and the challenges and frustrations they might currently face managing their medication routines:
+
+- Barbara, 56 years old, is a teacher who has several health issues and is taking 5 different medications and has trouble remembering to take them. She also forgets to refill her medications which has caused lapses in her health regiment as she waits to get them refilled.
+
+- George, 28, is a busy working professional who is on cholesterol and diabetes medication and often forgets to take his medication and would like something to help remind him.
+
+<ins>Development</ins>: The planning and development of Med Guardian was driven by Domain Driven Design. The types of data and information needed for the application was determined through an iterative process of brainstorming, diagramming and discussion which resulted in the following data models and relationships:
+
+![](docs/images/API-Design-web.png)
+
+<ins>Design</ins>: The design and layout of the project was created through numerous sessions of design collaboration and discussions of user flow. Necessary elements, user interactions, theme, tone, colors, fonts and layouts were outlined iteratively from wireframes, rough drafts, higher fidelity mock-ups to completed designs.
+
+### Design Color Palette
+
+- Button Colors, Title Bar, (#164863)
+- Button Color, Complimentary/Contrast (#e69937)
+- Borders for forms and tables (#427D9D)
+- Active item (#9BBEC8)
+- Alternate background for table (#DDF2FD)
+- Background color (#FFFBF5)
+
+![](docs/images/Palette.png)
+
 ## Screenshots
 
 ### Home Page
 
 ![](docs/images/Home-Page.jpg)
+
+### Register Page
+
+![](docs/images/Register.jpg)
+
+### Login Page
+
+![](docs/images/Login.jpg)
 
 ### Health Profile
 
@@ -45,16 +82,6 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 ### Calendar and Schedules
 
 ![](docs/images/Calendar-01.jpg)
-![](docs/images/Calendar-02.jpg)
-
-### Design Color Palette
-
-- Button Colors, Title Bar, (#164863)
-- Button Color, Complimentary/Contrast (#e69937)
-- Borders for forms and tables (#427D9D)
-- Active item (#9BBEC8)
-- Alternate background for table (#DDF2FD)
-- Background color (#FFFBF5)
 
 ## Project Planning and Organization
 
@@ -70,12 +97,6 @@ For our project we utilized an issue and ticket system within the repo to help p
 Note: Some tickets were particularly complicated and would have several team members working on them.
 
 [Link to issues, Project Tracking and Development Board](https://gitlab.com/Onkurlal/module3-project-gamma/-/boards)
-
-### Database Models Design
-
-The diagram below showcases the various database models utilized in our project and their relationship to one another.
-
-![](docs/images/API-Design-web.png)
 
 ### Backend API Endpoints
 

@@ -306,7 +306,7 @@ const AddMedication = () => {
                         </select>
                     </div>
                     <div className="d-flex justify-content-center">
-                        <button className="btn btn-primary px-3">Add</button>
+                        <button className="btn btn-primary px-5 py-2">Add</button>
                     </div>
                     {error ? <div>There was an error trying to add the medication.</div> : null}
                 </form>
