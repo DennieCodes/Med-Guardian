@@ -29,7 +29,7 @@ function DoctorsList() {
     return (
         <>
             <section className='px-5 pb-2'>
-                <h1 className="mt-5 mb-4 text-center">Users Doctors</h1>
+                <h1 className="mt-5 mb-4 text-center">My Doctors</h1>
                 <table className="table table-striped">
                     <thead>
                         <tr>
