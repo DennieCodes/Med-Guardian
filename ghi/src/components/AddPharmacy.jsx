@@ -1,5 +1,6 @@
 import { useAddPharmacyMutation } from "../store/pharmacies";
 import { useState, useEffect } from "react";
+import pharmacist from '../assets/pharmacist.jpg';
 
 const AddPharmacy = () => {
     const [name, setName] = useState('');
@@ -46,9 +47,13 @@ const AddPharmacy = () => {
         })
     }
     return (
-        <>
-            <div className="forms p-4 d-flex flex-column align-items-center">
-                <h1 className="mb-2">Add Pharmacy</h1>
+        <section className="container d-flex flex-row align-items-center mt-5 pt-2">
+            <div className="w-50 px-5 d-flex flex-column align-items-center">
+                <img src={pharmacist} alt="A pharmacist at the counter speaking to a customer" className="img-fluid rounded shadow w-75" />
+            </div>
+
+            <div className="forms d-flex flex-column align-items-center align-self-start w-50">
+                <h1 className="mb-4">Add Pharmacy</h1>
                 <form onSubmit={handleSubmit} className="w-75">
                     <div className="form-floating mb-3">
                         <input
@@ -103,13 +108,13 @@ const AddPharmacy = () => {
                         />
                         <label htmlFor="website">Website</label>
                     </div>
-                    <div className="d-flex justify-content-center">
-                        <button className="btn btn-primary px-3">Add</button>
+                    <div className="d-flex justify-content-center pt-3">
+                        <button className="btn btn-primary px-5 py-2">Add</button>
                     </div>
                     {error ? <div>There was an error trying to add the pharmacy.</div> : null}
                 </form>
             </div>
-        </>
+        </section>
     );
 }
 

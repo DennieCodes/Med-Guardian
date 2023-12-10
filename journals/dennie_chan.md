@@ -1,3 +1,7 @@
+## 12/10/23
+
+- Added images to the different pages and made slight layout changes throughout the project.
+
 ## 12/05/23
 
 - Created a new logo for the project after we finalized on our application name: Med Guardian

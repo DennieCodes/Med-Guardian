@@ -103,19 +103,22 @@ const MedCalendar = () => {
         )
     }
     return (
-        < div className="calendar-container" >
-            <Calendar
-                localizer={localizer}
-                eventPropGetter={eventPropGetter}
-                events={events}
-                startAccessor="start"
-                endAccessor="end"
-                onSelectEvent={handleSelectEvent}
-                style={{ height: '500px' }} // Set the height of the calendar
-            />
-            <Popup med={med} eventData={eventData} showSched={showSched} handleClosePopup={handleClosePopup} handleUpdateCount={handleUpdateCount} />
+        <>
+            <div className="calendar-container mt-5" >
+                <h1 className="mb-5 text-center">Medication Schedule Calendar</h1>
+                <Calendar
+                    localizer={localizer}
+                    eventPropGetter={eventPropGetter}
+                    events={events}
+                    startAccessor="start"
+                    endAccessor="end"
+                    onSelectEvent={handleSelectEvent}
+                    style={{ height: '500px' }} // Set the height of the calendar
+                />
+                <Popup med={med} eventData={eventData} showSched={showSched} handleClosePopup={handleClosePopup} handleUpdateCount={handleUpdateCount} />
 
-        </div >
+            </div >
+        </>
     );
 };
 

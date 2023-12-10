@@ -39,7 +39,7 @@ function App() {
 				<header className='text-center'>
 					<Nav />
 				</header>
-				<main>
+				<main className="vh-100">
 					{account && (
 						<aside className="sideNav">
 							<MenuNav />
@@ -63,11 +63,10 @@ function App() {
 						</Routes>
 					</section>
 				</main>
-				<footer className='text-center p-3'>
+				<footer className='text-center p-3 mt-4'>
 					<p>Med Guardian ©2023 developed by DOM Squad</p>
 				</footer>
 			</div>
-
 		</BrowserRouter>
 	);
 }
