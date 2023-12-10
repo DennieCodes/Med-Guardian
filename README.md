@@ -49,6 +49,21 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 
 ![](docs/images/Palette.png)
 
+## Project Planning and Organization
+
+For our project we utilized an issue and ticket system within the repo to help plan, organize and coordinate our efforts to develop the application. We utilized the following strategy to optimize and guide our efforts:
+
+1. We began our day discussing our plans, any blockers we faced in the previous day and then assigned ourselves to tickets.
+2. Each time member worked on feature branches associated with their tickets.
+3. Whenever a team member was completed with their ticket they would request a peer review of their work.
+4. After tickets were reviewed then that team member would submit their work for a merge request.
+5. Each merge request was reviewed by a fellow team member and absent any issues or conflict with tests or linted would be submitted.
+6. Most feature branches would be deleted upon merge or kept if further development was warranted.
+
+Note: Some tickets were particularly complicated and would have several team members working on them.
+
+[Link to issues, Project Tracking and Development Board](https://gitlab.com/Onkurlal/module3-project-gamma/-/boards)
+
 ## Screenshots
 
 ### Home Page
@@ -82,21 +97,6 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 ### Calendar and Schedules
 
 ![](docs/images/Calendar-01.jpg)
-
-## Project Planning and Organization
-
-For our project we utilized an issue and ticket system within the repo to help plan, organize and coordinate our efforts to develop the application. We utilized the following strategy to optimize and guide our efforts:
-
-1. We began our day discussing our plans, any blockers we faced in the previous day and then assigned ourselves to tickets.
-2. Each time member worked on feature branches associated with their tickets.
-3. Whenever a team member was completed with their ticket they would request a peer review of their work.
-4. After tickets were reviewed then that team member would submit their work for a merge request.
-5. Each merge request was reviewed by a fellow team member and absent any issues or conflict with tests or linted would be submitted.
-6. Most feature branches would be deleted upon merge or kept if further development was warranted.
-
-Note: Some tickets were particularly complicated and would have several team members working on them.
-
-[Link to issues, Project Tracking and Development Board](https://gitlab.com/Onkurlal/module3-project-gamma/-/boards)
 
 ### Backend API Endpoints
 
