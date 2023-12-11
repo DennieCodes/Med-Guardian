@@ -124,36 +124,24 @@ Here are diagrams of the API endpoints serving our project:
 ### Steps to Run the Project
 
 1. Clone this repo
-
-- `git clone https://gitlab.com/Onkurlal/module3-project-gamma`
-
+   - `git clone https://gitlab.com/Onkurlal/module3-project-gamma`
 2. Navigate to project-beta
-
-- `cd module3-project-gamma`
-
+   - `cd module3-project-gamma`
 3. Change the dockerfile in the docker-compose(line 15) to Dockerfile.dev
 4. Make sure [Docker](https://www.docker.com/get-started/) is installed on your machine
 5. Create the volume for the databse and pgAdmin
-
-- `docker volume create postgres-data`
-- `docker volume create pg-admin`
-
+   - `docker volume create postgres-data`
+   - `docker volume create pg-admin`
 6. Create a .env file to the root and add the following environment variables and values:
-
-- PGADMIN_EMAIL
-- PGADMIN_PASSWORD
-- POSTGRES_PASSWORD
-- POSTGRES_USER
-- REACT_APP_API_HOST=http://localhost:8000
-- SIGNING_KEY
-
+   - PGADMIN_EMAIL
+   - PGADMIN_PASSWORD
+   - POSTGRES_PASSWORD
+   - POSTGRES_USER
+   - REACT_APP_API_HOST=http://localhost:8000
+   - SIGNING_KEY
 7. Build docker images
-
-- `docker-compose build`
-
+   - `docker-compose build`
 8. Build docker containers from images
-
-- `docker-compose up`
-
+   - `docker-compose up`
 9. Register the database on pgAdmin by accessing it at `http://localhost:8082`
 10. Access the frontend React app on `http://localhost:3000`
