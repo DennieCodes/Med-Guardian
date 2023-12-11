@@ -2,7 +2,7 @@
 
 Today I worked on:
 
-- Updated our README with more detailed instructions on how to download and use this application.
+- Updated our README with more detailed instructions on how to download and use this application. I also added a table of contents and linked/github badges for us.
 
 ## 12/7/23
 

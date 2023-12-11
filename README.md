@@ -6,19 +6,33 @@ Empowering Health: Seamless Medication Management, Tracking, and Scheduling for 
 
 The project is a full stack FastAPI, PostgreSQL and React application that is built to run on Docker.
 
+## Table of Contents:
+
+**[Team](#team)**<br>
+**[Tech Stack](#tech-stack)**<br>
+**[Project Overview](#project-overview)**<br>
+**[Design Color Palette](#design-color-palette)**<br>
+**[Project Planning and Organization](#project-planning-and-organization)**<br>
+**[Screenshots](#screenshots)**<br>
+**[Backend API Endpointse](#backend-api-endpoints)**<br>
+**[Steps to Run the Project](#steps-to-run-the-project)**<br>
+
 ## Team:
 
-- Onkur Lal
-- Michael Zinzun
-- Dennie Chan
+- Onkur Lal <a href="https://linkedin.com/in/onkur-lal" target="blank"><img height="20" align="center" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="onkur-lal" /></a> <a href="https://github.com/OnkurLal" target="blank"><img height="20" align="center" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="onkur-lal" /></a>
 
-## Technologies used for Med Guardian
+- Michael Zinzun <a href="https://www.linkedin.com/in/michaelzinzun/" target="blank"><img height="20" align="center" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="michael-zinzun" /></a> <a href="https://github.com/mzinzun" target="blank"><img height="20" align="center" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="michael-zinzun" /></a>
+
+- Dennie Chan <a href="https://www.linkedin.com/in/dennie-chan/" target="blank"><img height="20" align="center" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="dennie-chan" /></a> <a href="https://github.com/DennieCodes" target="blank"><img height="20" align="center" src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="dennie-chan" /></a>
+
+## Tech Stack
 
 - FastApi
 - PostgreSQL
 - Docker
 - React
 - Redux
+- Bootstrap
 
 ## Project Overview
 
@@ -38,7 +52,7 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 
 <ins>Design</ins>: The design and layout of the project was created through numerous sessions of design collaboration and discussions of user flow. Necessary elements, user interactions, theme, tone, colors, fonts and layouts were outlined iteratively from wireframes, rough drafts, higher fidelity mock-ups to completed designs.
 
-### Design Color Palette
+## Design Color Palette
 
 - Button Colors, Title Bar, (#164863)
 - Button Color, Complimentary/Contrast (#e69937)
@@ -102,7 +116,7 @@ Note: Some tickets were particularly complicated and would have several team mem
 
 ![](docs/images/Calendar-01.jpg)
 
-### Backend API Endpoints
+## Backend API Endpoints
 
 Here are diagrams of the API endpoints serving our project:
 
@@ -121,7 +135,7 @@ Here are diagrams of the API endpoints serving our project:
 **User Profile API**
 ![](docs/images/user-profile-endpoints-web.png)
 
-### Steps to Run the Project
+## Steps to Run the Project
 
 1. Clone this repo
    - `git clone https://gitlab.com/Onkurlal/module3-project-gamma`
