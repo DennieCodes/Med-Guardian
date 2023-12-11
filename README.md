@@ -26,7 +26,7 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 
 <ins>Goals and Objectives</ins>: Our goal is to address these issues by developing a comprehensive medication management application that simplifies the process of managing, tracking, and scheduling medications. This application aims to provide users with an intuitive and accessible tool to enhance medication adherence, and improve health outcomes.
 
-<ins>User Stories</ins>: We created several user personae to help visualize our users and the challenges and frustrations they might currently face managing their medication routines:
+<ins>User Personas</ins>: We created several user personae to help visualize our users and the challenges and frustrations they might currently face managing their medication routines:
 
 - Barbara, 56 years old, is a teacher who has several health issues and is taking 5 different medications and has trouble remembering to take them. She also forgets to refill her medications which has caused lapses in her health regiment as she waits to get them refilled.
 
@@ -50,6 +50,10 @@ The project is a full stack FastAPI, PostgreSQL and React application that is bu
 ![](docs/images/Palette.png)
 
 ## Project Planning and Organization
+
+To start our project we created a figma page to put down our ideas and thought process. It shows our thought process of how we designed and developed MedGuardian.
+
+- Our figma drawing board can be found [here](https://www.figma.com/file/A9pFlC4pgr8QC4ZTZWG6Zk/Medical?type=whiteboard&node-id=0%3A1&t=DroqqcAyiWyinWWu-1)
 
 For our project we utilized an issue and ticket system within the repo to help plan, organize and coordinate our efforts to develop the application. We utilized the following strategy to optimize and guide our efforts:
 
@@ -119,11 +123,37 @@ Here are diagrams of the API endpoints serving our project:
 
 ### Steps to Run the Project
 
-1. Fork the project located at [Module3 Project Gamma](https://gitlab.com/Onkurlal/module3-project-gamma)
-2. Once the project is forked, close via git clone https link.
-3. Once cloned, cd into app directory and run the following commands:
-4. - Make sure you have Docker running
-5. docker volume create postgres-data
-6. docker volume create pg-admin
-7. docker-compose build
-8. docker-compose up
+1. Clone this repo
+
+- `git clone https://gitlab.com/Onkurlal/module3-project-gamma`
+
+2. Navigate to project-beta
+
+- `cd module3-project-gamma`
+
+3. Change the dockerfile in the docker-compose(line 15) to Dockerfile.dev
+4. Make sure [Docker](https://www.docker.com/get-started/) is installed on your machine
+5. Create the volume for the databse and pgAdmin
+
+- `docker volume create postgres-data`
+- `docker volume create pg-admin`
+
+6. Create a .env file to the root and add the following environment variables and values:
+
+- PGADMIN_EMAIL
+- PGADMIN_PASSWORD
+- POSTGRES_PASSWORD
+- POSTGRES_USER
+- REACT_APP_API_HOST=http://localhost:8000
+- SIGNING_KEY
+
+7. Build docker images
+
+- `docker-compose build`
+
+8. Build docker containers from images
+
+- `docker-compose up`
+
+9. Register the database on pgAdmin by accessing it at `http://localhost:8082`
+10. Access the frontend React app on `http://localhost:3000`

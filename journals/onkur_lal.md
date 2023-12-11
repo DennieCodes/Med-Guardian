@@ -1,3 +1,15 @@
+## 12/11/23
+
+Today I worked on:
+
+- Updated our README with more detailed instructions on how to download and use this application.
+
+## 12/7/23
+
+Today I worked on:
+
+- Michael, Dennie and I were able to get our project deployed.
+
 ## 12/4/23
 
 Today I worked on:
