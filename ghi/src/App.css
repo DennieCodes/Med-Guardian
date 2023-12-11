@@ -49,6 +49,11 @@ main {
 	background-color: #e69937 !important;
 	color: whitesmoke !important;
 }
+.MenuNav li a:hover {
+	box-shadow: 0px 2px 6px black;
+	text-shadow: 0px 0px 4px black;
+	color: whitesmoke !important;
+}
 nav ul {
 	list-style: none;
 }
@@ -114,7 +119,6 @@ p {
 		}
 	}
 }
-/* Calendar */
 
 /* doctors */
 .docsList {
@@ -145,10 +149,12 @@ footer {
 .myCustomHeight {
 	height: 100%;
 }
-
+/* Popup component */
 .popup {
-	border: thin solid red;
 	background-color: goldenrod;
+	border-radius: 7px;
+	box-shadow: 0px 2px 6px black;
+	padding: 5px 15px;
 	width: 50%;
 	height: fit-content;
 	position: absolute;
@@ -156,8 +162,9 @@ footer {
 	top: 20%;
 	transform: translate(-50%);
 	z-index: 100;
-	transition: all 2s;
+	opacity: 0;
 }
+
 .popup p {
 	margin: 0;
 	padding: 0;
