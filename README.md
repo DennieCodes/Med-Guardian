@@ -2,6 +2,8 @@
 
 ![](docs/images/Med%20Guardian%20logo.png)
 
+Live - [https://onkurlal.gitlab.io/module3-project-gamma](https://onkurlal.gitlab.io/module3-project-gamma)
+
 Empowering Health: Seamless Medication Management, Tracking, and Scheduling for Your Well-Being
 
 The project is a full stack FastAPI, PostgreSQL and React application that is built to run on Docker.
