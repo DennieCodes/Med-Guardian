@@ -23,8 +23,8 @@ function Login() {
 			<div className="w-50">
 				<img src={loginComputer} alt="Person typing on a laptop" className="img-fluid rounded shadow" />
 			</div>
-			<div className="forms p-4 d-flex flex-column align-items-center w-50">
-				<h1 className="mb-2">Log in to your account</h1>
+			<div className="forms px-5 d-flex flex-column align-items-center w-50 align-self-start">
+				<h1 className="mb-4">Log in to your account</h1>
 
 				{account && <p>Welcome, {account.account.name}</p>}
 
@@ -57,8 +57,8 @@ function Login() {
 						<label htmlFor="password">Password</label>
 					</div>
 
-					<div className="d-flex justify-content-center">
-						<button className="btn btn-primary px-5" type="submit">Login</button>
+					<div className="d-flex justify-content-center pt-3">
+						<button className="btn btn-primary px-5 py-2" type="submit">Login</button>
 					</div>
 
 				</form>

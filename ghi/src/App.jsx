@@ -21,14 +21,25 @@ import AddProfile from './views/AddProfile';
 function App() {
 	const domain = /https:\/\/[^/]+/;
 	const basename = process.env.PUBLIC_URL.replace(domain, '');
-	const { data: account } = useGetTokenQuery();
+	const { data: account, isLoading } = useGetTokenQuery();
+	if (isLoading) {
+		return (
+			<>
+				<div className='d-flex justify-content-center align-items-center vh-100'>
+					<div className="spinner-border" role="status">
+						<span className="sr-only"></span>
+					</div>
+				</div>
+			</>
+		)
+	}
 	return (
 		<BrowserRouter basename={basename}>
 			<div className='container-fluid wrapper'>
 				<header className='text-center'>
 					<Nav />
 				</header>
-				<main>
+				<main className="vh-100">
 					{account && (
 						<aside className="sideNav">
 							<MenuNav />
@@ -52,11 +63,10 @@ function App() {
 						</Routes>
 					</section>
 				</main>
-				<footer className='text-center p-3'>
+				<footer className='text-center p-3 mt-4'>
 					<p>Med Guardian ©2023 developed by DOM Squad</p>
 				</footer>
 			</div>
-
 		</BrowserRouter>
 	);
 }

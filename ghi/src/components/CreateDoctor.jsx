@@ -25,13 +25,13 @@ function CreateDoctor() {
     }
 
     return (
-        <section className="container d-flex flex-row align-items-center">
-            <div className="col-sm-4">
-                <img src={doctorImage} alt="Doctor sitting on a stool" className="img-fluid rounded shadow" />
+        <section className="container d-flex flex-row align-items-start mt-5">
+            <div className="w-50 px-5 d-flex flex-column align-items-center">
+                <img src={doctorImage} alt="Doctor sitting on a stool" className="img-fluid rounded shadow w-75" />
             </div>
-            <div className="forms p-4 d-flex flex-column align-items-center col-sm-8">
-                <h1 className="mb-2">Add Doctor</h1>
-                <form className="w-100" onSubmit={handleSubmit}>
+            <div className="forms px-4 d-flex flex-column align-items-center w-50">
+                <h1 className="mb-4">Add Doctor</h1>
+                <form className="w-75" onSubmit={handleSubmit}>
                     <div className="form-floating mb-3">
                         <input
                             type="text"
@@ -83,8 +83,8 @@ function CreateDoctor() {
                         />
                         <label htmlFor="address">Address</label>
                     </div>
-                    <div className="d-flex justify-content-center">
-                        <button className="btn btn-primary px-3">
+                    <div className="d-flex justify-content-center pt-3">
+                        <button className="btn btn-primary px-5 py-2">
                             Add
                         </button>
                     </div>

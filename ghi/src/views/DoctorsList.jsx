@@ -13,6 +13,7 @@ function DoctorsList() {
             navigate('/');
         }
     }, [account, navigate]);
+
     if (isLoading) {
         return (
             <>
@@ -24,10 +25,11 @@ function DoctorsList() {
             </>
         )
     }
+
     return (
         <>
-            <section className='px-5'>
-                <h1 className="m-5 text-center">Users Doctors</h1>
+            <section className='px-5 pb-2'>
+                <h1 className="mt-5 mb-4 text-center">My Doctors</h1>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -38,7 +40,7 @@ function DoctorsList() {
                         </tr>
                     </thead>
                     <tbody>
-                        {doctors.map(doctor => {
+                        {doctors && doctors.map(doctor => {
                             return (
                                 <tr key={doctor.id} >
                                     <td className='activeHoverBackground'><Link to={`/doctors/${doctor.id}`}>{doctor.full_name}</Link></td>
